@@ -138,7 +138,7 @@ The two methods reveal a metric-dependent trade-off. ESM-2 achieves higher clust
 
 ### UMAP Comparison: 3-mer Baseline vs ESM-2
 
-![k-mer vs ESM2](plots/kmer_vs_esm2.png)
+![k-mer vs ESM2](plots/umap_comparison.png)
 
 The left panel shows UMAP projections of normalized 3-mer frequency vectors. Family structure is fragmented into multiple disconnected islands driven primarily by local sequence composition.
 
