@@ -81,6 +81,29 @@ HSP70 and RPS3 formed highly separable clusters in embedding space, while GAPDH 
 
 ---
 
+## Alignment-Free Baseline Comparison
+
+To evaluate whether protein language model embeddings provide information beyond simple sequence composition, ESM-2 embeddings were compared against a classical alignment-free baseline based on normalized 3-mer frequency vectors.
+
+### Clustering Purity Comparison
+
+| Method                   | Cluster Purity |
+| ------------------------ | -------------- |
+| 3-mer Frequency Baseline | 0.722          |
+| ESM-2 Embeddings         | 0.747          |
+
+Although the improvement in clustering purity was modest, ESM-2 embeddings consistently produced more coherent family-level organization in low-dimensional space. This suggests that the model captures higher-order biological relationships that extend beyond local amino acid composition.
+
+### k-mer Baseline vs ESM-2 Embeddings
+
+![k-mer vs ESM2](plots/kmer_vs_esm2.png)
+
+The left panel shows a UMAP projection of normalized 3-mer frequency vectors, representing a traditional alignment-free sequence representation. The right panel shows a UMAP projection of ESM-2 embeddings generated from the same protein sequences.
+
+While both approaches recover broad family structure, ESM-2 embeddings produce more coherent clusters and improved separation of major protein families, particularly HSP70 and RPS3.
+
+---
+
 ## Embedding Space Visualization
 
 ### UMAP Colored by Gene Family
@@ -102,8 +125,6 @@ When colored by species identity, clustering remains dominated by gene family st
 ![Confusion Matrix](plots/confusion_matrix.png)
 
 The confusion matrix shows near-perfect recovery of HSP70 and RPS3 proteins. Most classification errors occur between GAPDH and Cytochrome C, consistent with their partial overlap in embedding space.
-
----
 
 ## Embedding Outlier Detection
 
@@ -160,11 +181,9 @@ esm2-phylogenomics/
 
 ## Key Finding
 
-The results demonstrate that protein language model embeddings capture biologically meaningful structure directly from amino acid sequences. Without performing sequence alignment or explicitly modeling evolutionary relationships, ESM-2 embeddings were able to separate major protein families and support accurate downstream classification.
+Protein language model embeddings recovered biologically meaningful family structure directly from amino acid sequences without requiring sequence alignment. Across multiple analyses—including UMAP visualization, supervised classification, clustering purity, and comparison against a k-mer baseline—ESM-2 embeddings consistently captured functional and evolutionary relationships between proteins.
 
-These findings suggest that protein language models provide a promising alignment-free framework for exploratory comparative genomics and phylogenomics, particularly in settings where traditional alignment-based approaches become computationally expensive or difficult to scale.
-
----
+Compared with a traditional alignment-free representation based on 3-mer frequencies, ESM-2 embeddings achieved higher clustering purity and produced more coherent family-specific organization in embedding space, suggesting that learned protein representations encode information beyond local sequence composition.
 
 ## Future Directions
 

@@ -15,6 +15,7 @@ from sklearn.cluster import (
 AgglomerativeClustering,
 KMeans
 )
+from sklearn.metrics import v_measure_score
 
 import umap
 
@@ -215,9 +216,13 @@ cluster_purity(
 )
 )
 
+kmer_vmeasure = v_measure_score(labels_kmer, kmer_clusters)
+
 print(
-f"\nk-mer baseline clustering purity: "
-f"{kmer_purity:.3f}"
+f"\nk-mer baseline clustering purity:   {kmer_purity:.3f}"
+)
+print(
+f"k-mer baseline V-measure:            {kmer_vmeasure:.3f}"
 )
 
 # =====================================================
@@ -267,10 +272,19 @@ esm_labels
 )
 )
 
+esm_vmeasure = v_measure_score(esm_labels, esm_clusters)
+
 print(
-f"ESM-2 embedding clustering purity: "
-f"{esm_purity:.3f}"
+f"ESM-2 embedding clustering purity:   {esm_purity:.3f}"
 )
+print(
+f"ESM-2 embedding V-measure:           {esm_vmeasure:.3f}"
+)
+
+print("\n--- Summary ---")
+print(f"{'Metric':<30} {'k-mer':>8} {'ESM-2':>8}")
+print(f"{'Cluster Purity':<30} {kmer_purity:>8.3f} {esm_purity:>8.3f}")
+print(f"{'V-measure':<30} {kmer_vmeasure:>8.3f} {esm_vmeasure:>8.3f}")
 
 # =====================================================
 
@@ -329,8 +343,9 @@ set(labels_kmer)
     )
 
 axes[0].set_title(
-"3-mer Frequency Baseline"
+"3-mer Frequency Baseline", fontsize=13
 )
+axes[0].legend(fontsize=9)
 
 # ---------- ESM ----------
 
@@ -349,48 +364,37 @@ set(esm_labels)
     )
 
 axes[1].set_title(
-"ESM-2 Embeddings"
+"ESM-2 Embeddings", fontsize=13
 )
 
-axes[1].legend()
-plt.tight_layout()
-plt.savefig(PLOTS_DIR / "umap_comparison.png", dpi=150)
-plt.show()
+axes[1].legend(fontsize=9)
+plt.tight_layout(rect=[0, 0.08, 1, 1])
 
 summary = (
-f"k-mer purity = "
-f"{kmer_purity:.3f}\n"
-f"ESM-2 purity = "
-f"{esm_purity:.3f}"
+    f"Cluster Purity  →  k-mer: {kmer_purity:.3f}   |   ESM-2: {esm_purity:.3f}\n"
+    f"V-measure       →  k-mer: {kmer_vmeasure:.3f}   |   ESM-2: {esm_vmeasure:.3f}"
 )
 
 fig.text(
-0.5,
-0.02,
-summary,
-ha="center",
-fontsize=12,
-bbox=dict(
-facecolor="black",
-alpha=0.7
-)
+    0.5, 0.01,
+    summary,
+    ha="center",
+    fontsize=11,
+    family="monospace",
+    bbox=dict(facecolor="#111111", edgecolor="#444444", alpha=0.9, pad=6)
 )
 
-plt.tight_layout()
+plt.savefig(PLOTS_DIR / "umap_comparison.png", dpi=150, bbox_inches="tight")
+plt.show()
 
-outfile = (
-PLOTS_DIR /
-"kmer_vs_esm2.png"
-)
+outfile = PLOTS_DIR / "kmer_vs_esm2.png"
 
 plt.savefig(
-outfile,
-dpi=300,
-bbox_inches="tight"
+    outfile,
+    dpi=300,
+    bbox_inches="tight"
 )
 
 plt.close()
 
-print(
-f"\nSaved: {outfile}"
-)
+print(f"\nSaved: {outfile}")
