@@ -1,5 +1,5 @@
-family,total_sequences,num_putative_paralogs,sequence_ids
-CYTC,80,1,CYTC|Closterium_sp._Naga37s-1
-GAPDH,80,1,GAPDH|Lipotes_vexillifer
-HSP70,80,4,HSP70|Meleagris_gallopavo;HSP70|Pedinophyceae_sp._YPF-701;HSP70|Vidua_chalybeata;HSP70|Zosterops_borbonicus
-RPS3,80,11,RPS3|Ateles_geoffroyi;RPS3|Bombus_breviceps;RPS3|Callithrix_jacchus;RPS3|Cervus_hanglu_yarkandensis;RPS3|Colletotrichum_scovillei;RPS3|Lasioglossum_pauxillum;RPS3|Melipona_bicolor;RPS3|Plasmodium_falciparum_NF54;RPS3|Tieghemostelium_lacteum;RPS3|Toxoplasma_gondii_TgCatPRC2;RPS3|Venturia_canescens
+family,total_sequences,num_kmeans_minority_flags,num_robust_z_flags,num_high_confidence,num_any_flag,high_confidence_ids
+CYTC,80,1,7,1,7,CYTC|Closterium_sp._Naga37s-1
+GAPDH,80,1,7,1,7,GAPDH|Lipotes_vexillifer
+HSP70,80,27,5,5,27,HSP70|Cervus_elaphus;HSP70|Meleagris_gallopavo;HSP70|Pedinophyceae_sp._YPF-701;HSP70|Vidua_chalybeata;HSP70|Zosterops_borbonicus
+RPS3,80,2,6,2,6,RPS3|Ateles_geoffroyi;RPS3|Boletus_edulis
