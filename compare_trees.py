@@ -1,160 +1,129 @@
+"""Stage 7b: compare each family's gene tree to a reference species tree
+using Robinson-Foulds distance.
+
+Prerequisites (this is what makes the feature previously "orphaned" --
+neither file existed anywhere in the original repo):
+  1. results/<FAMILY>.tree  -- generate with build_gene_trees.py
+  2. results/species.tree   -- a Newick species tree whose LEAF NAMES
+     match the species names used above. You need to supply this
+     yourself, e.g.:
+       - a subset of a public reference like TimeTree (timetree.org)
+       - NCBI Taxonomy via ete3/ete4's NCBITaxa (see
+         fetch_species_tree.py for a starting point -- it needs internet
+         access to NCBI on your machine, not available in this sandbox)
+       - your own curated tree for the species in output/metadata.csv
+
+Usage:
+    python compare_trees.py
+    python compare_trees.py --species-tree my_species.tree
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
 from pathlib import Path
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+
 from ete4 import Tree
 
-# =====================================================
-# PATHS
-# =====================================================
+from esm2_phylo.config import RESULTS_DIR
+from esm2_phylo.logging_utils import get_logger
 
-RESULTS_DIR = Path("results")
-PLOTS_DIR = Path("plots")
+log = get_logger(__name__)
 
-PLOTS_DIR.mkdir(exist_ok=True)
 
-SPECIES_TREE = RESULTS_DIR / "species.tree"
+def load_tree(path: Path) -> Tree:
+    return Tree(open(path).read(), parser=0)
 
-OUTPUT_CSV = RESULTS_DIR / "rf_distances.csv"
-OUTPUT_PLOT = PLOTS_DIR / "rf_distances.png"
 
-# =====================================================
-# LOAD SPECIES TREE
-# =====================================================
+def prune_to_common_leaves(gene_tree: Tree, species_tree: Tree):
+    gene_leaves = {leaf.name for leaf in gene_tree.leaves()}
+    species_leaves = {leaf.name for leaf in species_tree.leaves()}
+    common = gene_leaves & species_leaves
 
-species_tree = Tree(str(SPECIES_TREE))
+    if len(common) < 4:
+        return None, None, common, gene_leaves, species_leaves
 
-# =====================================================
-# FIND GENE TREES
-# =====================================================
+    g = gene_tree.copy()
+    s = species_tree.copy()
+    g.prune(list(common), preserve_branch_length=True)
+    s.prune(list(common), preserve_branch_length=True)
+    return g, s, common, gene_leaves, species_leaves
 
-tree_files = []
 
-for tree_file in RESULTS_DIR.glob("*.tree"):
+def main():
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("--results-dir", type=Path, default=RESULTS_DIR)
+    parser.add_argument("--species-tree", type=Path, default=None,
+                         help="Defaults to <results-dir>/species.tree")
+    args = parser.parse_args()
 
-    if tree_file.name == "species.tree":
-        continue
+    species_tree_path = args.species_tree or (args.results_dir / "species.tree")
 
-    tree_files.append(tree_file)
+    gene_tree_files = sorted(args.results_dir.glob("*.tree"))
+    gene_tree_files = [f for f in gene_tree_files if f.name != "species.tree"]
 
-results = []
-
-# =====================================================
-# COMPARE TREES
-# =====================================================
-
-for tree_file in tree_files:
-
-    family = tree_file.stem
-
-    gene_tree = Tree(str(tree_file))
-
-    species_copy = species_tree.copy()
-    gene_copy = gene_tree.copy()
-
-    species_taxa = set(species_copy.get_leaf_names())
-    gene_taxa = set(gene_copy.get_leaf_names())
-
-    shared_taxa = species_taxa & gene_taxa
-
-    if len(shared_taxa) < 4:
-
-        print(
-            f"Skipping {family}: "
-            f"only {len(shared_taxa)} shared taxa"
+    if not gene_tree_files:
+        raise SystemExit(
+            f"No gene tree files found in {args.results_dir}. "
+            "Run build_gene_trees.py first to generate results/<FAMILY>.tree files."
         )
 
-        continue
+    if not species_tree_path.exists():
+        raise SystemExit(
+            f"Species tree not found: {species_tree_path}\n"
+            "This script needs a reference species tree to compare gene trees "
+            "against -- it is not something the pipeline can generate on its "
+            "own without an external taxonomy source. See this script's "
+            "module docstring (or fetch_species_tree.py) for how to obtain one, "
+            "then place it at that path."
+        )
 
-    species_copy.prune(shared_taxa)
-    gene_copy.prune(shared_taxa)
+    species_tree = load_tree(species_tree_path)
+    log.info("Loaded species tree: %s (%d leaves)", species_tree_path, len(list(species_tree.leaves())))
 
-    comparison = gene_copy.compare(
-        species_copy,
-        unrooted=True
-    )
+    results = []
+    for gene_tree_file in gene_tree_files:
+        family = gene_tree_file.stem
+        gene_tree = load_tree(gene_tree_file)
 
-    rf = comparison["rf"]
+        pruned_gene, pruned_species, common, gene_leaves, species_leaves = prune_to_common_leaves(
+            gene_tree, species_tree
+        )
 
-    max_rf = comparison["max_rf"]
+        if pruned_gene is None:
+            log.warning(
+                "%s: only %d overlapping leaves with the species tree "
+                "(need >=4 for a meaningful RF comparison). "
+                "Gene tree has %d leaves, species tree has %d leaves -- "
+                "check that species names match exactly. Skipping.",
+                family, len(common), len(gene_leaves), len(species_leaves),
+            )
+            results.append({"family": family, "status": "skipped_insufficient_overlap", "n_common_leaves": len(common)})
+            continue
 
-    normalized_rf = (
-        rf / max_rf if max_rf > 0 else 0
-    )
+        rf = pruned_gene.compare(pruned_species, unrooted=True)
 
-    results.append(
-        {
-            "family": family,
-            "shared_taxa": len(shared_taxa),
-            "rf_distance": rf,
-            "max_rf": max_rf,
-            "normalized_rf": normalized_rf
-        }
-    )
+        results.append(
+            {
+                "family": family,
+                "status": "ok",
+                "n_common_leaves": len(common),
+                "rf_distance": rf["rf"],
+                "rf_max": rf["max_rf"],
+                "normalized_rf": rf["rf"] / rf["max_rf"] if rf["max_rf"] else None,
+            }
+        )
+        log.info(
+            "%-8s common_leaves=%-3d RF=%s/%s (normalized=%.3f)",
+            family, len(common), rf["rf"], rf["max_rf"],
+            rf["rf"] / rf["max_rf"] if rf["max_rf"] else float("nan"),
+        )
 
-# =====================================================
-# SAVE TABLE
-# =====================================================
+    out_file = args.results_dir / "tree_comparison_results.json"
+    out_file.write_text(json.dumps(results, indent=2))
+    log.info("Saved: %s", out_file)
 
-df = pd.DataFrame(results)
 
-df = df.sort_values(
-    "normalized_rf",
-    ascending=False
-)
-
-df.to_csv(
-    OUTPUT_CSV,
-    index=False
-)
-
-# =====================================================
-# PRINT TABLE
-# =====================================================
-
-print("\n==============================")
-print("RF DISTANCE SUMMARY")
-print("==============================\n")
-
-print(
-    df[
-        [
-            "family",
-            "shared_taxa",
-            "rf_distance",
-            "normalized_rf"
-        ]
-    ]
-)
-
-# =====================================================
-# BARPLOT
-# =====================================================
-
-plt.style.use("dark_background")
-
-plt.figure(figsize=(10, 6))
-
-sns.barplot(
-    data=df,
-    x="family",
-    y="normalized_rf"
-)
-
-plt.ylabel("Normalized RF Distance")
-plt.xlabel("Gene Family")
-plt.title(
-    "Gene Tree vs Species Tree Discordance"
-)
-
-plt.tight_layout()
-
-plt.savefig(
-    OUTPUT_PLOT,
-    dpi=300
-)
-
-plt.close()
-
-print(f"\nSaved: {OUTPUT_CSV}")
-print(f"Saved: {OUTPUT_PLOT}")
+if __name__ == "__main__":
+    main()

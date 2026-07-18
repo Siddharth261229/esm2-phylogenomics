@@ -1,0 +1,31 @@
+# Core ML / embeddings
+torch>=2.1
+fair-esm>=2.0.0
+
+# Data & scientific computing
+numpy>=1.24
+pandas>=2.0
+scipy>=1.10
+scikit-learn>=1.3
+
+# Dimensionality reduction & visualization
+umap-learn>=0.5.4
+matplotlib>=3.7
+seaborn>=0.12
+
+# Sequence I/O
+biopython>=1.81
+
+# Phylogenetics (build_gene_trees.py, compare_trees.py, fetch_species_tree.py)
+# ete4>=4.0.0
+
+# Testing
+pytest>=7.4
+
+# ---
+# Note on GPUs: fair-esm/torch only accelerate on NVIDIA (CUDA) GPUs.
+# An AMD integrated GPU (e.g. Radeon graphics on Windows) will not be
+# used by the default torch build -- everything falls back to CPU
+# automatically, which is fine for the model sizes used here (8M-150M
+# params). If you have a supported discrete AMD card on Linux, you can
+# instead install a ROCm build of torch (see https://pytorch.org/get-started/locally/).

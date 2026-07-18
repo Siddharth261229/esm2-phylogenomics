@@ -1,168 +1,107 @@
-import numpy as np
-import pandas as pd
-import umap
-import matplotlib.pyplot as plt
-import seaborn as sns
+"""Stage 3: UMAP projection of embeddings, colored by family and species.
+
+Usage:
+    python cluster_visualise.py
+    python cluster_visualise.py --embeddings output/embeddings.npy
+"""
+
+from __future__ import annotations
+
+import argparse
 from pathlib import Path
 
-# =====================================================
-# PATHS
-# =====================================================
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import umap
 
-EMBEDDINGS_FILE = "output/embeddings.npy"
-METADATA_FILE = "output/metadata.csv"
+from esm2_phylo.config import EMBEDDINGS_FILE, METADATA_FILE, PLOTS_DIR
+from esm2_phylo.logging_utils import get_logger
 
-PLOTS_DIR = Path("plots")
-PLOTS_DIR.mkdir(exist_ok=True)
+log = get_logger(__name__)
 
-# =====================================================
-# LOAD DATA
-# =====================================================
 
-print("Loading embeddings...")
-
-X = np.load(EMBEDDINGS_FILE)
-meta = pd.read_csv(METADATA_FILE)
-
-print(f"Embeddings shape: {X.shape}")
-print(f"Metadata rows: {len(meta)}")
-
-# =====================================================
-# UMAP
-# =====================================================
-
-print("Running UMAP...")
-
-reducer = umap.UMAP(
-    n_neighbors=15,
-    min_dist=0.1,
-    metric="cosine",
-    random_state=42
-)
-
-embedding_2d = reducer.fit_transform(X)
-
-meta["UMAP1"] = embedding_2d[:, 0]
-meta["UMAP2"] = embedding_2d[:, 1]
-
-# =====================================================
-# DARK THEME
-# =====================================================
-
-plt.style.use("dark_background")
-
-sns.set_context(
-    "talk",
-    font_scale=1.1
-)
-
-# =====================================================
-# PLOT 1: FAMILY
-# =====================================================
-
-print("Generating family plot...")
-
-plt.figure(figsize=(12, 10))
-
-sns.scatterplot(
-    data=meta,
-    x="UMAP1",
-    y="UMAP2",
-    hue="family",
-    s=80,
-    alpha=0.9
-)
-
-plt.title(
-    "UMAP Projection of ESM2 Embeddings\nColored by Gene Family",
-    fontsize=16
-)
-
-plt.tight_layout()
-
-family_plot = PLOTS_DIR / "umap_by_family.png"
-
-plt.savefig(
-    family_plot,
-    dpi=300,
-    bbox_inches="tight"
-)
-
-plt.close()
-
-# =====================================================
-# PLOT 2: SPECIES
-# =====================================================
-
-print("Generating species plot...")
-
-unique_species = meta["species"].nunique()
-
-plt.figure(figsize=(14, 12))
-
-if unique_species <= 25:
-
-    sns.scatterplot(
-        data=meta,
-        x="UMAP1",
-        y="UMAP2",
-        hue="species",
-        s=80,
-        alpha=0.9
+def run_umap(X: np.ndarray, n_neighbors: int, min_dist: float, seed: int) -> np.ndarray:
+    reducer = umap.UMAP(
+        n_neighbors=min(n_neighbors, len(X) - 1),
+        min_dist=min_dist,
+        metric="cosine",
+        random_state=seed,
     )
+    return reducer.fit_transform(X)
 
-else:
-    # Too many species for a readable legend
 
-    species_codes = pd.factorize(
-        meta["species"]
-    )[0]
+def main():
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("--embeddings", type=Path, default=EMBEDDINGS_FILE)
+    parser.add_argument("--metadata", type=Path, default=METADATA_FILE)
+    parser.add_argument("--plots-dir", type=Path, default=PLOTS_DIR)
+    parser.add_argument("--n-neighbors", type=int, default=15)
+    parser.add_argument("--min-dist", type=float, default=0.1)
+    parser.add_argument("--seed", type=int, default=42)
+    args = parser.parse_args()
 
-    scatter = plt.scatter(
-        meta["UMAP1"],
-        meta["UMAP2"],
-        c=species_codes,
-        s=80,
-        alpha=0.9
-    )
+    if not args.embeddings.exists():
+        raise SystemExit(f"Embeddings not found: {args.embeddings}. Run generate_embeddings.py first.")
 
-    plt.colorbar(
-        scatter,
-        label="Species Index"
-    )
+    args.plots_dir.mkdir(parents=True, exist_ok=True)
 
-plt.title(
-    "UMAP Projection of ESM2 Embeddings\nColored by Species",
-    fontsize=16
-)
+    log.info("Loading embeddings...")
+    X = np.load(args.embeddings)
+    meta = pd.read_csv(args.metadata)
 
-plt.tight_layout()
+    if len(meta) != len(X):
+        raise SystemExit(
+            f"Metadata rows ({len(meta)}) != embedding rows ({len(X)}). "
+            "These files are out of sync -- rerun generate_embeddings.py."
+        )
 
-species_plot = PLOTS_DIR / "umap_by_species.png"
+    log.info("Embeddings shape: %s", X.shape)
+    log.info("Running UMAP...")
+    embedding_2d = run_umap(X, args.n_neighbors, args.min_dist, args.seed)
+    meta["UMAP1"] = embedding_2d[:, 0]
+    meta["UMAP2"] = embedding_2d[:, 1]
 
-plt.savefig(
-    species_plot,
-    dpi=300,
-    bbox_inches="tight"
-)
+    plt.style.use("dark_background")
+    sns.set_context("talk", font_scale=1.1)
 
-plt.close()
+    # ---- Plot 1: family ----
+    log.info("Generating family plot...")
+    plt.figure(figsize=(12, 10))
+    sns.scatterplot(data=meta, x="UMAP1", y="UMAP2", hue="family", s=80, alpha=0.9)
+    plt.title("UMAP Projection of ESM-2 Embeddings\nColored by Gene Family", fontsize=16)
+    plt.tight_layout()
+    family_plot = args.plots_dir / "umap_by_family.png"
+    plt.savefig(family_plot, dpi=300, bbox_inches="tight")
+    plt.close()
 
-# =====================================================
-# SAVE UMAP COORDINATES
-# =====================================================
+    # ---- Plot 2: species ----
+    log.info("Generating species plot...")
+    unique_species = meta["species"].nunique()
+    plt.figure(figsize=(14, 12))
 
-meta.to_csv(
-    PLOTS_DIR / "umap_coordinates.csv",
-    index=False
-)
+    if unique_species <= 25:
+        sns.scatterplot(data=meta, x="UMAP1", y="UMAP2", hue="species", s=80, alpha=0.9)
+    else:
+        species_codes = pd.factorize(meta["species"])[0]
+        scatter = plt.scatter(meta["UMAP1"], meta["UMAP2"], c=species_codes, s=80, alpha=0.9)
+        plt.colorbar(scatter, label="Species Index")
 
-# =====================================================
-# DONE
-# =====================================================
+    plt.title("UMAP Projection of ESM-2 Embeddings\nColored by Species", fontsize=16)
+    plt.tight_layout()
+    species_plot = args.plots_dir / "umap_by_species.png"
+    plt.savefig(species_plot, dpi=300, bbox_inches="tight")
+    plt.close()
 
-print("\n===================================")
-print("UMAP complete")
-print(f"Saved: {family_plot}")
-print(f"Saved: {species_plot}")
-print("===================================")
+    meta.to_csv(args.plots_dir / "umap_coordinates.csv", index=False)
+
+    log.info("=" * 40)
+    log.info("UMAP complete")
+    log.info("Saved: %s", family_plot)
+    log.info("Saved: %s", species_plot)
+    log.info("=" * 40)
+
+
+if __name__ == "__main__":
+    main()
