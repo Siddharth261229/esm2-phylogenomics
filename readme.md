@@ -55,9 +55,45 @@ which is fine for the model sizes here (8M–150M parameters).
 
 ---
 
+## Comparing Runs
+
+Every stage script accepts `--embeddings`, `--metadata`, `--plots-dir`, and
+`--results-dir` overrides, so you can archive a full run's outputs before
+starting the next one (e.g. to compare two ESM-2 model sizes) instead of
+overwriting them:
+
+```bash
+# after finishing a run on esm2_t12_35M_UR50D
+mkdir -p runs/esm2_t12_35M
+mv output/embeddings.npy output/metadata.csv runs/esm2_t12_35M/
+mv plots/* results/* runs/esm2_t12_35M/
+
+# rerun with a bigger checkpoint
+python generate_embeddings.py --model esm2_t30_150M_UR50D
+python cluster_visualise.py
+python train_mlp_classifier.py
+python detect_paralogs.py
+python kmer_distance.py
+
+mkdir -p runs/esm2_t30_150M
+mv output/embeddings.npy output/metadata.csv runs/esm2_t30_150M/
+mv plots/* results/* runs/esm2_t30_150M/
+
+# compare the two runs: prints a table and saves a bar chart
+python compare_runs.py --run-a runs/esm2_t12_35M --run-b runs/esm2_t30_150M
+```
+
+`compare_runs.py` reads `classifier_metrics.json` and
+`kmer_vs_esm2_metrics.json` from each archived run directory and produces
+`plots/run_comparison.png` plus a console table covering CV accuracy,
+macro-F1, and both methods' cluster purity/V-measure — so you don't have
+to eyeball two separate README sections to see what changed.
+
+---
+
 ## Dataset
 
-Protein sequences were obtained from OrthoDB and grouped into four conserved gene families spanning diverse eukaryotic taxa:
+Protein sequences were obtained from OrthoDB [9] and grouped into four conserved gene families spanning diverse eukaryotic taxa:
 
 - HSP70 (Heat Shock Protein 70)
 - RPS3 (Ribosomal Protein S3)
@@ -89,7 +125,7 @@ These labels were used as ground truth throughout the analysis.
 
 ### Protein Language Model Embeddings
 
-Protein representations are generated using ESM-2. The model checkpoint is
+Protein representations are generated using ESM-2 [1]. The model checkpoint is
 now configurable via `generate_embeddings.py --model`:
 
 | Checkpoint            | Params | Embedding dim | Notes                                            |
@@ -106,7 +142,7 @@ downstream machine learning analyses.
 
 ### Dimensionality Reduction
 
-To visualize embedding structure, UMAP was applied with:
+To visualize embedding structure, UMAP [2] was applied with:
 
 - n_neighbors = 15
 - min_dist = 0.1
@@ -143,7 +179,7 @@ candidates; flagged by only one, as low-confidence.
 
 ### Alignment-Free Baseline
 
-As a classical baseline, each protein was represented by normalized 3-mer amino acid frequencies.
+As a classical alignment-free baseline [4], each protein was represented by normalized 3-mer amino acid frequencies.
 
 - k = 3
 - 20 standard amino acids
@@ -175,6 +211,7 @@ family identity is strongly encoded within the learned embedding space.
 ### Family-Specific Performance
 
 (from the single illustrative hold-out split, n=64)
+[(runs/esm2_t30_150M/confusion_matrix.png)]
 
 | Family       | Precision | Recall | F1-score |
 | ------------ | --------: | -----: | -------: |
@@ -189,49 +226,70 @@ HSP70 and RPS3 were recovered almost perfectly, whereas GAPDH and Cytochrome C e
 
 ## Embedding Space Visualization
 
+Shown below: `esm2_t30_150M_UR50D` (the larger, more recent run). The
+`esm2_t12_35M_UR50D` version is archived at
+[`runs/esm2_t12_35M/`](runs/esm2_t12_35M/) for comparison.
+
 ### UMAP Colored by Gene Family
 
-![UMAP by Family](plots/umap_by_family.png)
+![UMAP by Family](runs/esm2_t30_150M/umap_by_family.png)
 
-Distinct clustering by gene family emerges directly from ESM-2 embeddings despite the absence of alignment or phylogenetic information during training. HSP70 and RPS3 occupy highly separated regions of embedding space, while GAPDH and Cytochrome C form a partially overlapping manifold.
+Distinct clustering by gene family emerges directly from ESM-2 embeddings despite the absence of alignment or phylogenetic information during training.
 
 ### UMAP Colored by Species
 
-![UMAP by Species](plots/umap_by_species.png)
+![UMAP by Species](runs/esm2_t30_150M/umap_by_species.png)
 
-When colored by species identity, clustering remains dominated by protein family rather than taxonomy. This suggests that ESM-2 primarily captures functional and evolutionary constraints encoded in protein sequences.
-
----
+## When colored by species identity, clustering remains dominated by protein family rather than taxonomy. This suggests that ESM-2 primarily captures functional and evolutionary constraints encoded in protein sequences.
 
 ## Alignment-Free Baseline Comparison
 
 To evaluate whether ESM-2 embeddings provide information beyond simple sequence composition, embeddings were compared against a classical alignment-free baseline using normalized 3-mer frequency vectors, on the **identical 320-sequence curated dataset** for both methods (see CHANGELOG — the original comparison had a dataset-mismatch bug and is no longer used).
 
-### Clustering Metrics
+### Model Size Comparison
 
-| Method                       | Cluster Purity | V-measure |
-| ---------------------------- | -------------: | --------: |
-| 3-mer Frequency Baseline     |      **0.747** | **0.826** |
-| ESM-2 Embeddings (`t12_35M`) |          0.741 |     0.754 |
+Full archived outputs for each run: [`runs/esm2_t12_35M/`](runs/esm2_t12_35M/), [`runs/esm2_t30_150M/`](runs/esm2_t30_150M/). Generated with `compare_runs.py`:
 
-With the comparison now apples-to-apples, the classical k-mer baseline
-slightly **outperforms** this ESM-2 checkpoint on both metrics — the
-opposite conclusion from the original (buggy) comparison. This isn't
-necessarily a negative result for protein language models in general: the
-35M-parameter checkpoint is the second-smallest in the ESM-2 family
-(320-dim vs. the 650M/3B checkpoints' 1280–2560 dims). The natural next
-experiment is re-running `generate_embeddings.py --model esm2_t30_150M_UR50D`
-(or larger) to see whether a bigger model overtakes the k-mer baseline, or
-whether this particular 4-family/320-sequence task is simply saturated by
-local composition signal regardless of model size.
+![Run Comparison](runs/comparison_35M_vs_150M.png)
 
-### UMAP Comparison: 3-mer Baseline vs ESM-2
+| Metric               | `esm2_t12_35M`\* | `esm2_t30_150M` | k-mer baseline |
+| -------------------- | ---------------: | --------------: | -------------: |
+| MLP CV accuracy      |            72.2% |           74.7% |              — |
+| MLP CV macro-F1      |            0.713 |           0.743 |              — |
+| ESM-2 cluster purity |            0.741 |       **0.747** |          0.747 |
+| ESM-2 V-measure      |            0.754 |       **0.818** |          0.826 |
 
-![k-mer vs ESM2](plots/kmer_vs_esm2.png)
+\* The 35M run's clustering numbers (purity/V-measure) predate a
+clustering-methodology fix described below and are not fully apples-to-apples
+with the 150M numbers — see the note underneath the table.
 
-The left panel shows UMAP projections of normalized 3-mer frequency vectors, forming several tight, well-separated islands per family — consistent with its higher V-measure above. The right panel shows ESM-2 embeddings of the same 320 proteins: HSP70 forms a distinguishable region, but GAPDH, Cytochrome C, and RPS3 occupy substantially overlapping space at this model size, consistent with the lower purity/V-measure numbers above.
+`compare_runs.py --run-a runs/esm2_t12_35M --run-b runs/esm2_t30_150M` reproduces this table and chart from the archived JSON metrics in each run folder.
 
----
+**150M essentially ties the k-mer baseline on cluster purity and nearly
+closes the gap on V-measure**, a meaningful jump from 35M. Classification
+accuracy improved by a smaller but consistent margin (+2.5 points), which
+makes sense: classification and clustering purity aren't measuring the same
+thing — the MLP can learn a nonlinear decision boundary on top of the same
+embeddings, while clustering only uses their raw geometric structure.
+
+> **Note on embedding geometry:** mean-pooled transformer embeddings are
+> known to exhibit a large shared ("anisotropic") direction common to
+> nearly all sequences, which can dominate cosine-distance-based clustering
+> and mask smaller per-family signal riding on top of it [5, 6]. An earlier
+> version of this comparison also clustered the k-mer baseline
+> (agglomerative + cosine) and the ESM-2 embeddings (KMeans + Euclidean)
+> with _different_ algorithms on different distance geometries — not a fair
+> comparison. This pipeline's clustering step now uses agglomerative +
+> cosine for both methods, with embeddings mean-centered first to correct
+> for anisotropy. Both fixes are reflected in the 150M numbers above; the
+> archived 35M run predates them, which is why it's flagged with an
+> asterisk rather than presented as a clean three-way comparison.
+
+### UMAP Comparison: 3-mer Baseline vs ESM-2 (150M)
+
+![k-mer vs ESM2](runs/esm2_t30_150M/kmer_vs_esm2.png)
+
+## The left panel shows UMAP projections of normalized 3-mer frequency vectors. The right panel shows `esm2_t30_150M_UR50D` embeddings of the same 320 proteins — consistent with the near-parity purity/V-measure numbers above, family separation is visibly tighter here than in the earlier 35M version.
 
 ## Biological Interpretation
 
@@ -277,6 +335,10 @@ results/paralog_candidates_detail.csv   # per-sequence flags
 ---
 
 ## Repository Structure
+
+> Archived per-model-size run outputs live under `runs/<model_name>/`
+> (see "Comparing Runs" above). `output/`, `plots/`, and `results/` always
+> reflect only the _most recently executed_ pipeline run.
 
 ```text
 esm2-phylogenomics/
@@ -331,14 +393,16 @@ esm2-phylogenomics/
 ## Tree Comparison (Gene Tree vs Species Tree)
 
 This compares each family's gene tree against a reference species tree via
-normalized Robinson-Foulds (RF) distance, to ask: does the topology implied
+normalized Robinson-Foulds (RF) distance [8], to ask: does the topology implied
 by ESM-2 embedding distances agree with the accepted species phylogeny?
 
 1. **Build gene trees from embeddings** (no MSA needed — uses
-   neighbor-joining on embedding cosine distances):
-   ```bash
+   neighbor-joining [7] on embedding cosine distances):
+
+```bash
    python build_gene_trees.py
-   ```
+```
+
 2. **Supply a species tree** (`results/species.tree`, Newick, leaf names =
    species names in the same underscored format as elsewhere, e.g.
    `Homo_sapiens`). Either:
@@ -347,9 +411,10 @@ by ESM-2 embedding distances agree with the accepted species phylogeny?
    - provide your own, e.g. downloaded from [TimeTree.org](https://timetree.org)
      or [Open Tree of Life](https://opentreeoflife.github.io/).
 3. **Compare:**
-   ```bash
+
+```bash
    python compare_trees.py
-   ```
+```
 
 This is a fast, alignment-free approximation — not a substitute for proper
 ML/Bayesian gene-tree inference — but it's a natural extension of the
@@ -401,6 +466,26 @@ Potential extensions include:
 - Developing graph-based approaches for ortholog and paralog detection.
 
 ---
+
+## References
+
+1. Lin, Z., Akin, H., Rao, R., Hie, B., Zhu, Z., Lu, W., Smetanin, N., Verkuil, R., Kabeli, O., Shmueli, Y., dos Santos Costa, A., Fazel-Zarandi, M., Sercu, T., Candido, S., Rives, A. (2023). Evolutionary-scale prediction of atomic-level protein structure with a language model. _Science_, 379(6637), 1123–1130. https://doi.org/10.1126/science.ade2574
+
+2. McInnes, L., Healy, J., Melville, J. (2018). UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction. _arXiv:1802.03426_. https://arxiv.org/abs/1802.03426
+
+3. Rosenberg, A., Hirschberg, J. (2007). V-Measure: A Conditional Entropy-Based External Cluster Evaluation Measure. In _Proceedings of the 2007 Joint Conference on EMNLP-CoNLL_, 410–420. https://aclanthology.org/D07-1043/
+
+4. Zielezinski, A., Vinga, S., Almeida, J., Karlowski, W.M. (2017). Alignment-free sequence comparison: benefits, applications, and tools. _Genome Biology_, 18, 186. https://doi.org/10.1186/s13059-017-1319-7
+
+5. Ethayarajh, K. (2019). How Contextual are Contextualized Word Representations? Comparing the Geometry of BERT, ELMo, and GPT-2 Embeddings. In _Proceedings of EMNLP-IJCNLP 2019_, 55–65. https://aclanthology.org/D19-1006/
+
+6. Mu, J., Viswanath, P. (2018). All-but-the-Top: Simple and Effective Postprocessing for Word Representations. _International Conference on Learning Representations (ICLR) 2018_. https://arxiv.org/abs/1702.01417
+
+7. Saitou, N., Nei, M. (1987). The neighbor-joining method: a new method for reconstructing phylogenetic trees. _Molecular Biology and Evolution_, 4(4), 406–425. https://doi.org/10.1093/oxfordjournals.molbev.a040454
+
+8. Robinson, D.F., Foulds, L.R. (1981). Comparison of phylogenetic trees. _Mathematical Biosciences_, 53(1–2), 131–147. https://doi.org/10.1016/0025-5564(81)90043-2
+
+9. Kuznetsov, D., Tegenfeldt, F., Manni, M., Seppey, M., Berkeley, M., Kriventseva, E.V., Zdobnov, E.M. (2023). OrthoDB v11: annotation of orthologs in the widest sampling of organismal diversity. _Nucleic Acids Research_, 51(D1), D445–D451. https://doi.org/10.1093/nar/gkac998
 
 ### Technologies
 

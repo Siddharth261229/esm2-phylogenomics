@@ -1,0 +1,5 @@
+family,total_sequences,num_putative_paralogs,sequence_ids
+CYTC,80,1,CYTC|Closterium_sp._Naga37s-1
+GAPDH,80,1,GAPDH|Lipotes_vexillifer
+HSP70,80,4,HSP70|Meleagris_gallopavo;HSP70|Pedinophyceae_sp._YPF-701;HSP70|Vidua_chalybeata;HSP70|Zosterops_borbonicus
+RPS3,80,11,RPS3|Ateles_geoffroyi;RPS3|Bombus_breviceps;RPS3|Callithrix_jacchus;RPS3|Cervus_hanglu_yarkandensis;RPS3|Colletotrichum_scovillei;RPS3|Lasioglossum_pauxillum;RPS3|Melipona_bicolor;RPS3|Plasmodium_falciparum_NF54;RPS3|Tieghemostelium_lacteum;RPS3|Toxoplasma_gondii_TgCatPRC2;RPS3|Venturia_canescens
