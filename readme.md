@@ -250,7 +250,7 @@ To evaluate whether ESM-2 embeddings provide information beyond simple sequence 
 
 Full archived outputs for each run: [`runs/esm2_t12_35M/`](runs/esm2_t12_35M/), [`runs/esm2_t30_150M/`](runs/esm2_t30_150M/). Generated with `compare_runs.py`:
 
-![Run Comparison](runs/comparison_35M_vs_150M.png)
+![Run Comparison](plots/run_comparison.png)
 
 | Metric               | `esm2_t12_35M`\* | `esm2_t30_150M` | k-mer baseline |
 | -------------------- | ---------------: | --------------: | -------------: |
