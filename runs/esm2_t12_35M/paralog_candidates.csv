@@ -1,5 +1,5 @@
-family,total_sequences,num_putative_paralogs,sequence_ids
-CYTC,80,1,CYTC|Closterium_sp._Naga37s-1
-GAPDH,80,1,GAPDH|Lipotes_vexillifer
-HSP70,80,4,HSP70|Meleagris_gallopavo;HSP70|Pedinophyceae_sp._YPF-701;HSP70|Vidua_chalybeata;HSP70|Zosterops_borbonicus
-RPS3,80,11,RPS3|Ateles_geoffroyi;RPS3|Bombus_breviceps;RPS3|Callithrix_jacchus;RPS3|Cervus_hanglu_yarkandensis;RPS3|Colletotrichum_scovillei;RPS3|Lasioglossum_pauxillum;RPS3|Melipona_bicolor;RPS3|Plasmodium_falciparum_NF54;RPS3|Tieghemostelium_lacteum;RPS3|Toxoplasma_gondii_TgCatPRC2;RPS3|Venturia_canescens
+family,total_sequences,num_kmeans_minority_flags,num_robust_z_flags,num_high_confidence,num_any_flag,high_confidence_ids
+CYTC,80,14,12,12,14,CYTC|Andrena_minutula;CYTC|Aspergillus_viridinutans;CYTC|Cladophialophora_yegresii_CBS_114405;CYTC|Colletotrichum_tofieldiae;CYTC|Emmonsia_crescens;CYTC|Gossypium_trilobum;CYTC|Kwoniella_heveanensis_BCC8398;CYTC|Moesziomyces_antarcticus_T-34;CYTC|Penicillium_daleae;CYTC|Pneumocystis_oryctolagi;CYTC|Sarcophaga_caerulescens;CYTC|Siniperca_chuatsi
+GAPDH,80,8,17,8,17,GAPDH|Cynocephalus_volans;GAPDH|Drepana_falcataria;GAPDH|Mesocricetus_auratus;GAPDH|Porites_evermanni;GAPDH|Synanthedon_andrenaeformis;GAPDH|Teleiodes_luculella;GAPDH|Vairimorpha_apis_BRL_01;GAPDH|Zeuzera_pyrina
+HSP70,80,27,5,5,27,HSP70|Cervus_elaphus;HSP70|Meleagris_gallopavo;HSP70|Pedinophyceae_sp._YPF-701;HSP70|Vidua_chalybeata;HSP70|Zosterops_borbonicus
+RPS3,80,2,6,2,6,RPS3|Ateles_geoffroyi;RPS3|Boletus_edulis

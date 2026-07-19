@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import argparse
 import os
+os.environ["TORCH_HOME"] = "D:/torch_cache"
 import sys
 import time
 from pathlib import Path
