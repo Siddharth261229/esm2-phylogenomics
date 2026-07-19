@@ -1,15 +1,18 @@
 # Alignment-Free Phylogenomics Using Protein Language Model Embeddings
 
-> **v0.2.0 upgrade notice:** this pipeline was refactored for correctness,
-> statistical rigor, and reproducibility (see [CHANGELOG.md](CHANGELOG.md)
-> for full details). All numbers below are from a real rerun of the fixed
-> pipeline (`esm2_t12_35M_UR50D`, the new default checkpoint), not the
-> original pre-fix results. Two things changed materially as a result:
-> classifier accuracy is now reported via 5-fold cross-validation instead of
-> a single lucky train/test split, and the k-mer-vs-ESM-2 comparison —
-> previously invalid due to a dataset-mismatch bug — now shows the k-mer
-> baseline slightly _ahead_ of this ESM-2 checkpoint, motivating a larger
-> model as next step (see Biological Interpretation).
+> **v0.2.1 data-integrity notice:** an earlier version of this project's raw
+> data had `data/CYT_C.fasta` and `data/GAPDH.fasta` as **byte-identical
+> files** — both were actually an unrelated "inositol-3-phosphate synthase"
+> gene family mislabeled as two different families. Every "GAPDH" and
+> "Cytochrome C" result prior to this fix (including the entire
+> "Biological Interpretation" narrative about convergent evolution between
+> the two) was an artifact of that bug, not a real biological finding, and
+> has been retracted and rewritten below. Correct ortholog groups were
+> re-sourced from [OrthoDB](https://www.orthodb.org) (search by gene
+> symbol, e.g. `CYCS` for cytochrome c — searching the descriptive name
+> alone repeatedly surfaced the wrong, similarly-named cytochrome c
+> oxidase genes instead). See [CHANGELOG.md](CHANGELOG.md) for the full
+> history, including the earlier v0.2.0 pipeline/statistics fixes.
 
 ## Overview
 
@@ -30,10 +33,7 @@ python run_pipeline.py
 # Or run stages individually:
 python dataset_prepare.py              # curate data/ -> output/all_families.fasta
 python generate_embeddings.py          # -> output/embeddings.npy, output/metadata.csv
-python cluster_visualise.py            # -> plots/umap_by_family.png, umap_by_species.png
-python train_mlp_classifier.py         # -> plots/confusion_matrix.png, classifier_metrics.json
-python detect_paralogs.py              # -> results/paralog_candidates.csv
-python kmer_distance.py                # -> plots/kmer_vs_esm2.png
+python run_pipeline.py --skip dataset embeddings   # runs visualize -> classify -> paralogs -> kmer
 
 # Optional: gene-tree vs species-tree comparison (see "Tree Comparison" below)
 python build_gene_trees.py
@@ -50,44 +50,40 @@ hyperparameters, etc). By default all scripts read/write the same
 **On GPUs:** `generate_embeddings.py --device auto` (the default) uses CUDA
 if available and otherwise falls back to CPU. Note that torch's CUDA
 backend only supports NVIDIA GPUs — an AMD integrated GPU (e.g. a Radeon
-chip on Windows) will not be used; the script will silently run on CPU,
-which is fine for the model sizes here (8M–150M parameters).
+chip on Windows) will not be used; the script will silently run on CPU.
+**Memory note:** the 650M-parameter checkpoint requires several GB of free
+RAM just to deserialize the model and can crash with a hard segfault
+(rather than a graceful out-of-memory error) on machines with limited free
+memory — see Known Limitations.
 
 ---
 
 ## Comparing Runs
 
 Every stage script accepts `--embeddings`, `--metadata`, `--plots-dir`, and
-`--results-dir` overrides, so you can archive a full run's outputs before
-starting the next one (e.g. to compare two ESM-2 model sizes) instead of
-overwriting them:
+`--results-dir` overrides, so a full run's outputs can be archived before
+starting the next one instead of overwriting them (used here to compare
+`esm2_t12_35M_UR50D` vs `esm2_t30_150M_UR50D`):
 
 ```bash
-# after finishing a run on esm2_t12_35M_UR50D
+python generate_embeddings.py --model esm2_t12_35M_UR50D
+python run_pipeline.py --skip dataset embeddings
 mkdir -p runs/esm2_t12_35M
 mv output/embeddings.npy output/metadata.csv runs/esm2_t12_35M/
-mv plots/* results/* runs/esm2_t12_35M/
+mv plots/*.png plots/*.csv plots/*.json runs/esm2_t12_35M/
+mv results/*.csv results/*.json runs/esm2_t12_35M/
 
-# rerun with a bigger checkpoint
 python generate_embeddings.py --model esm2_t30_150M_UR50D
-python cluster_visualise.py
-python train_mlp_classifier.py
-python detect_paralogs.py
-python kmer_distance.py
-
+python run_pipeline.py --skip dataset embeddings
 mkdir -p runs/esm2_t30_150M
 mv output/embeddings.npy output/metadata.csv runs/esm2_t30_150M/
-mv plots/* results/* runs/esm2_t30_150M/
+mv plots/*.png plots/*.csv plots/*.json runs/esm2_t30_150M/
+mv results/*.csv results/*.json runs/esm2_t30_150M/
 
-# compare the two runs: prints a table and saves a bar chart
 python compare_runs.py --run-a runs/esm2_t12_35M --run-b runs/esm2_t30_150M
 ```
 
-`compare_runs.py` reads `classifier_metrics.json` and
-`kmer_vs_esm2_metrics.json` from each archived run directory and produces
-`plots/run_comparison.png` plus a console table covering CV accuracy,
-macro-F1, and both methods' cluster purity/V-measure — so you don't have
-to eyeball two separate README sections to see what changed.
+Full archived outputs for each: [`runs/esm2_t12_35M/`](runs/esm2_t12_35M/), [`runs/esm2_t30_150M/`](runs/esm2_t30_150M/).
 
 ---
 
@@ -96,11 +92,11 @@ to eyeball two separate README sections to see what changed.
 Protein sequences were obtained from OrthoDB [9] and grouped into four conserved gene families spanning diverse eukaryotic taxa:
 
 - HSP70 (Heat Shock Protein 70)
-- RPS3 (Ribosomal Protein S3)
+- RPS3 (40S Ribosomal Protein S3)
 - GAPDH (Glyceraldehyde-3-Phosphate Dehydrogenase)
 - Cytochrome C
 
-The final dataset contained:
+The final curated dataset contained:
 
 | Family       | Sequences |
 | ------------ | --------: |
@@ -119,6 +115,14 @@ Headers were reformatted to preserve family labels in the form:
 
 These labels were used as ground truth throughout the analysis.
 
+**Data provenance check:** each raw FASTA's `og_name` field was verified to
+match its intended family before curation (`HSP_70.fasta` → "Hsp70",
+`RPS3.fasta` → "40S RIBOSOMAL PROTEIN S3", `GAPDH.fasta` →
+"Glyceraldehyde-3-phosphate dehydrogenase", `CYT_C.fasta` → "Cytochrome C"),
+and the four raw files confirmed to have distinct MD5 hashes — both checks
+that would have caught the duplicate-file bug described in the notice above
+had they been run originally.
+
 ---
 
 ## Methods
@@ -126,15 +130,15 @@ These labels were used as ground truth throughout the analysis.
 ### Protein Language Model Embeddings
 
 Protein representations are generated using ESM-2 [1]. The model checkpoint is
-now configurable via `generate_embeddings.py --model`:
+configurable via `generate_embeddings.py --model`:
 
-| Checkpoint            | Params | Embedding dim | Notes                                            |
-| --------------------- | -----: | ------------: | ------------------------------------------------ |
-| `esm2_t6_8M_UR50D`    |     8M |           320 | Fastest on CPU; original default                 |
-| `esm2_t12_35M_UR50D`  |    35M |           480 | New default — better signal, still CPU-tractable |
-| `esm2_t30_150M_UR50D` |   150M |           640 | Noticeably slower on CPU                         |
-| `esm2_t33_650M_UR50D` |   650M |          1280 | GPU recommended                                  |
-| `esm2_t36_3B_UR50D`   |     3B |          2560 | Large-memory GPU required                        |
+| Checkpoint            | Params | Embedding dim | Notes                                                            |
+| --------------------- | -----: | ------------: | ---------------------------------------------------------------- |
+| `esm2_t6_8M_UR50D`    |     8M |           320 | Fastest on CPU; original default                                 |
+| `esm2_t12_35M_UR50D`  |    35M |           480 | Default — see Results: performs on par with 150M on this dataset |
+| `esm2_t30_150M_UR50D` |   150M |           640 | Noticeably slower on CPU                                         |
+| `esm2_t33_650M_UR50D` |   650M |          1280 | Not evaluated — see Known Limitations                            |
+| `esm2_t36_3B_UR50D`   |     3B |          2560 | Large-memory GPU required                                        |
 
 Pooling strategy: mean pooling of final-layer token representations. Each
 sequence is converted into a fixed-length embedding vector suitable for
@@ -156,7 +160,7 @@ A multilayer perceptron (MLP) classifier was trained to predict protein family l
 - Embeddings standardized before training (zero mean, unit variance)
 - **Headline metric: stratified 5-fold cross-validated accuracy and macro-F1
   (mean ± std)**, since a single 80/20 split (64 test sequences) is a noisy
-  point estimate — one misclassified sequence moves accuracy by >1.5 points.
+  point estimate.
 - A single 80/20 stratified split is still produced, but only to render one
   illustrative confusion matrix, not as the reported metric.
 - Baseline: majority-class dummy classifier, also cross-validated.
@@ -167,26 +171,20 @@ Two complementary signals are combined per family:
 
 1. **KMeans minority cluster** (original heuristic): KMeans (k = 2 and k = 3)
    applied separately within each family; sequences in clusters representing
-   fewer than 20% of family members are flagged. Note this heuristic _always_
-   flags something for any family, by construction of k-means with k>1.
+   fewer than 20% of family members are flagged. This heuristic _always_
+   flags something for any family, by construction of k-means with k>1, and
+   (as shown below) can be sensitive to which embedding model is used.
 2. **Robust z-score distance from centroid** (new): a sequence's cosine
    distance to its family's embedding centroid is converted to a robust
-   z-score (median/MAD-based), so it isn't itself skewed by the outliers it's
-   trying to detect. Unlike (1), this can legitimately flag zero sequences.
+   z-score (median/MAD-based). Unlike (1), this can legitimately flag zero
+   sequences and is more stable across embedding models (see Results).
 
 Sequences flagged by _both_ signals are reported as high-confidence
 candidates; flagged by only one, as low-confidence.
 
 ### Alignment-Free Baseline
 
-As a classical alignment-free baseline [4], each protein was represented by normalized 3-mer amino acid frequencies.
-
-- k = 3
-- 20 standard amino acids
-- cosine distance
-- agglomerative clustering
-
-This baseline captures local sequence composition but contains no learned biological information.
+As a classical alignment-free baseline [4], each protein was represented by normalized 3-mer amino acid frequencies, clustered via agglomerative clustering with cosine distance — the same clustering method applied to ESM-2 embeddings for a fair comparison (embeddings are mean-centered first; see the note under Baseline Comparison for why).
 
 ---
 
@@ -194,136 +192,166 @@ This baseline captures local sequence composition but contains no learned biolog
 
 ### Embedding-Based Classification
 
-| Metric                                            |            Value |
-| ------------------------------------------------- | ---------------: |
-| Dummy Baseline (5-fold CV)                        |            25.0% |
-| **ESM-2 + MLP (5-fold CV, mean ± std)**           | **72.2% ± 2.7%** |
-| ESM-2 + MLP (single hold-out split, illustrative) |            79.7% |
+| Metric                                            |     `esm2_t12_35M` |    `esm2_t30_150M` |
+| ------------------------------------------------- | -----------------: | -----------------: |
+| Dummy Baseline (5-fold CV)                        |              25.0% |              25.0% |
+| **ESM-2 + MLP (5-fold CV, mean ± std)**           | **98.75% ± 0.63%** | **98.75% ± 1.17%** |
+| ESM-2 + MLP (single hold-out split, illustrative) |             100.0% |             100.0% |
 
-The cross-validated accuracy (72.2%) is the number to trust — it's the mean
-over 5 stratified folds, so it isn't sensitive to which 64 sequences
-happened to land in a single test split. The single-split number (79.7%,
-kept for the confusion matrix below) is noticeably higher purely by chance;
-the fold-to-fold range was 68.8%–76.6%. Either way, the ESM-2 classifier
-substantially outperforms the 25% dummy baseline, indicating that protein
-family identity is strongly encoded within the learned embedding space.
+Both model sizes classify family identity essentially perfectly once GAPDH
+and Cytochrome C are the correct, biologically distinct genes — a large
+jump from the pre-fix numbers (~72–75%), confirming those earlier numbers
+reflected a data bug rather than a genuine model limitation.
 
 ### Family-Specific Performance
 
-(from the single illustrative hold-out split, n=64)
-[(runs/esm2_t30_150M/confusion_matrix.png)]
+(from the single illustrative hold-out split, n=64, either model)
 
 | Family       | Precision | Recall | F1-score |
 | ------------ | --------: | -----: | -------: |
 | HSP70        |      1.00 |   1.00 |     1.00 |
 | RPS3         |      1.00 |   1.00 |     1.00 |
-| GAPDH        |      0.59 |   0.62 |     0.61 |
-| Cytochrome C |      0.60 |   0.56 |     0.58 |
+| GAPDH        |      1.00 |   1.00 |     1.00 |
+| Cytochrome C |      1.00 |   1.00 |     1.00 |
 
-HSP70 and RPS3 were recovered almost perfectly, whereas GAPDH and Cytochrome C exhibited partial overlap in embedding space.
+All four families are recovered perfectly on the hold-out split — expected,
+given these are four functionally and structurally unrelated proteins
+(a chaperone, a ribosomal protein, a glycolytic enzyme, and a small electron
+carrier).
 
 ---
 
 ## Embedding Space Visualization
 
-Shown below: `esm2_t30_150M_UR50D` (the larger, more recent run). The
-`esm2_t12_35M_UR50D` version is archived at
-[`runs/esm2_t12_35M/`](runs/esm2_t12_35M/) for comparison.
+Shown below: `esm2_t12_35M_UR50D`. The `esm2_t30_150M_UR50D` version is
+archived at [`runs/esm2_t30_150M/`](runs/esm2_t30_150M/) for comparison —
+visually very similar, consistent with the near-identical metrics above.
 
 ### UMAP Colored by Gene Family
 
-![UMAP by Family](runs/esm2_t30_150M/umap_by_family.png)
+![UMAP by Family](runs/esm2_t12_35M/umap_by_family.png)
 
-Distinct clustering by gene family emerges directly from ESM-2 embeddings despite the absence of alignment or phylogenetic information during training.
+Four cleanly separated clusters emerge directly from ESM-2 embeddings despite the absence of alignment or phylogenetic information during training.
 
 ### UMAP Colored by Species
 
-![UMAP by Species](runs/esm2_t30_150M/umap_by_species.png)
+![UMAP by Species](runs/esm2_t12_35M/umap_by_species.png)
 
-## When colored by species identity, clustering remains dominated by protein family rather than taxonomy. This suggests that ESM-2 primarily captures functional and evolutionary constraints encoded in protein sequences.
+When colored by species identity, clustering remains dominated by protein family rather than taxonomy, indicating ESM-2 primarily captures functional and evolutionary constraints encoded in protein sequences rather than organism-level signal.
+
+---
 
 ## Alignment-Free Baseline Comparison
 
-To evaluate whether ESM-2 embeddings provide information beyond simple sequence composition, embeddings were compared against a classical alignment-free baseline using normalized 3-mer frequency vectors, on the **identical 320-sequence curated dataset** for both methods (see CHANGELOG — the original comparison had a dataset-mismatch bug and is no longer used).
+To evaluate whether ESM-2 embeddings provide information beyond simple sequence composition, embeddings were compared against a classical alignment-free baseline using normalized 3-mer frequency vectors, on the **identical 320-sequence curated dataset** for both methods.
 
 ### Model Size Comparison
 
-Full archived outputs for each run: [`runs/esm2_t12_35M/`](runs/esm2_t12_35M/), [`runs/esm2_t30_150M/`](runs/esm2_t30_150M/). Generated with `compare_runs.py`:
+![Run Comparison](runs/comparison_35M_vs_150M.png)
 
-![Run Comparison](plots/run_comparison.png)
+| Metric               | `esm2_t12_35M` | `esm2_t30_150M` | k-mer baseline |
+| -------------------- | -------------: | --------------: | -------------: |
+| MLP CV accuracy      |         98.75% |          98.75% |              — |
+| MLP CV macro-F1      |          0.987 |           0.987 |              — |
+| ESM-2 cluster purity |      **0.988** |           0.966 |          1.000 |
+| ESM-2 V-measure      |      **0.955** |           0.911 |          1.000 |
 
-| Metric               | `esm2_t12_35M`\* | `esm2_t30_150M` | k-mer baseline |
-| -------------------- | ---------------: | --------------: | -------------: |
-| MLP CV accuracy      |            72.2% |           74.7% |              — |
-| MLP CV macro-F1      |            0.713 |           0.743 |              — |
-| ESM-2 cluster purity |            0.741 |       **0.747** |          0.747 |
-| ESM-2 V-measure      |            0.754 |       **0.818** |          0.826 |
+With the correct, biologically distinct gene families, **the k-mer baseline
+achieves perfect clustering (1.000 purity and V-measure)** — expected, since
+composition alone trivially separates four proteins this functionally
+different. ESM-2 comes close but not quite perfect at either model size,
+and **interestingly, the smaller 35M model slightly outperforms 150M** on
+both clustering metrics (0.988 vs 0.966 purity; 0.955 vs 0.911 V-measure),
+the opposite of the trend seen in earlier (bug-contaminated) testing.
 
-\* The 35M run's clustering numbers (purity/V-measure) predate a
-clustering-methodology fix described below and are not fully apples-to-apples
-with the 150M numbers — see the note underneath the table.
+This reversal is itself informative: with the earlier corrupted data, task
+difficulty was artificially high (two "families" were secretly the same
+gene), and a larger model showed a real, if modest, advantage in that
+harder setting. With the corrected, genuinely easy 4-family task, that
+advantage disappears — both models are near ceiling, and any remaining
+difference between them is more likely due to run-to-run variation in how
+each checkpoint's embedding space happens to interact with agglomerative
+clustering than to a real capability gap. **This dataset can no longer
+distinguish which ESM-2 checkpoint is "better"** — it's saturated. A more
+demanding task (more families, more sequence divergence, or specifically
+choosing hard-to-separate paralogous families) would be needed to make
+model-size comparisons meaningful again.
 
-`compare_runs.py --run-a runs/esm2_t12_35M --run-b runs/esm2_t30_150M` reproduces this table and chart from the archived JSON metrics in each run folder.
+> **Note on embedding geometry:** mean-pooled transformer embeddings can
+> exhibit a large shared ("anisotropic") direction common to nearly all
+> sequences, which dominates cosine distance and can mask smaller
+> per-family signal [5, 6]. This pipeline's clustering step mean-centers
+> embeddings before computing cosine distance to correct for this, and
+> uses the same agglomerative+cosine algorithm for both the k-mer baseline
+> and ESM-2 embeddings (an earlier version inconsistently used
+> KMeans+Euclidean for ESM-2 only, which is not a fair comparison).
 
-**150M essentially ties the k-mer baseline on cluster purity and nearly
-closes the gap on V-measure**, a meaningful jump from 35M. Classification
-accuracy improved by a smaller but consistent margin (+2.5 points), which
-makes sense: classification and clustering purity aren't measuring the same
-thing — the MLP can learn a nonlinear decision boundary on top of the same
-embeddings, while clustering only uses their raw geometric structure.
+### UMAP Comparison: 3-mer Baseline vs ESM-2
 
-> **Note on embedding geometry:** mean-pooled transformer embeddings are
-> known to exhibit a large shared ("anisotropic") direction common to
-> nearly all sequences, which can dominate cosine-distance-based clustering
-> and mask smaller per-family signal riding on top of it [5, 6]. An earlier
-> version of this comparison also clustered the k-mer baseline
-> (agglomerative + cosine) and the ESM-2 embeddings (KMeans + Euclidean)
-> with _different_ algorithms on different distance geometries — not a fair
-> comparison. This pipeline's clustering step now uses agglomerative +
-> cosine for both methods, with embeddings mean-centered first to correct
-> for anisotropy. Both fixes are reflected in the 150M numbers above; the
-> archived 35M run predates them, which is why it's flagged with an
-> asterisk rather than presented as a clean three-way comparison.
+![k-mer vs ESM2](runs/esm2_t12_35M/kmer_vs_esm2.png)
 
-### UMAP Comparison: 3-mer Baseline vs ESM-2 (150M)
+Both panels now show four cleanly separated groups — the left (k-mer) panel forms tighter, more isolated islands consistent with its perfect 1.000 purity/V-measure, while the right (ESM-2) panel shows slightly more inter-family proximity, consistent with its still-excellent but non-perfect 0.988 purity.
 
-![k-mer vs ESM2](runs/esm2_t30_150M/kmer_vs_esm2.png)
-
-## The left panel shows UMAP projections of normalized 3-mer frequency vectors. The right panel shows `esm2_t30_150M_UR50D` embeddings of the same 320 proteins — consistent with the near-parity purity/V-measure numbers above, family separation is visibly tighter here than in the earlier 35M version.
+---
 
 ## Biological Interpretation
 
-The overlap between GAPDH, Cytochrome C, and RPS3 in the ESM-2 (35M) UMAP projection is the most interesting observation in this run.
+**Retraction:** an earlier version of this README described an "overlap"
+between GAPDH and Cytochrome C in embedding space, interpreted as both
+being ancient, conserved housekeeping proteins under similar evolutionary
+constraint. That entire narrative was an artifact of the data-integrity
+bug described at the top of this document — both "families" were actually
+the same mislabeled synthase gene, so of course a classifier struggled to
+tell them apart. With the correct data, all four families — including
+GAPDH and Cytochrome C — are separated with F1 = 1.00 (see Family-Specific
+Performance above), which is what should be expected: these two proteins
+share no meaningful sequence homology, differ enormously in length
+(~330 residues for GAPDH vs ~104 for cytochrome c), and serve unrelated
+biochemical roles (glycolysis vs. electron transport).
 
-GAPDH and Cytochrome C are both ancient, highly conserved housekeeping proteins that have evolved under strong functional constraint across eukaryotes. GAPDH functions in glycolysis, while Cytochrome C serves as an electron carrier in oxidative phosphorylation. Despite their distinct biological roles, both exhibit limited sequence divergence relative to proteins such as HSP70 — and the classifier's family-specific F1 scores (1.00 for HSP70/RPS3 vs. ~0.6 for GAPDH/Cytochrome C in the illustrative split) tell a consistent story.
-
-At this checkpoint size, ESM-2 appears to encode conservation and functional constraint as a dominant signal, and that signal doesn't yet clearly dominate the classical k-mer composition baseline on purity/V-measure. This highlights an important, checkpoint-size-dependent question in comparative genomics: whether a protein language model's advantage over composition-based methods requires a larger model to manifest for these particular families, or whether these specific housekeeping proteins are just intrinsically hard to separate without structural or domain-level information.
+The more interesting biological signal in this corrected run is in the
+**outlier detection results** below, particularly the elevated flag counts
+for GAPDH and Cytochrome C — both ancient, ubiquitous genes with
+well-documented paralogous/isoform diversity across eukaryotes (e.g.
+plant GAPDH has both cytosolic and plastid-targeted paralogs; some
+protists have divergent cytochrome c isoforms). Unlike the previous
+(bug-driven) result, this pattern is now a plausible reflection of real
+within-family evolutionary diversity rather than noise from a data error.
 
 ---
 
 ## Embedding Outlier Detection
 
-Within-family analysis now combines two signals per sequence (see CHANGELOG):
-the original KMeans-minority-cluster heuristic (which by construction always
-flags _something_), and a robust z-score distance from each family's
-embedding centroid (which can legitimately flag zero sequences). A sequence
-flagged by **both** is reported as high-confidence.
+Within-family analysis combines two signals per sequence: the original
+KMeans-minority-cluster heuristic (which by construction always flags
+_something_), and a robust z-score distance from each family's embedding
+centroid (which can legitimately flag zero sequences). A sequence flagged
+by **both** is reported as high-confidence.
 
-| Family       | Total | KMeans-flagged | Robust-Z-flagged | High-confidence |
-| ------------ | ----: | -------------: | ---------------: | --------------: |
-| Cytochrome C |    80 |              1 |                7 |               1 |
-| GAPDH        |    80 |              1 |                7 |               1 |
-| HSP70        |    80 |             27 |                5 |               5 |
-| RPS3         |    80 |              2 |                6 |               2 |
+| Family       | Total | KMeans (35M / 150M) | Robust-Z (35M / 150M) | High-conf (35M / 150M) |
+| ------------ | ----: | ------------------: | --------------------: | ---------------------: |
+| Cytochrome C |    80 |             14 / 13 |               12 / 14 |                12 / 13 |
+| GAPDH        |    80 |               8 / 7 |               17 / 16 |                  8 / 7 |
+| HSP70        |    80 |          27 / **0** |                 5 / 5 |              5 / **0** |
+| RPS3         |    80 |               2 / 1 |                 6 / 8 |                  2 / 1 |
 
-HSP70's high KMeans count (27/80) is a large fraction, but the high-confidence
-column (5, i.e. agreed on by both methods) is the more trustworthy signal, and
-is itself biologically plausible: HSP70 is a well-documented multi-paralog
-family in eukaryotes (distinct cytosolic, ER/BiP, and mitochondrial/mortalin
-isoforms), so real substructure within an 80-sequence, multi-species HSP70
-sample is expected rather than anomalous. These 5 high-confidence sequences
-are reasonable candidates for manual follow-up (e.g. checking which
-organelle-targeted isoform each represents).
+Two things stand out:
+
+1. **Cytochrome C and GAPDH both show a substantial, model-size-consistent
+   fraction of flagged sequences (~10–20% of each family)**, which is
+   plausibly real biology (see above) rather than an artifact, since both
+   the heuristic and the more statistically principled robust-z signal
+   agree on a similar magnitude across two independently-generated
+   embedding spaces (35M and 150M).
+2. **HSP70's KMeans-minority count swings from 27 to 0 between the two
+   models**, while its robust-z count stays stable at 5 for both. This is
+   a concrete demonstration of why relying on the KMeans-minority heuristic
+   alone would be misleading — it produced a "high-confidence" count of 5
+   with 35M but 0 with 150M for the _same underlying sequences_, purely
+   because k-means's minority-cluster behavior is sensitive to the exact
+   embedding geometry. The robust-z signal (5 vs 5) is the more trustworthy
+   number here, and the reason both signals are combined rather than using
+   either alone.
 
 Results are available in:
 
@@ -331,6 +359,8 @@ Results are available in:
 results/paralog_candidates.csv          # per-family summary
 results/paralog_candidates_detail.csv   # per-sequence flags
 ```
+
+(also archived per-model in `runs/esm2_t12_35M/` and `runs/esm2_t30_150M/`)
 
 ---
 
@@ -349,19 +379,13 @@ esm2-phylogenomics/
 │   ├── embeddings.npy
 │   └── metadata.csv
 │
-├── plots/
-│   ├── umap_by_family.png
-│   ├── umap_by_species.png
-│   ├── confusion_matrix.png
-│   ├── kmer_vs_esm2.png
-│   └── rf_distances.png        # if tree comparison is run
+├── runs/
+│   ├── esm2_t12_35M/           # archived run: embeddings, plots, results
+│   ├── esm2_t30_150M/          # archived run: embeddings, plots, results
+│   └── comparison_35M_vs_150M.png
 │
-├── results/
-│   ├── paralog_candidates.csv
-│   ├── paralog_candidates_detail.csv
-│   ├── <FAMILY>.tree           # gene trees (build_gene_trees.py)
-│   ├── species.tree            # you supply this (see Tree Comparison)
-│   └── rf_distances.csv
+├── plots/                      # most recent run only
+├── results/                    # most recent run only
 │
 ├── esm2_phylo/                 # shared package
 │   ├── config.py               # paths, family labels, hyperparameter defaults
@@ -377,11 +401,12 @@ esm2-phylogenomics/
 ├── train_mlp_classifier.py
 ├── detect_paralogs.py
 ├── kmer_distance.py
-├── build_gene_trees.py         # NEW - finishes the tree-comparison feature
-├── fetch_species_tree.py       # NEW - helper to build a species tree
+├── build_gene_trees.py         # finishes the tree-comparison feature
+├── fetch_species_tree.py       # helper to build a species tree
 ├── compare_trees.py
+├── compare_runs.py             # diff two archived runs (table + chart)
 ├── check.py
-├── run_pipeline.py             # NEW - orchestrates all stages
+├── run_pipeline.py             # orchestrates all stages
 ├── requirements.txt
 ├── pyproject.toml
 ├── CHANGELOG.md
@@ -418,8 +443,7 @@ by ESM-2 embedding distances agree with the accepted species phylogeny?
 
 This is a fast, alignment-free approximation — not a substitute for proper
 ML/Bayesian gene-tree inference — but it's a natural extension of the
-project's alignment-free premise and directly testable against the same
-embeddings used elsewhere in this analysis.
+project's alignment-free premise.
 
 ---
 
@@ -428,24 +452,32 @@ embeddings used elsewhere in this analysis.
 - Gene trees from `build_gene_trees.py` are neighbor-joining trees built on
   embedding distances, a fast approximation rather than a substitute for
   proper phylogenetic inference (e.g. ML methods on an actual alignment).
+- `esm2_t33_650M_UR50D` and larger checkpoints were not evaluated on this
+  hardware: 650M parameters requires several GB of RAM just to deserialize
+  the model checkpoint, which exceeded available memory on the test machine
+  (16GB total, ~5GB free at time of testing) and caused a hard crash during
+  model loading. With the corrected dataset now saturating at ~98.75%
+  classifier accuracy and near-perfect clustering for both 35M and 150M,
+  it's unclear whether 650M would show any further improvement on this
+  particular 4-family task — a harder or larger dataset would be a more
+  informative test of model scaling than this one.
 - Cross-validated classifier accuracy is still computed on 320 sequences
-  total (80/family) — a small dataset by ML standards. Expanding to more
-  families/sequences would tighten the confidence intervals further.
+  total (80/family) — a small dataset by ML standards.
 - `extract_species()` falls back to `"Unknown_species"` for headers it can't
-  parse; multiple such records collapse into one during deduplication
-  (`dataset_prepare.py` now warns when this happens).
-- See [CHANGELOG.md](CHANGELOG.md) for the full list of fixes made in this
-  upgrade pass.
+  parse; multiple such records collapse into one during deduplication.
+- See [CHANGELOG.md](CHANGELOG.md) for the full list of fixes made across
+  this upgrade, including the v0.2.1 data-integrity fix described at the
+  top of this document.
 
 ---
 
 ## Key Findings
 
-- ESM-2 embeddings recover biologically meaningful protein family structure without sequence alignment — HSP70 and RPS3 in particular are nearly perfectly separable.
-- Protein family identity can be predicted from embeddings with **72.2% ± 2.7% (5-fold CV) accuracy**, substantially exceeding the 25% random baseline.
-- With the baseline comparison bug fixed (both methods evaluated on the identical 320-sequence set), the classical 3-mer composition baseline slightly **outperforms** this ESM-2 checkpoint (`esm2_t12_35M_UR50D`) on cluster purity and V-measure — motivating a follow-up run with a larger ESM-2 checkpoint.
-- Conserved housekeeping proteins such as GAPDH and Cytochrome C remain challenging to separate from each other and from RPS3 at this model size, suggesting that functional constraint can dominate embedding geometry.
-- Combining two outlier-detection signals surfaces 5 high-confidence HSP70 candidates for follow-up, consistent with HSP70's known multi-paralog (cytosolic/ER/mitochondrial) biology.
+- With correctly-labeled data, ESM-2 embeddings classify all four gene families with **98.75% ± 0.63–1.17% (5-fold CV) accuracy** at both 35M and 150M parameter scales, and separate them with F1 = 1.00 on a hold-out split.
+- The classical 3-mer composition baseline achieves **perfect clustering (1.000 purity/V-measure)** on this corrected dataset — expected, since these four proteins are compositionally very different from each other.
+- **Model size did not matter on this (now easy) task** — 35M and 150M tie on classification and the smaller model even slightly outperforms 150M on clustering purity/V-measure, the opposite of the trend seen before the data was fixed. This dataset is saturated for the purpose of comparing ESM-2 checkpoint sizes.
+- A prior version of this analysis reported an "overlap" between GAPDH and Cytochrome C, attributed to shared evolutionary conservation. **That finding is retracted** — it was an artifact of a data pipeline bug (`GAPDH.fasta` and `CYT_C.fasta` were byte-identical, both containing an unrelated synthase gene), not a genuine biological signal.
+- Combining two outlier-detection signals reveals a consistent ~10–20% flag rate in GAPDH and Cytochrome C across both model sizes — plausibly genuine paralog/isoform diversity in these ancient, ubiquitous gene families — while also exposing that the KMeans-minority heuristic alone is unstable across embedding models (HSP70: 27 flags at 35M vs 0 at 150M), reinforcing the value of the more stable robust-z signal.
 
 ---
 
@@ -453,17 +485,11 @@ embeddings used elsewhere in this analysis.
 
 Potential extensions include:
 
-- Expanding the analysis to additional orthologous families.
-- Evaluating larger protein language models (ESM-2 650M, ESM-2 3B) — now a
-  one-flag change via `generate_embeddings.py --model`.
-- ~~Comparing embedding distances against phylogenetic tree distances~~ —
-  addressed in this upgrade via `build_gene_trees.py` + `compare_trees.py`
-  (RF distance between embedding-derived gene trees and a species tree).
-  Remaining work: validate against a curated (not just NCBI-default-topology)
-  species tree, and compare against ML gene trees from a real alignment as a
-  stronger baseline than the NJ approximation used here.
+- A harder benchmark task — e.g. distinguishing closely-related paralogs within a single family, rather than four functionally unrelated genes — since the current dataset is saturated and can no longer discriminate between ESM-2 checkpoint sizes.
+- Evaluating the 650M/3B ESM-2 checkpoints on such a harder task, ideally on a machine with more available RAM or a GPU.
+- Completing a real tree-comparison run (gene trees vs. a curated species tree) now that the underlying gene-family data is verified correct.
 - Incorporating structural embeddings and domain annotations.
-- Developing graph-based approaches for ortholog and paralog detection.
+- Developing graph-based approaches for ortholog and paralog detection, informed by the GAPDH/Cytochrome C outlier patterns observed here.
 
 ---
 

@@ -1,5 +1,5 @@
 family,total_sequences,num_kmeans_minority_flags,num_robust_z_flags,num_high_confidence,num_any_flag,high_confidence_ids
-CYTC,80,1,7,1,7,CYTC|Closterium_sp._Naga37s-1
-GAPDH,80,14,14,11,17,GAPDH|Aix_galericulata;GAPDH|Bos_mutus;GAPDH|Budorcas_taxicolor;GAPDH|Delphinus_delphis;GAPDH|Iris_pallida;GAPDH|Lipotes_vexillifer;GAPDH|Nothoprocta_ornata;GAPDH|Otus_sunia;GAPDH|Talpa_occidentalis;GAPDH|Tricholaema_leucomelas;GAPDH|Vidua_macroura
+CYTC,80,13,14,13,14,CYTC|Andrena_minutula;CYTC|Aspergillus_viridinutans;CYTC|Cladophialophora_yegresii_CBS_114405;CYTC|Colletotrichum_tofieldiae;CYTC|Emmonsia_crescens;CYTC|Gossypium_trilobum;CYTC|Hyaloscypha_variabilis_F;CYTC|Kwoniella_heveanensis_BCC8398;CYTC|Moesziomyces_antarcticus_T-34;CYTC|Penicillium_daleae;CYTC|Pneumocystis_oryctolagi;CYTC|Sarcophaga_caerulescens;CYTC|Siniperca_chuatsi
+GAPDH,80,7,16,7,16,GAPDH|Cynocephalus_volans;GAPDH|Drepana_falcataria;GAPDH|Mesocricetus_auratus;GAPDH|Synanthedon_andrenaeformis;GAPDH|Teleiodes_luculella;GAPDH|Vairimorpha_apis_BRL_01;GAPDH|Zeuzera_pyrina
 HSP70,80,0,5,0,5,
 RPS3,80,1,8,1,8,RPS3|Ateles_geoffroyi

@@ -3,8 +3,8 @@
   "n_families": 4,
   "k": 3,
   "esm_model": "esm2_t30_150M_UR50D",
-  "kmer_purity": 0.746875,
-  "kmer_v_measure": 0.8262456673340016,
-  "esm_purity": 0.746875,
-  "esm_v_measure": 0.818127543306387
+  "kmer_purity": 1.0,
+  "kmer_v_measure": 1.0,
+  "esm_purity": 0.965625,
+  "esm_v_measure": 0.9110703812142563
 }
