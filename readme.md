@@ -247,7 +247,7 @@ To evaluate whether ESM-2 embeddings provide information beyond simple sequence 
 
 ### Model Size Comparison
 
-![Run Comparison](runs/comparison_35M_vs_150M.png)
+![Run Comparison](plots/run_comparison.png)
 
 | Metric               | `esm2_t12_35M` | `esm2_t30_150M` | k-mer baseline |
 | -------------------- | -------------: | --------------: | -------------: |
