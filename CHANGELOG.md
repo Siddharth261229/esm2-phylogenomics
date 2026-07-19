@@ -71,6 +71,14 @@ trees it needs, no bundled species tree, and an undeclared `ete4` dependency.
   message for non-CUDA GPUs (e.g. AMD integrated graphics), and a live
   throughput/ETA indicator instead of per-sequence prints.
 
+### Windows fix
+- `generate_embeddings.py` now sets `KMP_DUPLICATE_LIB_OK=TRUE` and
+  `OMP_NUM_THREADS=1` before importing torch. Without this, on Windows
+  torch's bundled OpenMP runtime can conflict with the one numpy/scipy
+  (MKL) load, causing a hard segfault (`0xC0000005`) partway through a
+  run instead of a catchable error. This is a known Windows PyTorch/MKL
+  packaging issue, unrelated to this project's code.
+
 ### Known limitations (see README)
 - Gene trees from `build_gene_trees.py` are fast NJ approximations from
   embedding distances, not a substitute for ML/Bayesian phylogenetic inference.

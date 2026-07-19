@@ -25,6 +25,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -33,10 +34,10 @@ import pandas as pd
 import umap
 from Bio import SeqIO
 from scipy.spatial.distance import pdist, squareform
-from sklearn.cluster import AgglomerativeClustering, KMeans
+from sklearn.cluster import AgglomerativeClustering
 from sklearn.metrics import v_measure_score
 
-from esm2_phylo.config import ALL_FAMILIES_FASTA, EMBEDDINGS_FILE, FAMILY_COLORS, METADATA_FILE, PLOTS_DIR
+from esm2_phylo.config import ALL_FAMILIES_FASTA, EMBEDDINGS_FILE, FAMILY_COLORS, METADATA_FILE, PLOTS_DIR, RESULTS_DIR
 from esm2_phylo.logging_utils import get_logger
 from esm2_phylo.utils import build_kmer_vocabulary, cluster_purity, compute_kmer_vector
 
@@ -68,6 +69,7 @@ def main():
     parser.add_argument("--embeddings", type=Path, default=EMBEDDINGS_FILE)
     parser.add_argument("--metadata", type=Path, default=METADATA_FILE)
     parser.add_argument("--plots-dir", type=Path, default=PLOTS_DIR)
+    parser.add_argument("--results-dir", type=Path, default=RESULTS_DIR)
     parser.add_argument("--k", type=int, default=3)
     parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args()
@@ -121,8 +123,24 @@ def main():
 
     esm_labels = meta["family"].values
 
-    kmeans = KMeans(n_clusters=n_families, random_state=args.seed, n_init=20)
-    esm_clusters = kmeans.fit_predict(X_esm)
+    # Use the SAME clustering algorithm (agglomerative, precomputed cosine
+    # distance) as the k-mer baseline above. An earlier version of this
+    # script clustered the k-mer baseline with agglomerative+cosine but the
+    # ESM-2 embeddings with vanilla Euclidean KMeans -- different algorithms
+    # on different distance geometries, which is not a fair comparison and
+    # could itself explain part of any purity/V-measure gap between them.
+    #
+    # Mean-center the embeddings first: mean-pooled transformer embeddings
+    # are known to have a large shared "anisotropic" direction common to
+    # nearly all sequences (grows with model size), which can dominate
+    # cosine distance and mask the smaller per-family signal riding on top
+    # of it. Centering removes that shared component. This has no effect on
+    # Euclidean-based methods (KMeans, the MLP classifier) since Euclidean
+    # distance is translation-invariant -- it only matters for cosine.
+    X_esm_centered = X_esm - X_esm.mean(axis=0)
+    D_esm = squareform(pdist(X_esm_centered, metric="cosine"))
+    esm_model = AgglomerativeClustering(n_clusters=n_families, metric="precomputed", linkage="average")
+    esm_clusters = esm_model.fit_predict(D_esm)
     esm_purity = cluster_purity(esm_clusters, esm_labels)
     esm_vmeasure = v_measure_score(esm_labels, esm_clusters)
     log.info("ESM-2 embedding purity: %.3f | V-measure: %.3f", esm_purity, esm_vmeasure)
@@ -166,6 +184,22 @@ def main():
     plt.close()
 
     log.info("Saved: %s", outfile)
+
+    esm_model_name = meta["model"].iloc[0] if "model" in meta.columns else "unknown"
+    metrics = {
+        "n_sequences": len(seq_ids),
+        "n_families": n_families,
+        "k": args.k,
+        "esm_model": esm_model_name,
+        "kmer_purity": float(kmer_purity),
+        "kmer_v_measure": float(kmer_vmeasure),
+        "esm_purity": float(esm_purity),
+        "esm_v_measure": float(esm_vmeasure),
+    }
+    metrics_file = args.results_dir / "kmer_vs_esm2_metrics.json"
+    args.results_dir.mkdir(parents=True, exist_ok=True)
+    metrics_file.write_text(json.dumps(metrics, indent=2))
+    log.info("Saved: %s", metrics_file)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,10 @@
+{
+  "n_sequences": 320,
+  "n_families": 4,
+  "k": 3,
+  "esm_model": "esm2_t12_35M_UR50D",
+  "kmer_purity": 0.747,
+  "kmer_v_measure": 0.826,
+  "esm_purity": 0.741,
+  "esm_v_measure": 0.754
+}

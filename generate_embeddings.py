@@ -18,11 +18,20 @@ from __future__ import annotations
 
 import argparse
 import os
-os.environ.setdefault("KMP_DUPLICATE_LIB_OK", "TRUE")
-os.environ.setdefault("OMP_NUM_THREADS", "1")
 import sys
 import time
 from pathlib import Path
+
+# Must be set BEFORE torch is imported. On Windows, torch's bundled
+# OpenMP runtime can conflict with the one numpy/scipy (MKL) load,
+# causing a hard segfault (exit code 0xC0000005) partway through a run
+# rather than a catchable Python exception. KMP_DUPLICATE_LIB_OK=TRUE
+# tells the runtime to tolerate the duplicate instead of aborting;
+# OMP_NUM_THREADS=1 avoids the underlying thread-contention that
+# triggers it in the first place. This is a known Windows-specific
+# PyTorch/MKL packaging issue, not specific to this project.
+os.environ.setdefault("KMP_DUPLICATE_LIB_OK", "TRUE")
+os.environ.setdefault("OMP_NUM_THREADS", "1")
 
 import numpy as np
 import pandas as pd

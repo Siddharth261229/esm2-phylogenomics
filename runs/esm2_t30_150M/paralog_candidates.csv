@@ -1,0 +1,5 @@
+family,total_sequences,num_kmeans_minority_flags,num_robust_z_flags,num_high_confidence,num_any_flag,high_confidence_ids
+CYTC,80,1,7,1,7,CYTC|Closterium_sp._Naga37s-1
+GAPDH,80,14,14,11,17,GAPDH|Aix_galericulata;GAPDH|Bos_mutus;GAPDH|Budorcas_taxicolor;GAPDH|Delphinus_delphis;GAPDH|Iris_pallida;GAPDH|Lipotes_vexillifer;GAPDH|Nothoprocta_ornata;GAPDH|Otus_sunia;GAPDH|Talpa_occidentalis;GAPDH|Tricholaema_leucomelas;GAPDH|Vidua_macroura
+HSP70,80,0,5,0,5,
+RPS3,80,1,8,1,8,RPS3|Ateles_geoffroyi

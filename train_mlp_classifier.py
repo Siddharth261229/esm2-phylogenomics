@@ -148,6 +148,7 @@ def main():
     # SAVE METRICS
     # =====================================================
     metrics = {
+        "esm_model": meta["model"].iloc[0] if "model" in meta.columns else "unknown",
         "n_splits": args.n_splits,
         "cv_dummy_accuracy_mean": float(dummy_scores.mean()),
         "cv_dummy_accuracy_std": float(dummy_scores.std()),

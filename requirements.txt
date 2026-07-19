@@ -17,7 +17,7 @@ seaborn>=0.12
 biopython>=1.81
 
 # Phylogenetics (build_gene_trees.py, compare_trees.py, fetch_species_tree.py)
-# ete4>=4.0.0
+ete4>=4.0.0
 
 # Testing
 pytest>=7.4
