@@ -1,0 +1,59 @@
+{
+  "esm_model": "esm2_t12_35M_UR50D",
+  "n_splits": 5,
+  "cv_dummy_accuracy_mean": 0.25,
+  "cv_dummy_accuracy_std": 0.0,
+  "cv_mlp_accuracy_mean": 0.99375,
+  "cv_mlp_accuracy_std": 0.005590169943749454,
+  "cv_mlp_accuracy_folds": [
+    1.0,
+    1.0,
+    0.9875,
+    0.9875,
+    0.99375
+  ],
+  "cv_mlp_macro_f1_mean": 0.9937492186279107,
+  "cv_mlp_macro_f1_std": 0.005590825153549586,
+  "holdout_accuracy": 0.9875,
+  "holdout_n_test": 160,
+  "standardized": true,
+  "classification_report_holdout": {
+    "CYTC": {
+      "precision": 1.0,
+      "recall": 0.975,
+      "f1-score": 0.9873417721518988,
+      "support": 40.0
+    },
+    "GAPDH": {
+      "precision": 1.0,
+      "recall": 0.975,
+      "f1-score": 0.9873417721518988,
+      "support": 40.0
+    },
+    "HSP70": {
+      "precision": 0.975609756097561,
+      "recall": 1.0,
+      "f1-score": 0.9876543209876543,
+      "support": 40.0
+    },
+    "RPS3": {
+      "precision": 0.975609756097561,
+      "recall": 1.0,
+      "f1-score": 0.9876543209876543,
+      "support": 40.0
+    },
+    "accuracy": 0.9875,
+    "macro avg": {
+      "precision": 0.9878048780487805,
+      "recall": 0.9875,
+      "f1-score": 0.9874980465697765,
+      "support": 160.0
+    },
+    "weighted avg": {
+      "precision": 0.9878048780487806,
+      "recall": 0.9875,
+      "f1-score": 0.9874980465697766,
+      "support": 160.0
+    }
+  }
+}

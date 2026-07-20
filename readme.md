@@ -294,31 +294,174 @@ Both panels now show four cleanly separated groups — the left (k-mer) panel fo
 
 ---
 
+---
+
+## Dataset Expansion (n=200/family)
+
+### Why
+
+The original 80/family dataset was actually capping GAPDH artificially low —
+after length filtering and species-deduplication, GAPDH only has 370
+sequences available in the raw OrthoDB download, versus thousands for the
+other three families. At n=80, every method (including the classical k-mer
+baseline) hit near-perfect separation, which is itself a signal the task
+was too easy to be a meaningful test: a real discriminative method should
+be judged on how it degrades as a task gets harder, not on how well it does
+on an easy one. Expanding to 200/family (the largest balanced cap that
+keeps meaningful headroom under GAPDH's 370-sequence ceiling) pulls in
+substantially more genuine biological diversity per family.
+
+### What changed
+
+| Metric                   | n=80 (35M) | n=200 (35M) | n=80 (150M) | n=200 (150M) |
+| ------------------------ | ---------: | ----------: | ----------: | -----------: |
+| MLP CV accuracy          |     98.75% |  **99.38%** |      98.75% |       99.00% |
+| ESM-2 cluster purity     |      0.988 |       0.985 |       0.966 |        0.975 |
+| ESM-2 V-measure          |      0.955 |       0.947 |       0.911 |        0.928 |
+| **k-mer cluster purity** |  **1.000** |   **0.750** |   **1.000** |    **0.750** |
+| **k-mer V-measure**      |  **1.000** |   **0.848** |   **1.000** |    **0.848** |
+
+**This is the key result of the expansion.** At n=80, the k-mer composition
+baseline achieved a perfect 1.000 purity/V-measure — in hindsight, a red
+flag that the task was saturated, not evidence the baseline was strong. At
+n=200, with more real biological diversity pulled in, k-mer composition
+alone can no longer perfectly separate the four families (drops to
+0.750/0.848), **while ESM-2 barely moves** (0.985/0.947 at 35M). This is a
+substantially more convincing demonstration of the project's core premise
+— that a learned protein embedding captures structure a simple composition
+baseline misses — than the earlier apparent "tie" at n=80, which turned out
+to be an artifact of too-easy a task rather than a real result.
+
+Classification accuracy stayed near-ceiling at both dataset sizes (all four
+families remain easily separable by a supervised classifier even as the
+unsupervised k-mer baseline degrades), and the 35M-outperforms-150M pattern
+observed at n=80 reproduced at n=200 across every clustering metric —
+now backed by two independent dataset sizes rather than one data point.
+
+Full archived outputs: [`runs/esm2_t12_35M_n200/`](runs/esm2_t12_35M_n200/), [`runs/esm2_t30_150M_n200/`](runs/esm2_t30_150M_n200/).
+
+![Run Comparison n=200](runs/comparison_35M_vs_150M_n200.png)
+
+---
+
+## Paralog/Outlier Validation
+
+### Why this matters
+
+`detect_paralogs.py` flags sequences based entirely on where they sit in
+ESM-2 embedding space. On its own, that's circular as evidence — an
+"outlier" is only interesting if it's also different by some measure that
+has nothing to do with the embeddings that flagged it. `validate_paralogs.py`
+checks flagged sequences against sequence length (a simple, quantitative,
+completely independent signal) using a Mann-Whitney U test per family, plus
+raw OrthoDB header annotations as weaker supporting context.
+
+### Results (n=200, both model sizes)
+
+| Family | Flagged mean length | Unflagged mean length | Direction  |                                p-value (35M / 150M) |
+| ------ | ------------------: | --------------------: | ---------- | --------------------------------------------------: |
+| CYTC   |             212–241 |                  ~108 | ~2x longer |                                   <0.0001 / <0.0001 |
+| GAPDH  |             618–710 |                  ~347 | ~2x longer |                                    0.0018 / <0.0001 |
+| RPS3   |                 182 |                  ~250 | shorter    |                                     0.0049 / 0.0050 |
+| HSP70  |     394 (150M only) |                   350 | —          | too few to test (35M) / **0.9126, not significant** |
+
+Reproducible with:
+
+```bash
+python validate_paralogs.py --results-dir runs/esm2_t12_35M_n200 --fasta output/all_families.fasta --out runs/esm2_t12_35M_n200/paralog_validation.csv
+python validate_paralogs.py --results-dir runs/esm2_t30_150M_n200 --fasta output/all_families.fasta --out runs/esm2_t30_150M_n200/paralog_validation.csv
+```
+
+### What this shows — and what it doesn't
+
+**HSP70's flagged sequences show no length difference from the rest of the
+family (p=0.91).** This corroborates a separate red flag already visible in
+the raw counts: HSP70's KMeans-minority flag count swung from 0 to 70
+sequences purely from changing the embedding model, while its robust-z
+count stayed stable at 5–8. Combined, this is fairly strong evidence that
+HSP70's flagged "outliers" are largely an artifact of embedding geometry
+and clustering algorithm choice, not a real biological signal — exactly the
+failure mode the two-signal (KMeans + robust-z) approach was designed to
+catch, and a concrete demonstration of why relying on KMeans-minority alone
+would have been misleading.
+
+**CYTC and GAPDH's flagged sequences are consistently, significantly
+different in length across both independently-trained embedding models —
+but the effect is a _doubling_ of length, not a modest increase.** A
+typical isoform difference (e.g. an added mitochondrial or plastid
+targeting sequence) adds tens of residues, not 100%. The more likely
+explanation is that OrthoDB's ortholog groups for these two families
+include some **fusion proteins, multi-domain proteins, or chimeric/
+misannotated gene models** that contain a GAPDH-like or cytochrome-c-like
+domain rather than being a straightforward alternate form of the gene
+itself. This is a real, validated signal — the length difference is not
+noise — but it would be overclaiming to call these "confirmed paralogs"
+without manual inspection (e.g. a BLAST or domain search on a handful of
+the flagged sequences) to distinguish "genuine alternate isoform" from
+"multi-domain protein swept into the ortholog group."
+
+**RPS3's flagged sequences are shorter, not longer**, a third, distinct
+pattern. The more mundane and probably more likely explanation here is
+incomplete or fragmentary gene models — a well-known limitation of
+automated genome annotation, especially for less-studied eukaryotic
+species — rather than a real short paralog.
+
+### Why this is a better result than just trusting the embedding flags
+
+None of these three explanations (fusion/chimeric proteins, incomplete
+annotations, or genuine algorithmic noise for HSP70) would have been
+distinguishable from "real paralog diversity" using the embedding-based
+flags alone. The value of this validation step isn't that it proves the
+outliers are paralogs — it's that it turns one weakly-grounded signal
+(embedding distance) into a testable claim against an independent
+measurement, and the outcome is genuinely mixed: real, reproducible signal
+for 3 of 4 families, a clean negative result for the 4th, and an honest
+acknowledgment that "flagged as an outlier" and "confirmed paralog" are not
+the same claim. That's a more credible, useful finding for a phylogenomics
+project than either extreme (declaring every flag a paralog, or dismissing
+outlier detection as unreliable).
+
+Per-sequence detail (including `raw_description` text where available) is
+saved in `runs/<model>/paralog_validation.csv`, and per-family test results
+in `runs/<model>/paralog_validation_summary.csv`.
+
 ## Biological Interpretation
 
 **Retraction:** an earlier version of this README described an "overlap"
 between GAPDH and Cytochrome C in embedding space, interpreted as both
 being ancient, conserved housekeeping proteins under similar evolutionary
-constraint. That entire narrative was an artifact of the data-integrity
-bug described at the top of this document — both "families" were actually
-the same mislabeled synthase gene, so of course a classifier struggled to
-tell them apart. With the correct data, all four families — including
-GAPDH and Cytochrome C — are separated with F1 = 1.00 (see Family-Specific
-Performance above), which is what should be expected: these two proteins
-share no meaningful sequence homology, differ enormously in length
-(~330 residues for GAPDH vs ~104 for cytochrome c), and serve unrelated
-biochemical roles (glycolysis vs. electron transport).
+constraint. That entire narrative was an artifact of a data-integrity bug
+(both "families" were actually the same mislabeled synthase gene) — see
+the notice at the top of this document. With correct data, all four
+families are separated with F1 ≈ 1.00.
 
-The more interesting biological signal in this corrected run is in the
-**outlier detection results** below, particularly the elevated flag counts
-for GAPDH and Cytochrome C — both ancient, ubiquitous genes with
-well-documented paralogous/isoform diversity across eukaryotes (e.g.
-plant GAPDH has both cytosolic and plastid-targeted paralogs; some
-protists have divergent cytochrome c isoforms). Unlike the previous
-(bug-driven) result, this pattern is now a plausible reflection of real
-within-family evolutionary diversity rather than noise from a data error.
+The real biological signal in this project turned out to be in outlier
+detection rather than family separation. The paralog validation work
+(see above) shows a consistent length difference for CYTC and GAPDH's
+flagged sequences across two independently-trained embedding models — but
+the size of the effect (roughly a _doubling_ of sequence length) is too
+large to be explained by normal isoform variation like an added targeting
+sequence. The more specific and better-supported interpretation is that
+OrthoDB's ortholog groups for these two families include some fusion,
+multi-domain, or chimeric/misannotated gene models that contain a
+GAPDH-like or cytochrome-c-like domain, rather than the gene family itself
+having extensive paralog diversity. This is a more precise claim than "real
+within-family evolutionary diversity" and better matches the actual
+evidence — confirming it further would need manual inspection (e.g. BLAST
+or a domain search) of a handful of the flagged sequences, which is listed
+under Future Directions.
 
----
+RPS3's flagged sequences, by contrast, are _shorter_ than the family norm —
+a different pattern most plausibly explained by incomplete/fragmentary gene
+models in some genome assemblies, a known limitation of automated
+eukaryotic annotation, rather than genuine short paralogs.
+
+HSP70's flagged sequences show no significant length difference at all
+(p=0.91), and its embedding-based flag count is unstable across model
+sizes (0 to 70 sequences just from changing the ESM-2 checkpoint) — the
+weakest and least trustworthy signal of the four families, and a concrete
+illustration of why outlier flags need independent validation rather than
+being taken at face value.
 
 ## Embedding Outlier Detection
 
@@ -382,6 +525,8 @@ esm2-phylogenomics/
 ├── runs/
 │   ├── esm2_t12_35M/           # archived run: embeddings, plots, results
 │   ├── esm2_t30_150M/          # archived run: embeddings, plots, results
+│   ├── esm2_t12_35M_n200/      # NEW - expanded dataset (200/family) run
+│   ├── esm2_t30_150M_n200/     # NEW - expanded dataset (200/family) run
 │   └── comparison_35M_vs_150M.png
 │
 ├── plots/                      # most recent run only
@@ -400,6 +545,7 @@ esm2-phylogenomics/
 ├── cluster_visualise.py
 ├── train_mlp_classifier.py
 ├── detect_paralogs.py
+├── validate_paralogs.py       # NEW - validates outlier flags against sequence length
 ├── kmer_distance.py
 ├── build_gene_trees.py         # finishes the tree-comparison feature
 ├── fetch_species_tree.py       # helper to build a species tree
@@ -478,20 +624,54 @@ project's alignment-free premise.
 - **Model size did not matter on this (now easy) task** — 35M and 150M tie on classification and the smaller model even slightly outperforms 150M on clustering purity/V-measure, the opposite of the trend seen before the data was fixed. This dataset is saturated for the purpose of comparing ESM-2 checkpoint sizes.
 - A prior version of this analysis reported an "overlap" between GAPDH and Cytochrome C, attributed to shared evolutionary conservation. **That finding is retracted** — it was an artifact of a data pipeline bug (`GAPDH.fasta` and `CYT_C.fasta` were byte-identical, both containing an unrelated synthase gene), not a genuine biological signal.
 - Combining two outlier-detection signals reveals a consistent ~10–20% flag rate in GAPDH and Cytochrome C across both model sizes — plausibly genuine paralog/isoform diversity in these ancient, ubiquitous gene families — while also exposing that the KMeans-minority heuristic alone is unstable across embedding models (HSP70: 27 flags at 35M vs 0 at 150M), reinforcing the value of the more stable robust-z signal.
+- Length-based validation of flagged outlier sequences (independent of the embedding geometry that flagged them) shows a real, reproducible signal for 3 of 4 families — most likely fusion/chimeric proteins for GAPDH and Cytochrome C, and fragmentary gene models for RPS3 — while HSP70's flags show no such signal, suggesting they're largely algorithmic noise rather than real biology.
 
 ---
 
 ## Future Directions
 
-Potential extensions include:
+**Completed in this upgrade** (kept here so the history of what motivated
+this project's improvements is visible in one place):
 
-- A harder benchmark task — e.g. distinguishing closely-related paralogs within a single family, rather than four functionally unrelated genes — since the current dataset is saturated and can no longer discriminate between ESM-2 checkpoint sizes.
-- Evaluating the 650M/3B ESM-2 checkpoints on such a harder task, ideally on a machine with more available RAM or a GPU.
-- Completing a real tree-comparison run (gene trees vs. a curated species tree) now that the underlying gene-family data is verified correct.
-- Incorporating structural embeddings and domain annotations.
-- Developing graph-based approaches for ortholog and paralog detection, informed by the GAPDH/Cytochrome C outlier patterns observed here.
+- ~~Expanding the dataset~~ — done (n=80 → n=200/family), and revealed
+  that the original 80/family cap made the task too easy (k-mer baseline
+  hit a perfect 1.000 purity, an artifact rather than a strength).
+- ~~Comparing embedding distances against phylogenetic tree distances~~ —
+  `build_gene_trees.py` + `compare_trees.py` exist and work; a full run
+  against a real species tree is still pending (see below).
+- ~~Validating paralog/outlier flags against independent evidence~~ — done
+  via `validate_paralogs.py` (sequence-length Mann-Whitney test);
+  suggests fusion/chimeric proteins for GAPDH/CYTC, fragmentary annotations
+  for RPS3, and likely noise for HSP70.
 
----
+**Remaining / motivated by the new results:**
+
+- **Manually inspect the flagged CYTC/GAPDH sequences** (e.g. BLAST or a
+  domain search such as InterProScan/Pfam on the ~15–20 flagged sequences
+  per family) to confirm or refute the fusion/chimeric-protein hypothesis
+  — the length test shows _something_ is different, but can't by itself
+  distinguish "fusion protein" from other explanations.
+- **Filter or flag likely-fragmentary gene models** before analysis (e.g.
+  a length floor closer to each family's known typical range) to test
+  whether RPS3's flagged "outliers" are actually annotation artifacts
+  rather than biology, since the current pipeline doesn't distinguish
+  the two.
+- **Complete a real tree-comparison run** against a curated (not just
+  NCBI-default-topology) species tree, now that the underlying gene-family
+  data is verified correct and the dataset is larger. Note: `ete4` fails
+  to build on Windows (confirmed on both Python 3.12 and 3.14) — this
+  needs a swap to `ete3` first.
+- **A harder benchmark for comparing ESM-2 checkpoint sizes** — even at
+  n=200, both 35M and 150M classify at ~99% and cluster near-ceiling.
+  The k-mer-baseline collapse at n=200 shows the _task_ itself got
+  harder, but not hard enough to separate the two ESM-2 model sizes from
+  each other; distinguishing closely-related paralogs within a single
+  family (rather than four functionally unrelated genes) would be a more
+  demanding test of whether model size matters.
+- Evaluating the 650M/3B ESM-2 checkpoints, ideally on a machine with more
+  available RAM or a GPU (see Known Limitations).
+- Incorporating structural embeddings and domain annotations — directly
+  relevant now given the fusion-protein hypothesis above.
 
 ## References
 
