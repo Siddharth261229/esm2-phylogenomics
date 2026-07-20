@@ -1,0 +1,801 @@
+seq_id,family,species,length,high_confidence,raw_description,pub_gene_id
+HSP70|Zosterops_borbonicus,HSP70,Zosterops_borbonicus,646,False,"Troponin I, cardiac muscle",HGM15179_018954
+HSP70|Meleagris_gallopavo,HSP70,Meleagris_gallopavo,254,False,hsp70-binding protein 1,100550473
+HSP70|Haliotis_rufescens,HSP70,Haliotis_rufescens,326,False,hsp70-binding protein 1-like,124121707
+HSP70|Eulemur_rufifrons,HSP70,Eulemur_rufifrons,358,False,,GCF_041146395.1:g17517.t1
+HSP70|Onchocerca_ochengi,HSP70,Onchocerca_ochengi,347,False,Nucleotide exchange factor Fes1 domain-containing protein,NOO_LOCUS2205
+HSP70|Callorhinus_ursinus,HSP70,Callorhinus_ursinus,402,False,hsp70-binding protein 1 isoform X1,112806672
+HSP70|Vicugna_pacos,HSP70,Vicugna_pacos,403,False,LOW QUALITY PROTEIN: hsp70-binding protein 1,102531757
+HSP70|Mustela_putorius_furo,HSP70,Mustela_putorius_furo,402,False,hsp70-binding protein 1 isoform X1,101673672
+HSP70|Musotima_nitidalis,HSP70,Musotima_nitidalis,350,False,,BRAKERIITG00000007885.1
+HSP70|Pleurodeles_waltl,HSP70,Pleurodeles_waltl,311,False,hypothetical protein,NDU88_009836
+HSP70|Chelonus_insularis,HSP70,Chelonus_insularis,354,False,hsp70-binding protein 1-like,118075059
+HSP70|Pedinophyceae_sp._YPF-701,HSP70,Pedinophyceae_sp._YPF-701,429,True,Nucleotide exchange factor SIL1,YPF701_LOCUS7887
+HSP70|Carlito_syrichta,HSP70,Carlito_syrichta,361,False,hsp70-binding protein 1,103267503
+HSP70|Scaeva_pyrastri,HSP70,Scaeva_pyrastri,312,False,,ENSSIRG00000007378.1
+HSP70|Oncorhynchus_nerka,HSP70,Oncorhynchus_nerka,180,False,hsp70-binding protein 1-like,115117844
+HSP70|Hyles_vespertilio,HSP70,Hyles_vespertilio,361,False,,ENSHVEG00000002519.1
+HSP70|Bactrocera_oleae,HSP70,Bactrocera_oleae,394,False,uncharacterized protein LOC106623288 isoform X1,106623288
+HSP70|Homarus_americanus,HSP70,Homarus_americanus,329,False,hsp70-binding protein 1-like isoform X1,121853291
+HSP70|Mya_arenaria,HSP70,Mya_arenaria,325,False,hsp70-binding protein 1-like,128229830
+HSP70|Oreochromis_niloticus,HSP70,Oreochromis_niloticus,335,False,hsp70-binding protein 1,100694972
+HSP70|Bombus_terrestris,HSP70,Bombus_terrestris,378,False,hsp70-binding protein 1 isoform X1,100650822
+HSP70|Zerene_cesonia,HSP70,Zerene_cesonia,351,False,hsp70-binding protein 1,119834759
+HSP70|Diachrysia_chrysitis,HSP70,Diachrysia_chrysitis,358,False,,BRAKERDCYG00000006620.1
+HSP70|Anaspis_maculata,HSP70,Anaspis_maculata,321,False,,BRAKERUNLG00005019916.1
+HSP70|Biomphalaria_glabrata,HSP70,Biomphalaria_glabrata,337,False,Armadillo repeat-containing domain-containing protein,106056573
+HSP70|Dendrolimus_punctatus,HSP70,Dendrolimus_punctatus,355,False,,ENSDPNG00000007699.1
+HSP70|Dermochelys_coriacea,HSP70,Dermochelys_coriacea,336,False,hsp70-binding protein 1,119847426
+HSP70|Mythimna_loreyi,HSP70,Mythimna_loreyi,383,False,hypothetical protein,PYW08_008209
+HSP70|Schistosoma_guineensis,HSP70,Schistosoma_guineensis,354,False,,SGUI1_LOCUS5215
+HSP70|Venusia_cambrica,HSP70,Venusia_cambrica,355,False,,BRAKERFKXG00000011800.1
+HSP70|Hydriomena_furcata,HSP70,Hydriomena_furcata,351,False,,BRAKERHFRG00005000662.1
+HSP70|Vespula_pensylvanica,HSP70,Vespula_pensylvanica,373,False,Nucleotide exchange factor Fes1 domain-containing protein,122637763
+HSP70|Aethina_tumida,HSP70,Aethina_tumida,332,False,uncharacterized protein LOC109600157,109600157
+HSP70|Lycaena_phlaeas,HSP70,Lycaena_phlaeas,348,False,,ENSLPHG00000014274.2
+HSP70|Culex_pipiens_pallens,HSP70,Culex_pipiens_pallens,318,False,hsp70-binding protein 1,120420516
+HSP70|Xestia_sexstrigata,HSP70,Xestia_sexstrigata,382,False,,ENSXSEG00005011171.1
+HSP70|Agriphila_tristella,HSP70,Agriphila_tristella,352,False,,MINDY2
+HSP70|Giardia_intestinalis,HSP70,Giardia_intestinalis,231,False,Nucleotide exchange factor Fes1 domain-containing protein,GSB_15089
+HSP70|Lobophora_halterata,HSP70,Lobophora_halterata,354,False,,BRAKERLHAG00005008139.1
+HSP70|Trichinella_patagoniensis,HSP70,Trichinella_patagoniensis,329,False,Hsp70-binding protein 1,T12_5313
+HSP70|Cervus_elaphus,HSP70,Cervus_elaphus,495,False,hsp70-binding protein 1 isoform X1,122692550
+HSP70|Epicampocera_succincta,HSP70,Epicampocera_succincta,299,False,,BRAKERESTG00005019256.1
+HSP70|Lamellibrachia_satsuma,HSP70,Lamellibrachia_satsuma,328,False,Hsp70-binding protein 1,LSAT2_011703
+HSP70|Sparganum_proliferum,HSP70,Sparganum_proliferum,392,False,,SPRV2_LOCUS19572
+HSP70|Tapirus_indicus,HSP70,Tapirus_indicus,357,False,,GCA_031878655.1:g11943.t1
+HSP70|Drosophila_ficusphila,HSP70,Drosophila_ficusphila,305,False,hsp70 nucleotide exchange factor fes1,108089417
+HSP70|Electrophaes_corylata,HSP70,Electrophaes_corylata,360,False,,BRAKERRERG00005008567.1
+HSP70|Leptopilina_boulardi,HSP70,Leptopilina_boulardi,377,False,hsp70-binding protein 1-like,127281792
+HSP70|Oryzias_latipes,HSP70,Oryzias_latipes,336,False,hsp70-binding protein 1,101156173
+HSP70|Verasper_variegatus,HSP70,Verasper_variegatus,330,False,,HSPBP1
+HSP70|Acanthopagrus_latus,HSP70,Acanthopagrus_latus,335,False,hsp70-binding protein 1 isoform X1,119013375
+HSP70|Dipus_sagitta,HSP70,Dipus_sagitta,359,False,,GCA_036346955.1:g18800.t1
+HSP70|Volucella_bombylans,HSP70,Volucella_bombylans,304,False,,ENSYEVG00000002256.1
+HSP70|Podarcis_raffonei,HSP70,Podarcis_raffonei,337,False,hsp70-binding protein 1,128399808
+HSP70|Platypus_cylindrus,HSP70,Platypus_cylindrus,319,False,,BRAKERHXJG00000000095.1
+HSP70|Allacma_fusca,HSP70,Allacma_fusca,365,False,,AFUS01_LOCUS18232
+HSP70|Thumatha_senex,HSP70,Thumatha_senex,350,False,,BRAKERHMTG00000009890.1
+HSP70|Spodoptera_frugiperda,HSP70,Spodoptera_frugiperda,379,False,hsp70-binding protein 1,118275040
+HSP70|Apocheima_hispidaria,HSP70,Apocheima_hispidaria,356,False,,ENSIAHG00000007831.1
+HSP70|Aporia_crataegi,HSP70,Aporia_crataegi,353,False,,ENSAIGG00000007083.1
+HSP70|Parambassis_ranga,HSP70,Parambassis_ranga,346,False,hsp70-binding protein 1 isoform X1,114439734
+HSP70|Cercocebus_atys,HSP70,Cercocebus_atys,363,False,Nucleotide exchange factor Fes1,GCA_000955945.1:g18096.t1
+HSP70|Acromyrmex_charruanus,HSP70,Acromyrmex_charruanus,378,False,HPBP1 protein,G6Z76_0013833
+HSP70|Vidua_chalybeata,HSP70,Vidua_chalybeata,369,False,hsp70-binding protein 1,128802139
+HSP70|Polyodon_spathula,HSP70,Polyodon_spathula,338,False,hsp70-binding protein 1 isoform X1,121305964
+HSP70|Portevinia_maculata,HSP70,Portevinia_maculata,303,False,,BRAKERRXNG00000002271.1
+HSP70|Mugil_cephalus,HSP70,Mugil_cephalus,335,False,hsp70-binding protein 1,124998416
+HSP70|Eupeodes_luniger,HSP70,Eupeodes_luniger,224,False,,BRAKERRHKG00000027204.1
+HSP70|Vanessa_tameamea,HSP70,Vanessa_tameamea,353,False,hsp70-binding protein 1,113394150
+HSP70|Paramuricea_clavata,HSP70,Paramuricea_clavata,245,False,Hsp70-binding 1,PACLA_8A064051
+HSP70|Triparma_laevis_f._longispina,HSP70,Triparma_laevis_f._longispina,375,False,hypothetical protein,TrLO_g7816
+HSP70|Caerostris_darwini,HSP70,Caerostris_darwini,300,False,hypothetical protein,CDAR_460711
+HSP70|Mauremys_mutica,HSP70,Mauremys_mutica,400,False,hsp70-binding protein 1 isoform X1,123350683
+HSP70|Nycticebus_bengalensis,HSP70,Nycticebus_bengalensis,390,False,,GCA_023898255.1:g11217.t1
+HSP70|Solenopsis_invicta,HSP70,Solenopsis_invicta,376,False,hsp70-binding protein 1,105201518
+HSP70|Sphenella_marginata,HSP70,Sphenella_marginata,308,False,,ENSVYRG00000000096.1
+HSP70|Ctenocephalides_felis,HSP70,Ctenocephalides_felis,334,False,hsp70-binding protein 1,113385306
+HSP70|Manduca_sexta,HSP70,Manduca_sexta,363,False,Nucleotide exchange factor Fes1 domain-containing protein,115455663
+HSP70|Catocala_fraxini,HSP70,Catocala_fraxini,361,False,,ENSCFXG00005004362.1
+HSP70|Pangasianodon_gigas,HSP70,Pangasianodon_gigas,326,False,hypothetical protein,PGIGA_G00177970
+HSP70|Lacanobia_wlatinum,HSP70,Lacanobia_wlatinum,386,False,,BRAKERAIUG00000008346.1
+HSP70|Pocillopora_damicornis,HSP70,Pocillopora_damicornis,319,False,Nucleotide exchange factor Fes1 domain-containing protein,113680317
+HSP70|Megalops_atlanticus,HSP70,Megalops_atlanticus,333,False,Nucleotide exchange factor Fes1 domain-containing protein,MATL_G00214670
+HSP70|Hyposmocoma_kahamanoa,HSP70,Hyposmocoma_kahamanoa,356,False,hsp70-binding protein 1,113240692
+HSP70|Cervus_canadensis,HSP70,Cervus_canadensis,403,False,LOW QUALITY PROTEIN: hsp70-binding protein 1,122420327
+HSP70|Paralichthys_olivaceus,HSP70,Paralichthys_olivaceus,332,False,hsp70-binding protein 1,109641469
+HSP70|Albula_glossodonta,HSP70,Albula_glossodonta,328,False,Nucleotide exchange factor Fes1 domain-containing protein,JZ751_015056
+HSP70|Pararge_aegeria_aegeria,HSP70,Pararge_aegeria_aegeria,343,False,Nucleotide exchange factor Fes1,PAEG_LOCUS27154
+HSP70|Andrena_minutula,HSP70,Andrena_minutula,367,False,,TCP11L2
+HSP70|Scyliorhinus_torazame,HSP70,Scyliorhinus_torazame,325,False,Nucleotide exchange factor Fes1 domain-containing protein,scyTo_0014413
+HSP70|Bison_bonasus,HSP70,Bison_bonasus,357,False,,GCA_963879515.1:g7602.t1
+HSP70|Diceros_bicornis_minor,HSP70,Diceros_bicornis_minor,357,False,hsp70-binding protein 1,131397437
+HSP70|Lepeophtheirus_salmonis,HSP70,Lepeophtheirus_salmonis,317,False,hsp70-binding protein 1-like,121126443
+HSP70|Neomonachus_schauinslandi,HSP70,Neomonachus_schauinslandi,357,False,Nucleotide exchange factor Fes1,GCA_002201575.2:g17857.t1
+HSP70|Andrena_haemorrhoa,HSP70,Andrena_haemorrhoa,372,False,,ENSAHEG00005000886.1
+HSP70|Diatraea_saccharalis,HSP70,Diatraea_saccharalis,354,False,Nucleotide exchange factor Fes1,DIATSA_LOCUS8885
+HSP70|Hippopotamus_amphibius_kiboko,HSP70,Hippopotamus_amphibius_kiboko,357,False,hsp70-binding protein 1,130838268
+HSP70|Porospora_cf._gigantea_B,HSP70,Porospora_cf._gigantea_B,563,False,hypothetical protein,KVP17_000135
+HSP70|Galeopterus_variegatus,HSP70,Galeopterus_variegatus,152,False,hsp70-binding protein 1,103583972
+HSP70|Rotaria_socialis,HSP70,Rotaria_socialis,328,False,Nucleotide exchange factor Fes1 domain-containing protein,TIS948_LOCUS27861
+HSP70|Lytechinus_pictus,HSP70,Lytechinus_pictus,334,False,hsp70-binding protein 1-like,129268458
+HSP70|Nitzschia_inconspicua,HSP70,Nitzschia_inconspicua,644,False,hypothetical protein,IV203_037483
+HSP70|Oegoconia_quadripuncta,HSP70,Oegoconia_quadripuncta,362,False,,BRAKEROUAG00000009096.1
+HSP70|Urocitellus_parryii,HSP70,Urocitellus_parryii,357,False,Nucleotide exchange factor Fes1,GCA_003426925.1:g18426.t1
+HSP70|Bombus_haemorrhoidalis,HSP70,Bombus_haemorrhoidalis,378,False,,ENSBHAG00000015419.1
+HSP70|Tetheella_fluctuosa,HSP70,Tetheella_fluctuosa,359,False,,BRAKERGUVG00000006060.1
+HSP70|Bos_gaurus,HSP70,Bos_gaurus,357,False,,HSPBP1
+HSP70|Agelastica_alni,HSP70,Agelastica_alni,362,False,,E2F3
+HSP70|Pseudorca_crassidens,HSP70,Pseudorca_crassidens,357,False,,GCA_039906515.1:g16727.t1
+HSP70|Rhagonycha_fulva,HSP70,Rhagonycha_fulva,355,False,,ENSRFUG00000012153.1
+HSP70|Sphaerophoria_taeniata,HSP70,Sphaerophoria_taeniata,309,False,,STX3
+HSP70|Coilia_nasus,HSP70,Coilia_nasus,333,False,,HSPBP1
+HSP70|Hypercompe_scribonia,HSP70,Hypercompe_scribonia,340,False,,BRAKERIPSG00000008711.1
+HSP70|Acromyrmex_heyeri,HSP70,Acromyrmex_heyeri,378,False,HPBP1 protein,G6Z77_0010665
+HSP70|Polistes_fuscatus,HSP70,Polistes_fuscatus,376,False,hsp70-binding protein 1-like isoform X1,122519619
+HSP70|Acanthosoma_haemorrhoidale,HSP70,Acanthosoma_haemorrhoidale,331,False,,ENSAHMG00000009962.1
+HSP70|Taeniopygia_guttata,HSP70,Taeniopygia_guttata,333,False,hsp70-binding protein 1,115491782
+HSP70|Glyphotaelius_pellucidus,HSP70,Glyphotaelius_pellucidus,354,False,,ENSGPLG00000004347.1
+HSP70|Toxotes_jaculatrix,HSP70,Toxotes_jaculatrix,336,False,hsp70-binding protein 1,121198167
+HSP70|Thalpophila_matura,HSP70,Thalpophila_matura,401,False,,BRAKERIHAG00000008370.1
+HSP70|Drosophila_navojoa,HSP70,Drosophila_navojoa,305,False,Nucleotide exchange factor Fes1 domain-containing protein,108652551
+HSP70|Schistosoma_mattheei,HSP70,Schistosoma_mattheei,310,False,,SMTH1_LOCUS5746
+HSP70|Eudonia_lacustrata,HSP70,Eudonia_lacustrata,352,False,,BRAKERRUUG00005010115.1
+HSP70|Apotomis_capreana,HSP70,Apotomis_capreana,356,False,,BRAKERONMG00005009087.1
+HSP70|Pholis_gunnellus,HSP70,Pholis_gunnellus,335,False,,HSPBP1
+HSP70|Ostrinia_furnacalis,HSP70,Ostrinia_furnacalis,348,False,hsp70-binding protein 1 isoform X1,114359813
+HSP70|Strongylus_vulgaris,HSP70,Strongylus_vulgaris,162,False,Armadillo-type fold,SVUK_LOCUS12272
+HSP70|Vespa_mandarinia,HSP70,Vespa_mandarinia,373,False,hsp70-binding protein 1-like isoform X1,118444507
+HSP70|Chanos_chanos,HSP70,Chanos_chanos,333,False,hsp70-binding protein 1 isoform X1,115829705
+HSP70|Pseudoliparis_sp._Yap_Trench,HSP70,Pseudoliparis_sp._Yap_Trench,330,False,,ENSPSYG00000027844.1
+HSP70|Xenia_sp._Carnegie-2017,HSP70,Xenia_sp._Carnegie-2017,330,False,hsp70-binding protein 1-like isoform X1,124454238
+HSP70|Tupaia_chinensis,HSP70,Tupaia_chinensis,357,False,hsp70-binding protein 1,102477561
+HSP70|Triparma_verrucosa,HSP70,Triparma_verrucosa,377,False,hypothetical protein,TrVE_jg4656
+HSP70|Aphidius_gifuensis,HSP70,Aphidius_gifuensis,366,False,Hsp70-binding protein 1,122858988
+HSP70|Cottoperca_gobio,HSP70,Cottoperca_gobio,334,False,hsp70-binding protein 1,115011616
+HSP70|Ancylostoma_caninum,HSP70,Ancylostoma_caninum,755,False,hypothetical protein,ANCCAN_05034
+HSP70|Stegodyphus_mimosarum,HSP70,Stegodyphus_mimosarum,166,False,Hsp70-binding protein 1,X975_27220
+HSP70|Trachinotus_ovatus,HSP70,Trachinotus_ovatus,376,False,,HSPBP1
+HSP70|Pimephales_promelas,HSP70,Pimephales_promelas,329,False,hsp70-binding protein 1,120473104
+HSP70|Neophocaena_asiaeorientalis_asiaeorientalis,HSP70,Neophocaena_asiaeorientalis_asiaeorientalis,357,False,hsp70-binding protein 1,112406394
+HSP70|Lampris_incognitus,HSP70,Lampris_incognitus,334,False,hsp70-binding protein 1,130118967
+HSP70|Sphaeramia_orbicularis,HSP70,Sphaeramia_orbicularis,330,False,hsp70-binding protein 1,115424195
+HSP70|Phytophthora_rubi,HSP70,Phytophthora_rubi,330,False,Nucleotide exchange factor Fes1 domain-containing protein,PR002_g15575
+HSP70|Puma_concolor,HSP70,Puma_concolor,402,False,hsp70-binding protein 1,112851116
+HSP70|Heterobilharzia_americana,HSP70,Heterobilharzia_americana,348,False,,HAMR1_LOCUS6333
+HSP70|Daphnia_pulicaria,HSP70,Daphnia_pulicaria,313,False,hsp70-binding protein 1-like,124316448
+HSP70|Ennomos_quercinarius,HSP70,Ennomos_quercinarius,356,False,,ENSEQUG00005005009.1
+HSP70|Phragmatobia_fuliginosa,HSP70,Phragmatobia_fuliginosa,339,False,,BCCIP
+HSP70|Onychomys_torridus,HSP70,Onychomys_torridus,357,False,hsp70-binding protein 1,118581819
+HSP70|Thymelicus_acteon,HSP70,Thymelicus_acteon,363,False,,ENSIQOG00000005898.1
+HSP70|Cheilosia_variabilis,HSP70,Cheilosia_variabilis,305,False,,BRAKERJCQG00000017358.1
+HSP70|Gerris_lacustris,HSP70,Gerris_lacustris,339,False,,BRAKERPZDG00000018230.1
+HSP70|Ypsolopha_scabrella,HSP70,Ypsolopha_scabrella,357,False,,BRAKERYSCG00005009232.1
+HSP70|Thymelicus_sylvestris,HSP70,Thymelicus_sylvestris,365,False,,ENSTEVG00005019673.1
+HSP70|Trichinella_sp._T6,HSP70,Trichinella_sp._T6,329,False,Hsp70-binding protein 1,T06_6320
+HSP70|Oncorhynchus_tshawytscha,HSP70,Oncorhynchus_tshawytscha,334,False,hsp70-binding protein 1 isoform X1,112237782
+HSP70|Mustela_lutreola,HSP70,Mustela_lutreola,402,False,hsp70-binding protein 1 isoform X1,131817502
+HSP70|Bombus_soroeensis,HSP70,Bombus_soroeensis,378,False,,ENSBSOG00000007561.1
+HSP70|Phytophthora_ramorum,HSP70,Phytophthora_ramorum,330,False,Nucleotide exchange factor Fes1 domain-containing protein,KRP23_449
+HSP70|Poecilia_reticulata,HSP70,Poecilia_reticulata,335,False,hsp70-binding protein 1,103469093
+HSP70|Eulithis_prunata,HSP70,Eulithis_prunata,367,False,,BRAKEREPNG00000007612.1
+HSP70|Aedes_aegypti,HSP70,Aedes_aegypti,318,False,Nucleotide exchange factor Fes1 domain-containing protein,5572448
+HSP70|Albula_goreensis,HSP70,Albula_goreensis,319,False,Nucleotide exchange factor Fes1 domain-containing protein,AGOR_G00229220
+HSP70|Numida_meleagris,HSP70,Numida_meleagris,330,False,hsp70-binding protein 1,110391344
+HSP70|Elephas_maximus,HSP70,Elephas_maximus,357,False,,GCA_033060105.1:g13425.t1
+HSP70|Melinaea_marsaeus_rileyi,HSP70,Melinaea_marsaeus_rileyi,349,False,,ENSMRMG00000008523.1
+HSP70|Odocoileus_hemionus_hemionus,HSP70,Odocoileus_hemionus_hemionus,357,False,,HSPBP1
+HSP70|Melanchra_persicariae,HSP70,Melanchra_persicariae,387,False,,BRAKERHAAG00000006886.1
+HSP70|Myiozetetes_cayanensis,HSP70,Myiozetetes_cayanensis,331,False,LOW QUALITY PROTEIN: hsp70-binding protein 1,126642624
+HSP70|Steinernema_hermaphroditum,HSP70,Steinernema_hermaphroditum,343,False,hypothetical protein,QR680_000300
+HSP70|Musca_domestica,HSP70,Musca_domestica,299,False,uncharacterized protein LOC101896505,101896505
+HSP70|Dolichovespula_saxonica,HSP70,Dolichovespula_saxonica,373,False,,TCP11L2
+HSP70|Conger_conger,HSP70,Conger_conger,362,False,Nucleotide exchange factor Fes1 domain-containing protein,COCON_G00202400
+HSP70|Trichoplax_sp._H2,HSP70,Trichoplax_sp._H2,336,False,Hsp70-binding protein 1,TrispH2_002877
+HSP70|Anopheles_coustani,HSP70,Anopheles_coustani,315,False,hsp70-binding protein 1,131262176
+HSP70|Galemys_pyrenaicus,HSP70,Galemys_pyrenaicus,357,False,Hsp70-binding protein 1,J0S82_007449
+HSP70|Thymallus_thymallus,HSP70,Thymallus_thymallus,335,False,,HSPBP1
+HSP70|Baccha_elongata,HSP70,Baccha_elongata,311,False,,ENSXQMG00000003021.1
+HSP70|Ectropis_grisescens,HSP70,Ectropis_grisescens,361,False,,ENSEGRG00000007220.1
+HSP70|Gulo_gulo_luscus,HSP70,Gulo_gulo_luscus,357,False,HSPBP1,IVM63_0004560sp01
+HSP70|Schistosoma_haematobium,HSP70,Schistosoma_haematobium,354,False,Hsp70-binding protein 1,SHAE2_LOCUS5388
+HSP70|Achroia_grisella,HSP70,Achroia_grisella,355,False,hsp70-binding protein 1,131848855
+HSP70|Sarcophilus_harrisii,HSP70,Sarcophilus_harrisii,351,False,hsp70-binding protein 1,100927260
+HSP70|Nomada_fucata,HSP70,Nomada_fucata,379,False,,ENSFANG00005001848.1
+HSP70|Triparma_laevis_f._inornata,HSP70,Triparma_laevis_f._inornata,375,False,hypothetical protein,TL16_g06064
+HSP70|Cephus_cinctus,HSP70,Cephus_cinctus,377,False,hsp70-binding protein 1 isoform X1,107263579
+HSP70|Guillardia_theta_CCMP2712,HSP70,Guillardia_theta_CCMP2712,309,False,Nucleotide exchange factor Fes1 domain-containing protein,GUITHDRAFT_103325
+HSP70|Blastocystis_sp._subtype_4,HSP70,Blastocystis_sp._subtype_4,300,False,HSP70-binding protein like,JH06_2701
+HSP70|Batillaria_attramentaria,HSP70,Batillaria_attramentaria,393,False,hypothetical protein,BaRGS_012737
+HSP70|Schistosoma_margrebowiei,HSP70,Schistosoma_margrebowiei,318,False,,SMRG1_LOCUS5250
+HSP70|Iphiclides_podalirius,HSP70,Iphiclides_podalirius,357,False,,ENSIPDG00000007094.1
+HSP70|Camelus_bactrianus,HSP70,Camelus_bactrianus,403,False,LOW QUALITY PROTEIN: hsp70-binding protein 1,105074359
+HSP70|Rhabdomys_pumilio,HSP70,Rhabdomys_pumilio,357,False,,GCA_030674055.1:g5213.t1
+HSP70|Phytophthora_capsici,HSP70,Phytophthora_capsici,331,False,hypothetical protein,DVH05_023741
+HSP70|Apamea_sordens,HSP70,Apamea_sordens,397,False,,BRAKERNEEG00005008741.1
+HSP70|Triparma_strigata,HSP70,Triparma_strigata,377,False,hypothetical protein,TrST_g9318
+HSP70|Carpatolechia_fugitivella,HSP70,Carpatolechia_fugitivella,357,False,,ENSWJBG00000008416.1
+HSP70|Antechinus_flavipes,HSP70,Antechinus_flavipes,494,False,hsp70-binding protein 1 isoform X1,127556706
+HSP70|Alcis_repandata,HSP70,Alcis_repandata,356,False,,BRAKERADCG00000007785.1
+HSP70|Apeira_syringaria,HSP70,Apeira_syringaria,356,False,,BRAKERAGYG00000012641.1
+RPS3|Oryza_sativa_aromatic_subgroup,RPS3,Oryza_sativa_aromatic_subgroup,228,False,,RPS3
+RPS3|Phascolomyces_articulosus,RPS3,Phascolomyces_articulosus,246,False,40S ribosomal protein S3,BDA99DRAFT_509724
+RPS3|Daedalea_quercina_L-15889,RPS3,Daedalea_quercina_L-15889,262,False,40S ribosomal protein S3,DAEQUDRAFT_659328
+RPS3|Eupithecia_dodoneata,RPS3,Eupithecia_dodoneata,244,False,,RPS3
+RPS3|Coemansia_sp._RSA_522,RPS3,Coemansia_sp._RSA_522,241,False,40S ribosomal protein S3,IW144_005637
+RPS3|Vulpes_vulpes,RPS3,Vulpes_vulpes,243,False,Small ribosomal subunit protein uS3,112928639
+RPS3|Anseranas_semipalmata,RPS3,Anseranas_semipalmata,243,False,DNA-(apurinic or apyrimidinic site) lyase,ANSSEM_R08183
+RPS3|Pteronotus_parnellii_mesoamericanus,RPS3,Pteronotus_parnellii_mesoamericanus,243,False,40S ribosomal protein S3,129072757
+RPS3|Russula_ochroleuca,RPS3,Russula_ochroleuca,260,False,40S ribosomal protein S3,DFH94DRAFT_738020
+RPS3|Nyctereutes_procyonoides,RPS3,Nyctereutes_procyonoides,243,False,Small ribosomal subunit protein uS3,GCA_905146905.1:g4437.t1
+RPS3|Trametes_sanguinea,RPS3,Trametes_sanguinea,261,False,40S ribosomal protein S3,FKP32DRAFT_1593001
+RPS3|Galerina_marginata_CBS_339.88,RPS3,Galerina_marginata_CBS_339.88,260,False,40S ribosomal protein S3,GALMADRAFT_312174
+RPS3|Aspergillus_minisclerotigenes,RPS3,Aspergillus_minisclerotigenes,266,False,40S ribosomal protein S3,BDV30DRAFT_233318
+RPS3|Hypoxylon_sp._CI-4A,RPS3,Hypoxylon_sp._CI-4A,259,False,40S ribosomal protein S3,M426DRAFT_320334
+RPS3|Cryptosporidium_ubiquitum,RPS3,Cryptosporidium_ubiquitum,221,False,40s ribosomal protein KH domain,cubi_02900
+RPS3|Xanthoria_sp._2_TBL-2021,RPS3,Xanthoria_sp._2_TBL-2021,266,False,hypothetical protein,L6R38_000855
+RPS3|Leishmania_enriettii,RPS3,Leishmania_enriettii,219,False,KH type-2 domain-containing protein,CUR178_06770
+RPS3|Nothobranchius_furzeri,RPS3,Nothobranchius_furzeri,247,False,DNA-(apurinic or apyrimidinic site) lyase,129163993
+RPS3|Boletus_edulis_BED1,RPS3,Boletus_edulis_BED1,269,False,ribosomal protein S3,L210DRAFT_3404816
+RPS3|Heliconius_sara,RPS3,Heliconius_sara,247,False,,RPS3
+RPS3|Fusarium_gaditjirri,RPS3,Fusarium_gaditjirri,260,False,40S ribosomal protein S3,FGADI_8133
+RPS3|Saccharomyces_uvarum,RPS3,Saccharomyces_uvarum,240,False,hypothetical protein,SUVZ_14G1480
+RPS3|Ustilago_tritici,RPS3,Ustilago_tritici,273,False,hypothetical protein,NDA13_003883
+RPS3|Peronosclerospora_sorghi,RPS3,Peronosclerospora_sorghi,248,False,hypothetical protein,PsorP6_011895
+RPS3|Mucor_lusitanicus_CBS_277.49,RPS3,Mucor_lusitanicus_CBS_277.49,244,False,KH type-2 domain-containing protein,MUCCIDRAFT_154766
+RPS3|Emmonsia_crescens_UAMH_3008,RPS3,Emmonsia_crescens_UAMH_3008,110,True,small subunit ribosomal protein S3e,EMCG_00976
+RPS3|Metarhizium_anisopliae_BRIP_53293,RPS3,Metarhizium_anisopliae_BRIP_53293,257,False,40S ribosomal protein S3,H634G_07719
+RPS3|Sagittarius_serpentarius,RPS3,Sagittarius_serpentarius,243,False,DNA-(apurinic or apyrimidinic site) lyase,SAGSER_R07347
+RPS3|Rhabdomys_pumilio,RPS3,Rhabdomys_pumilio,243,False,,GCA_030674055.1:g6173.t1
+RPS3|Papilio_xuthus,RPS3,Papilio_xuthus,244,False,40S ribosomal protein S3,106120701
+RPS3|Plasmodium_vinckei_lentum,RPS3,Plasmodium_vinckei_lentum,222,False,"40S ribosomal protein S3, putative",PVLDE_1303650
+RPS3|Aspergillus_steynii_IBT_23096,RPS3,Aspergillus_steynii_IBT_23096,256,False,40S ribosomal protein S3,P170DRAFT_438496
+RPS3|Eugnorisma_glareosa,RPS3,Eugnorisma_glareosa,243,False,,BRAKERISUG00000012960.1
+RPS3|Lipomyces_tetrasporus,RPS3,Lipomyces_tetrasporus,248,False,ribosomal protein S3,POJ06DRAFT_141483
+RPS3|Clathrospora_elynae,RPS3,Clathrospora_elynae,310,False,40S ribosomal protein S3,EJ02DRAFT_107370
+RPS3|Cladochytrium_tenue,RPS3,Cladochytrium_tenue,105,True,40S ribosomal protein S3,HK405_015610
+RPS3|Tulasnella_sp._408,RPS3,Tulasnella_sp._408,199,False,40S ribosomal protein S3,FRC00_006357
+RPS3|Loxia_curvirostra,RPS3,Loxia_curvirostra,233,False,DNA-(apurinic or apyrimidinic site) lyase,LOXCUR_R04618
+RPS3|Cutaneotrichosporon_oleaginosum,RPS3,Cutaneotrichosporon_oleaginosum,252,False,40S ribosomal protein S3,CC85DRAFT_326624
+RPS3|Harpagifer_antarcticus,RPS3,Harpagifer_antarcticus,250,False,,RPS3
+RPS3|Nothocercus_nigrocapillus,RPS3,Nothocercus_nigrocapillus,243,False,DNA-(apurinic or apyrimidinic site) lyase,NOTNIG_R03515
+RPS3|Pseudocercospora_fuligena,RPS3,Pseudocercospora_fuligena,273,False,40S ribosomal protein S3,HII31_03165
+RPS3|Mortierella_sp._GBA43,RPS3,Mortierella_sp._GBA43,243,False,40S ribosomal protein S3,BGX31_008319
+RPS3|Penicillium_ucsense,RPS3,Penicillium_ucsense,264,False,40S ribosomal protein S3,PECM_007345
+RPS3|Enhydra_lutris_kenyoni,RPS3,Enhydra_lutris_kenyoni,243,False,Small ribosomal subunit protein uS3,111159428
+RPS3|Drechmeria_coniospora,RPS3,Drechmeria_coniospora,262,False,40S ribosomal protein S3,RJ55_07641
+RPS3|Capricornis_sumatraensis,RPS3,Capricornis_sumatraensis,246,False,,GCA_032405125.2:g15629.t1
+RPS3|Candelina_submexicana,RPS3,Candelina_submexicana,269,False,40S ribosomal protein S3,M1835_003146
+RPS3|Golovinomyces_cichoracearum,RPS3,Golovinomyces_cichoracearum,260,False,40S ribosomal protein S3,GcC1_190009
+RPS3|Suillus_decipiens,RPS3,Suillus_decipiens,262,False,ribosomal protein S3,BDR04DRAFT_1096315
+RPS3|Juncus_effusus,RPS3,Juncus_effusus,234,False,hypothetical protein,LUZ60_014188
+RPS3|Rhizopus_delemar_RA_99-880,RPS3,Rhizopus_delemar_RA_99-880,241,False,40S ribosomal protein S3,RO3G_13181
+RPS3|Fragilaria_crotonensis,RPS3,Fragilaria_crotonensis,269,False,Ribosomal protein S3,MHU86_8108
+RPS3|Neolecta_irregularis_DAH-3,RPS3,Neolecta_irregularis_DAH-3,257,False,40S ribosomal protein S3,NEOLI_003257
+RPS3|Closterium_sp._Yama58-4,RPS3,Closterium_sp._Yama58-4,176,True,,CPYAMA_LOCUS2188
+RPS3|Cryptotermes_secundus,RPS3,Cryptotermes_secundus,242,False,"K homology domain-like, alpha/beta",LOC111863659
+RPS3|Tridacna_gigas,RPS3,Tridacna_gigas,244,False,,RPS3
+RPS3|Naematelia_encephala,RPS3,Naematelia_encephala,250,False,40S ribosomal protein S3,BCR39DRAFT_522706
+RPS3|Pyrgus_malvae,RPS3,Pyrgus_malvae,243,False,,RPS3
+RPS3|Xiphophorus_maculatus,RPS3,Xiphophorus_maculatus,245,False,DNA-(apurinic or apyrimidinic site) lyase,102236438
+RPS3|Rhodocollybia_butyracea,RPS3,Rhodocollybia_butyracea,264,False,40S ribosomal protein S3,BDP27DRAFT_1392451
+RPS3|Carassius_gibelio,RPS3,Carassius_gibelio,245,False,40S ribosomal protein S3,127934789
+RPS3|Fusarium_sp._NRRL_25303,RPS3,Fusarium_sp._NRRL_25303,260,False,40S ribosomal protein S3,F25303_11657
+RPS3|Megaderma_spasma,RPS3,Megaderma_spasma,243,False,,GCA_043880595.1:g2721.t1
+RPS3|Aplosporella_prunicola_CBS_121167,RPS3,Aplosporella_prunicola_CBS_121167,266,False,40S ribosomal protein S3,K452DRAFT_289659
+RPS3|Colletotrichum_sojae,RPS3,Colletotrichum_sojae,259,False,40S ribosomal protein S3,CSOJ01_08579
+RPS3|Tauraco_erythrolophus,RPS3,Tauraco_erythrolophus,117,True,40S ribosomal protein S3,104384170
+RPS3|Candida_albicans_P60002,RPS3,Candida_albicans_P60002,251,False,ribosomal protein S3,MEW_05785
+RPS3|Colletotrichum_filicis,RPS3,Colletotrichum_filicis,260,False,40S ribosomal protein S3,CSPX01_10520
+RPS3|Cercospora_beticola,RPS3,Cercospora_beticola,307,False,40S ribosomal protein S3,CB0940_00941
+RPS3|Schistosoma_japonicum,RPS3,Schistosoma_japonicum,236,False,40S ribosomal protein S3,EWB00_008106
+RPS3|Nycticryphes_semicollaris,RPS3,Nycticryphes_semicollaris,234,False,DNA-(apurinic or apyrimidinic site) lyase,NYCSEM_R11655
+RPS3|Coemansia_sp._S680,RPS3,Coemansia_sp._S680,249,False,40S ribosomal protein S3,GGI14_005028
+RPS3|Frieseomelitta_varia,RPS3,Frieseomelitta_varia,242,False,40S ribosomal protein S3,122532035
+RPS3|Closterium_sp._NIES-68,RPS3,Closterium_sp._NIES-68,234,False,KH type-2 domain-containing protein,CLOM_g21821
+RPS3|Salix_dunnii,RPS3,Salix_dunnii,166,True,Small ribosomal subunit protein uS3 C-terminal domain-containing protein,SADUNF_Sadunf15G0063700
+RPS3|Lophocebus_aterrimus,RPS3,Lophocebus_aterrimus,243,False,,GCA_023783235.1:g1591.t1
+RPS3|Strongylocentrotus_purpuratus,RPS3,Strongylocentrotus_purpuratus,279,False,40S ribosomal protein S3,593744
+RPS3|Scophthalmus_maximus,RPS3,Scophthalmus_maximus,246,False,DNA-(apurinic or apyrimidinic site) lyase,118299935
+RPS3|Sarcophaga_subvicina,RPS3,Sarcophaga_subvicina,241,False,,RPS3
+RPS3|Blastosporella_zonata,RPS3,Blastosporella_zonata,258,False,40S ribosomal protein S3,C0991_000153
+RPS3|Russula_compacta,RPS3,Russula_compacta,260,False,ribosomal protein S3,BJV74DRAFT_886458
+RPS3|Gopherus_evgoodei,RPS3,Gopherus_evgoodei,243,False,DNA-(apurinic or apyrimidinic site) lyase,RPS3
+RPS3|Saccharomyces_cerevisiae_YJM1402,RPS3,Saccharomyces_cerevisiae_YJM1402,240,False,Rps3p,H813_YJM1402N00149
+RPS3|Saccharomyces_cerevisiae_YJM1592,RPS3,Saccharomyces_cerevisiae_YJM1592,240,False,Rps3p,H835_YJM1592N00149
+RPS3|Aporophyla_nigra,RPS3,Aporophyla_nigra,247,False,,RPS3
+RPS3|Dicrurus_megarhynchus,RPS3,Dicrurus_megarhynchus,243,False,DNA-(apurinic or apyrimidinic site) lyase,DICMEG_R03961
+RPS3|Parastagonospora_nodorum_SN15,RPS3,Parastagonospora_nodorum_SN15,266,False,40S ribosomal protein S3,JI435_116500
+RPS3|Elaphurus_davidianus,RPS3,Elaphurus_davidianus,243,False,,GCA_002443075.1:g2206.t1
+RPS3|Trichomonas_vaginalis_G3,RPS3,Trichomonas_vaginalis_G3,216,False,"ribosomal protein S3, putative",TVAG_106800
+RPS3|Sordaria_macrospora,RPS3,Sordaria_macrospora,262,False,40S ribosomal protein S3,SMACR_01921
+RPS3|Eupsilia_transversa,RPS3,Eupsilia_transversa,243,False,,RPS3
+RPS3|Agrochola_circellaris,RPS3,Agrochola_circellaris,243,False,,RPS3
+RPS3|Equus_caballus,RPS3,Equus_caballus,281,False,Small ribosomal subunit protein uS3,100051780
+RPS3|Cryptococcus_deuterogattii_CBS_10090,RPS3,Cryptococcus_deuterogattii_CBS_10090,252,False,40S ribosomal protein S3,I304_01693
+RPS3|Cladophialophora_yegresii_CBS_114405,RPS3,Cladophialophora_yegresii_CBS_114405,267,False,40S ribosomal protein S3,A1O7_00050
+RPS3|Manihot_esculenta,RPS3,Manihot_esculenta,234,False,40S ribosomal protein S3,110610381
+RPS3|Penicillium_sp._IBT_18751x,RPS3,Penicillium_sp._IBT_18751x,264,False,K Homology prokaryotic type,N7523_003786
+RPS3|Phytophthora_nicotianae_P10297,RPS3,Phytophthora_nicotianae_P10297,246,False,40S ribosomal protein,F442_21287
+RPS3|Botrytis_deweyae,RPS3,Botrytis_deweyae,263,False,40S ribosomal protein S3,EAE98_001750
+RPS3|Camellia_lanceoleosa,RPS3,Camellia_lanceoleosa,235,False,40S ribosomal protein S3-3,LOK49_LG03G02956
+RPS3|Aspergillus_pseudocaelatus,RPS3,Aspergillus_pseudocaelatus,266,False,40S ribosomal protein S3,BDV36DRAFT_14238
+RPS3|Seirophora_villosa,RPS3,Seirophora_villosa,266,False,hypothetical protein,LQ345_003486
+RPS3|Pavlovales_sp._CCMP2436,RPS3,Pavlovales_sp._CCMP2436,220,False,40S ribosomal protein S3,T492DRAFT_1084809
+RPS3|Aspergillus_japonicus_CBS_114.51,RPS3,Aspergillus_japonicus_CBS_114.51,266,False,40S ribosomal protein S3,BO86DRAFT_387778
+RPS3|Trichoderma_reesei_QM6a,RPS3,Trichoderma_reesei_QM6a,264,False,40S ribosomal protein S3,TRIREDRAFT_119855
+RPS3|Phaeosphaeriaceae_sp._PMI808,RPS3,Phaeosphaeriaceae_sp._PMI808,266,False,ribosomal protein S3,GQ44DRAFT_622652
+RPS3|Aspergillus_wentii,RPS3,Aspergillus_wentii,266,False,40S ribosomal protein S3,MW887_010455
+RPS3|Hypomontagnella_monticulosa,RPS3,Hypomontagnella_monticulosa,259,False,ribosomal protein S3,F5Y04DRAFT_252224
+RPS3|Orycteropus_afer_afer,RPS3,Orycteropus_afer_afer,243,False,Small ribosomal subunit protein uS3,103197075
+RPS3|Desarmillaria_ectypa,RPS3,Desarmillaria_ectypa,260,False,ribosomal protein S3,DFS33DRAFT_1468556
+RPS3|Colletotrichum_liriopes,RPS3,Colletotrichum_liriopes,261,False,40S ribosomal protein S3,ColSpa_09411
+RPS3|Cryptococcus_amylolentus_CBS_6039,RPS3,Cryptococcus_amylolentus_CBS_6039,252,False,40S ribosomal protein S3,L202_03784
+RPS3|Tritrichomonas_foetus,RPS3,Tritrichomonas_foetus,216,False,40S ribosomal protein S3-1,TRFO_28129
+RPS3|Herminia_tarsipennalis,RPS3,Herminia_tarsipennalis,243,False,,RPS3
+RPS3|Macaria_notata,RPS3,Macaria_notata,243,False,,RPS3
+RPS3|Wickerhamomyces_ciferrii,RPS3,Wickerhamomyces_ciferrii,246,False,40S ribosomal protein,BN7_4312
+RPS3|Saccharomyces_cerevisiae_YJM1385,RPS3,Saccharomyces_cerevisiae_YJM1385,240,False,Rps3p,H805_YJM1385N00150
+RPS3|Volucella_inflata,RPS3,Volucella_inflata,249,False,,RPS3
+RPS3|Varicellaria_rhodocarpa,RPS3,Varicellaria_rhodocarpa,268,False,40S ribosomal protein S3,MMC14_009063
+RPS3|Fomes_fomentarius,RPS3,Fomes_fomentarius,261,False,40S ribosomal protein S3,C8Q74DRAFT_1214931
+RPS3|Postia_placenta_Mad-698-R,RPS3,Postia_placenta_Mad-698-R,262,False,40S ribosomal protein S3,POSPLDRAFT_134733
+RPS3|Diospyros_lotus,RPS3,Diospyros_lotus,234,False,40S ribosomal protein S3-3,127795895
+RPS3|Carpediemonas_membranifera,RPS3,Carpediemonas_membranifera,213,False,"Ribosomal protein S3, eukaryotic/archaeal",J8273_7500
+RPS3|Heterotrigona_itama,RPS3,Heterotrigona_itama,231,False,KH type-2 domain-containing protein,MHI_LOCUS267238
+RPS3|Morchella_sextelata,RPS3,Morchella_sextelata,300,False,uncharacterized protein,H6S33_012107
+RPS3|Clonostachys_solani,RPS3,Clonostachys_solani,259,False,40S ribosomal protein S3,CSOL1703_00009138
+RPS3|Onychorhynchus_coronatus,RPS3,Onychorhynchus_coronatus,240,False,DNA-(apurinic or apyrimidinic site) lyase,ONYCOR_R03972
+RPS3|Peromyscus_leucopus,RPS3,Peromyscus_leucopus,243,False,40S ribosomal protein S3,114698701
+RPS3|Prunus_persica,RPS3,Prunus_persica,237,False,"30S ribosomal protein S3, chloroplastic",18789464
+RPS3|Tulasnella_sp._417,RPS3,Tulasnella_sp._417,250,False,40S ribosomal protein S3,FRC01_010207
+RPS3|Schizosaccharomyces_pombe,RPS3,Schizosaccharomyces_pombe,249,False,40S ribosomal protein S3 (predicted),SPBC16G5.14c
+RPS3|Kappamyces_sp._JEL0680,RPS3,Kappamyces_sp._JEL0680,234,False,40S ribosomal protein S3,HDU91_003468
+RPS3|Toxoplasma_gondii_VEG,RPS3,Toxoplasma_gondii_VEG,255,False,ribosomal protein RPS3,TGVEG_232300
+RPS3|Plasmodium_sp._DRC-Itaito,RPS3,Plasmodium_sp._DRC-Itaito,221,False,40S ribosomal protein S3,PBILCG01_1465200
+RPS3|Bos_indicus,RPS3,Bos_indicus,243,False,Small ribosomal subunit protein uS3,109569758
+RPS3|Tyto_alba,RPS3,Tyto_alba,243,False,40S ribosomal protein S3,104366685
+RPS3|Gonocerus_acuteangulatus,RPS3,Gonocerus_acuteangulatus,247,False,,BRAKERUEUG00005021775.1
+RPS3|Malassezia_brasiliensis,RPS3,Malassezia_brasiliensis,258,False,40S ribosomal protein S3,MBRA1_001978
+RPS3|Tremellales_sp._Tagirdzhanova-0007,RPS3,Tremellales_sp._Tagirdzhanova-0007,237,False,40S ribosomal protein S3,TREMPRED_000550
+RPS3|Pleurotus_ostreatoroseus,RPS3,Pleurotus_ostreatoroseus,130,False,hypothetical protein,EIP86_002849
+RPS3|Morchella_importuna,RPS3,Morchella_importuna,300,False,uncharacterized protein,LAJ45_03404
+RPS3|Petromyzon_marinus,RPS3,Petromyzon_marinus,249,False,40S ribosomal protein S3,103091707
+RPS3|Aspergillus_aculeatus_ATCC_16872,RPS3,Aspergillus_aculeatus_ATCC_16872,266,False,40S ribosomal protein S3,ASPACDRAFT_75932
+RPS3|Saccharomyces_cerevisiae_R103,RPS3,Saccharomyces_cerevisiae_R103,240,False,Rps3p,R103_N20366
+RPS3|Coemansia_sp._RSA_1938,RPS3,Coemansia_sp._RSA_1938,241,False,40S ribosomal protein S3,LPJ67_004388
+RPS3|Penicillium_digitatum_PHI26,RPS3,Penicillium_digitatum_PHI26,264,False,40S ribosomal protein S3,PDIG_64480
+RPS3|Neopelma_chrysocephalum,RPS3,Neopelma_chrysocephalum,243,False,40S ribosomal protein S3,113975584
+RPS3|Oceanites_oceanicus,RPS3,Oceanites_oceanicus,233,False,DNA-(apurinic or apyrimidinic site) lyase,OCEOCE_R09757
+RPS3|Eurypyga_helias,RPS3,Eurypyga_helias,117,True,40S ribosomal protein S3,104515010
+RPS3|Hoolock_leuconedys,RPS3,Hoolock_leuconedys,243,False,,GCA_023748175.1:g6474.t1
+RPS3|Cucumispora_dikerogammari,RPS3,Cucumispora_dikerogammari,216,False,40S ribosomal protein S3,CDIK_2975
+RPS3|Fusarium_coicis,RPS3,Fusarium_coicis,260,False,40s ribosomal s3,FCOIX_12799
+RPS3|Penicillium_angulare,RPS3,Penicillium_angulare,264,False,K Homology prokaryotic type,N7478_004374
+RPS3|Lachnellula_suecica,RPS3,Lachnellula_suecica,262,False,40S ribosomal protein S3,LSUE1_G000977
+RPS3|Aromia_moschata,RPS3,Aromia_moschata,116,True,hypothetical protein,NQ318_004564
+RPS3|Rhizophagus_sp._MUCL_43196,RPS3,Rhizophagus_sp._MUCL_43196,255,False,"30S ribosomal protein S3, chloroplastic",C1646_679192
+RPS3|Trichophyton_rubrum_MR850,RPS3,Trichophyton_rubrum_MR850,266,False,40S ribosomal protein,H100_07898
+RPS3|Rana_temporaria,RPS3,Rana_temporaria,246,False,40S ribosomal protein S3,120929743
+RPS3|Trichophyton_soudanense_CBS_452.61,RPS3,Trichophyton_soudanense_CBS_452.61,266,False,40S ribosomal protein S3,H105_07884
+RPS3|Chaetothyriales_sp._CBS_135597,RPS3,Chaetothyriales_sp._CBS_135597,243,False,40S ribosomal protein S3,DV738_g1565
+RPS3|Hypsizygus_marmoreus,RPS3,Hypsizygus_marmoreus,261,False,40S ribosomal protein S3,Hypma_015485
+RPS3|Peucedramus_taeniatus,RPS3,Peucedramus_taeniatus,243,False,DNA-(apurinic or apyrimidinic site) lyase,PEUTAE_R09617
+RPS3|Pandemis_cinnamomeana,RPS3,Pandemis_cinnamomeana,246,False,,RPS3
+RPS3|Pyricularia_oryzae_70-15,RPS3,Pyricularia_oryzae_70-15,262,False,40S ribosomal protein S3,MGG_05673
+RPS3|Branchiostoma_belcheri,RPS3,Branchiostoma_belcheri,269,False,DNA-(apurinic or apyrimidinic site) lyase,Bbelb_196870
+RPS3|Xenopus_tropicalis,RPS3,Xenopus_tropicalis,246,False,DNA-(apurinic or apyrimidinic site) lyase,116409351
+RPS3|Biscogniauxia_marginata,RPS3,Biscogniauxia_marginata,259,False,40S ribosomal protein S3-like protein,F5X99DRAFT_383372
+RPS3|Trichinella_sp._T6,RPS3,Trichinella_sp._T6,335,True,40S ribosomal protein S3-A,T06_9808
+RPS3|Zymoseptoria_tritici_ST99CH_1E4,RPS3,Zymoseptoria_tritici_ST99CH_1E4,274,False,40S ribosomal protein S3,ZT1E4_G5732
+RPS3|Culex_pipiens_pallens,RPS3,Culex_pipiens_pallens,250,False,40S ribosomal protein S3,120425212
+RPS3|Odocoileus_virginianus_texanus,RPS3,Odocoileus_virginianus_texanus,243,False,Small ribosomal subunit protein uS3,110150598
+RPS3|Eudyptes_chrysolophus,RPS3,Eudyptes_chrysolophus,234,False,40S ribosomal protein S3,FQV09_0003819
+RPS3|Xylaria_venustula,RPS3,Xylaria_venustula,260,False,ribosomal protein S3,F5Y03DRAFT_208498
+RPS3|Komagataella_phaffii_GS115,RPS3,Komagataella_phaffii_GS115,243,False,40S ribosomal protein S3,PAS_chr1-3_0115
+RPS3|Ammospiza_caudacuta,RPS3,Ammospiza_caudacuta,243,False,small ribosomal subunit protein uS3,131571969
+RPS3|Sterrhoptilus_dennistouni,RPS3,Sterrhoptilus_dennistouni,234,False,DNA-(apurinic or apyrimidinic site) lyase,STEDEN_R00957
+RPS3|Nematocida_minor,RPS3,Nematocida_minor,243,False,small subunit ribosomal protein S3e,NEMIN01_1127
+RPS3|Coemansia_sp._RSA_2598,RPS3,Coemansia_sp._RSA_2598,260,False,40S ribosomal protein S3,LPJ75_001229
+RPS3|Vaccinium_darrowii,RPS3,Vaccinium_darrowii,397,True,hypothetical protein,Vadar_003386
+RPS3|Tulasnella_sp._424,RPS3,Tulasnella_sp._424,263,False,40S ribosomal protein S3,FRC04_005370
+RPS3|Amblyraja_radiata,RPS3,Amblyraja_radiata,245,False,40S ribosomal protein S3,116974565
+RPS3|Macrolepiota_fuliginosa_MF-IS2,RPS3,Macrolepiota_fuliginosa_MF-IS2,261,False,ribosomal protein S3,P691DRAFT_693867
+RPS3|Balaenoptera_musculus,RPS3,Balaenoptera_musculus,243,False,Small ribosomal subunit protein uS3,118892356
+RPS3|Coemansia_sp._RSA_2705,RPS3,Coemansia_sp._RSA_2705,245,False,40S ribosomal protein S3,IWW54_004692
+RPS3|Nicotiana_attenuata,RPS3,Nicotiana_attenuata,248,False,40S ribosomal protein S3,109228525
+RPS3|Ammospiza_nelsoni,RPS3,Ammospiza_nelsoni,243,False,small ribosomal subunit protein uS3,132069931
+RPS3|Cryptococcus_neoformans_var._grubii_Br795,RPS3,Cryptococcus_neoformans_var._grubii_Br795,252,False,40S ribosomal protein S3,C349_00115
+RPS3|Nannospalax_galili,RPS3,Nannospalax_galili,243,False,Small ribosomal subunit protein uS3,103743026
+RPS3|Anabarilius_grahami,RPS3,Anabarilius_grahami,342,False,40S ribosomal protein S3,DPX16_16645
+RPS3|Steccherinum_ochraceum,RPS3,Steccherinum_ochraceum,264,False,40S ribosomal protein S3,EIP91_008876
+RPS3|Cordyceps_militaris,RPS3,Cordyceps_militaris,258,False,cytoplasmic ribosomal subunit S3,A9K55_000096
+RPS3|Cryptococcus_amylolentus_CBS_6273,RPS3,Cryptococcus_amylolentus_CBS_6273,252,False,40S ribosomal protein S3,I350_03743
+RPS3|Cryptococcus_neoformans_var._grubii_Th84,RPS3,Cryptococcus_neoformans_var._grubii_Th84,252,False,40S ribosomal protein S3,C355_00112
+RPS3|Polyplosphaeria_fusca,RPS3,Polyplosphaeria_fusca,264,False,40S ribosomal protein S3,EJ04DRAFT_509368
+RPS3|Cordyceps_sp._RAO-2017,RPS3,Cordyceps_sp._RAO-2017,258,False,40S ribosomal protein S3,CDD83_2327
+RPS3|Tyrophagus_putrescentiae,RPS3,Tyrophagus_putrescentiae,241,False,40S ribosomal protein S3,TYRP_003993
+RPS3|Rucervus_eldii_siamensis,RPS3,Rucervus_eldii_siamensis,243,False,,GCA_034233915.1:g15502.t1
+RPS3|Neofusicoccum_parvum,RPS3,Neofusicoccum_parvum,266,False,40s ribosomal protein s3,NpNSSI1_00011021
+RPS3|Trichophyton_rubrum_MR1448,RPS3,Trichophyton_rubrum_MR1448,266,False,40S ribosomal protein,H110_07882
+GAPDH|Aureobasidium_pullulans_EXF-150,GAPDH,Aureobasidium_pullulans_EXF-150,337,False,Glyceraldehyde-3-phosphate dehydrogenase,M438DRAFT_344490
+GAPDH|Penicilliopsis_zonata_CBS_506.65,GAPDH,Penicilliopsis_zonata_CBS_506.65,362,False,glyceraldehyde-3-phosphate dehydrogenase (phosphorylating),ASPZODRAFT_23711
+GAPDH|Arvicola_amphibius,GAPDH,Arvicola_amphibius,620,True,"LOW QUALITY PROTEIN: glyceraldehyde-3-phosphate dehydrogenase, testis-specific-like",119807305
+GAPDH|Aspergillus_luchuensis_IFO_4308,GAPDH,Aspergillus_luchuensis_IFO_4308,336,False,Glyceraldehyde-3-phosphate dehydrogenase,AKAW_02920
+GAPDH|Fusarium_oxysporum_f._sp._conglutinans_race_2_54008,GAPDH,Fusarium_oxysporum_f._sp._conglutinans_race_2_54008,338,False,Glyceraldehyde-3-phosphate dehydrogenase,FOPG_07545
+GAPDH|Geranomyces_variabilis,GAPDH,Geranomyces_variabilis,349,False,glyceraldehyde-3-phosphate dehydrogenase 3,HDU90_005337
+GAPDH|Aphanomyces_cochlioides,GAPDH,Aphanomyces_cochlioides,339,False,hypothetical protein,AC1031_003915
+GAPDH|Nothobranchius_furzeri,GAPDH,Nothobranchius_furzeri,333,False,Glyceraldehyde-3-phosphate dehydrogenase,107379445
+GAPDH|Ustulina_deusta,GAPDH,Ustulina_deusta,337,False,glyceraldehyde 3-phosphate dehydrogenase,F4824DRAFT_84684
+GAPDH|Trametes_cubensis,GAPDH,Trametes_cubensis,344,False,hypothetical protein,ONZ51_g9186
+GAPDH|Flammula_alnicola,GAPDH,Flammula_alnicola,357,False,glyceraldehyde 3-phosphate dehydrogenase,BDZ97DRAFT_1910155
+GAPDH|Hypoxylon_sp._CI-4A,GAPDH,Hypoxylon_sp._CI-4A,337,False,Glyceraldehyde-3-phosphate dehydrogenase,M426DRAFT_10711
+GAPDH|Funneliformis_caledonium,GAPDH,Funneliformis_caledonium,303,False,Glyceraldehyde-3-phosphate dehydrogenase,FCALED_LOCUS1033
+GAPDH|Cladochytrium_replicatum,GAPDH,Cladochytrium_replicatum,344,False,hypothetical protein,BJ742DRAFT_203408
+GAPDH|Ephemera_danica,GAPDH,Ephemera_danica,335,False,hypothetical protein,B566_EDAN011728
+GAPDH|Alectoria_sarmentosa,GAPDH,Alectoria_sarmentosa,1126,False,Histone deacetylase hda1,ASARMPREDX12_004249
+GAPDH|Thamnidium_elegans,GAPDH,Thamnidium_elegans,338,False,glyceraldehyde-3-phosphate dehydrogenase 3,BDF21DRAFT_418482
+GAPDH|Rhodosorus_marinus,GAPDH,Rhodosorus_marinus,340,False,hypothetical protein,NDN08_003052
+GAPDH|Idaea_aversata,GAPDH,Idaea_aversata,333,False,Glyceraldehyde/Erythrose phosphate dehydrogenase family,GAPDH
+GAPDH|Cavia_porcellus,GAPDH,Cavia_porcellus,399,False,Glyceraldehyde-3-phosphate dehydrogenase,100723162
+GAPDH|Rattus_norvegicus,GAPDH,Rattus_norvegicus,432,False,Glyceraldehyde-3-phosphate dehydrogenase,GAPDHS
+GAPDH|Lasiommata_megera,GAPDH,Lasiommata_megera,347,False,,ENSLARG00005006980.1
+GAPDH|Mycena_belliae,GAPDH,Mycena_belliae,357,False,glyceraldehyde 3-phosphate dehydrogenase,B0H15DRAFT_953743
+GAPDH|Erannis_defoliaria,GAPDH,Erannis_defoliaria,332,False,,BRAKEREDFG00005005798.1
+GAPDH|Bactrocera_oleae,GAPDH,Bactrocera_oleae,353,False,glyceraldehyde-3-phosphate dehydrogenase 2,106617017
+GAPDH|Nicrophorus_vespilloides,GAPDH,Nicrophorus_vespilloides,371,False,glyceraldehyde-3-phosphate dehydrogenase 2-like isoform X1,108564968
+GAPDH|Pogona_vitticeps,GAPDH,Pogona_vitticeps,333,False,Glyceraldehyde-3-phosphate dehydrogenase,110084649
+GAPDH|Aspergillus_luchuensis,GAPDH,Aspergillus_luchuensis,412,False,glyceraldehyde-3-phosphate dehydrogenase (phosphorylating),AKAW2_61025A
+GAPDH|Plasmodium_falciparum_NF135_5.C10,GAPDH,Plasmodium_falciparum_NF135_5.C10,337,False,Glyceraldehyde-3-phosphate dehydrogenase,PFNF135_05644
+GAPDH|Synanthedon_myopaeformis,GAPDH,Synanthedon_myopaeformis,802,True,,PRPS2
+GAPDH|Oopsacas_minuta,GAPDH,Oopsacas_minuta,338,False,GAPDH,LOD99_14911
+GAPDH|Candida_albicans_P75063,GAPDH,Candida_albicans_P75063,335,False,glyceraldehyde-3-phosphate dehydrogenase,MGM_03145
+GAPDH|Candida_albicans_P78048,GAPDH,Candida_albicans_P78048,335,False,glyceraldehyde-3-phosphate dehydrogenase,MG3_03175
+GAPDH|Aureobasidium_subglaciale_EXF-2481,GAPDH,Aureobasidium_subglaciale_EXF-2481,337,False,Glyceraldehyde-3-phosphate dehydrogenase,AUEXF2481DRAFT_26053
+GAPDH|Falco_tinnunculus,GAPDH,Falco_tinnunculus,333,False,Glyceraldehyde-3-phosphate dehydrogenase,GAPDH
+GAPDH|Halteromyces_radiatus,GAPDH,Halteromyces_radiatus,333,False,glyceraldehyde-3-phosphate dehydrogenase 2,BX664DRAFT_340965
+GAPDH|Thelocarpon_impressellum,GAPDH,Thelocarpon_impressellum,360,False,hypothetical protein,M1832_001256
+GAPDH|Rusa_alfredi,GAPDH,Rusa_alfredi,397,False,,GCA_038501445.1:g2402.t1
+GAPDH|Alsophila_aescularia,GAPDH,Alsophila_aescularia,332,False,Glyceraldehyde/Erythrose phosphate dehydrogenase family,GAPDH
+GAPDH|Balearica_regulorum_gibbericeps,GAPDH,Balearica_regulorum_gibbericeps,357,False,glyceraldehyde-3-phosphate dehydrogenase,104630467
+GAPDH|Rhodotorula_toruloides_ATCC_204091,GAPDH,Rhodotorula_toruloides_ATCC_204091,296,True,Glyceraldehyde-3-phosphate dehydrogenase,RTG_02611
+GAPDH|Leucosporidium_creatinivorum,GAPDH,Leucosporidium_creatinivorum,374,False,glyceraldehyde-3-phosphate dehydrogenase (phosphorylating),BCR35DRAFT_288976
+GAPDH|Thryonomys_swinderianus,GAPDH,Thryonomys_swinderianus,392,False,,GCA_041154305.1:g11328.t1
+GAPDH|Penicillium_rubens,GAPDH,Penicillium_rubens,337,False,hypothetical protein,E8E15_004595
+GAPDH|Drepana_falcataria,GAPDH,Drepana_falcataria,1028,True,,ARID4B
+GAPDH|Mycena_latifolia,GAPDH,Mycena_latifolia,335,False,glyceraldehyde 3-phosphate dehydrogenase,FB451DRAFT_597188
+GAPDH|Tympanuchus_pallidicinctus,GAPDH,Tympanuchus_pallidicinctus,333,False,glyceraldehyde-3-phosphate dehydrogenase,128089857
+GAPDH|Entophlyctis_luteolus,GAPDH,Entophlyctis_luteolus,338,False,hypothetical protein,HDU83_001402
+GAPDH|Gerris_lacustris,GAPDH,Gerris_lacustris,338,False,,BRAKERPZDG00000020237.1
+GAPDH|Acleris_literana,GAPDH,Acleris_literana,917,True,,MAP3K19
+GAPDH|Plasmodium_cynomolgi_strain_B,GAPDH,Plasmodium_cynomolgi_strain_B,337,False,Glyceraldehyde-3-phosphate dehydrogenase,PCYB_125230
+GAPDH|Apodemus_sylvaticus,GAPDH,Apodemus_sylvaticus,463,False,"glyceraldehyde-3-phosphate dehydrogenase, testis-specific isoform X2",127671463
+GAPDH|Fragaria_vesca_subsp._vesca,GAPDH,Fragaria_vesca_subsp._vesca,348,False,"glyceraldehyde-3-phosphate dehydrogenase, cytosolic-like",101301120
+GAPDH|Verticillium_dahliae_VDG1,GAPDH,Verticillium_dahliae_VDG1,338,False,Putative alpha-N-arabinofuranosidase C,VdG1_00885
+GAPDH|Powellomyces_hirtus,GAPDH,Powellomyces_hirtus,337,False,hypothetical protein,DFJ77DRAFT_46560
+GAPDH|Candidula_unifasciata,GAPDH,Candidula_unifasciata,337,False,Glyceraldehyde-3-phosphate dehydrogenase,CUNI_LOCUS4014
+GAPDH|Biomphalaria_pfeifferi,GAPDH,Biomphalaria_pfeifferi,334,False,glyceraldehyde-3-phosphate dehydrogenase,Bpfe_020535
+GAPDH|Pammene_fasciana,GAPDH,Pammene_fasciana,362,True,,PRPS1
+GAPDH|Rhizoctonia_solani_AG-1_IB,GAPDH,Rhizoctonia_solani_AG-1_IB,348,False,Glyceraldehyde-3-phosphate dehydrogenase,RSOLAG1IB_07616
+GAPDH|Nannochloropsis_salina_CCMP1776,GAPDH,Nannochloropsis_salina_CCMP1776,360,False,Glyceraldehyde-3-phosphate dehydrogenase,NSK_000197
+GAPDH|Fusarium_oxysporum_f._sp._radicis-lycopersici_26381,GAPDH,Fusarium_oxysporum_f._sp._radicis-lycopersici_26381,338,False,glyceraldehyde 3-phosphate dehydrogenase,FOCG_06632
+GAPDH|Exophiala_sideris,GAPDH,Exophiala_sideris,337,False,Glyceraldehyde-3-phosphate dehydrogenase,PV11_02810
+GAPDH|Acomys_cahirinus,GAPDH,Acomys_cahirinus,171,True,,ENSACHG00000007527.1
+GAPDH|Tulasnella_calospora_MUT_4182,GAPDH,Tulasnella_calospora_MUT_4182,349,False,Glyceraldehyde-3-phosphate dehydrogenase,M407DRAFT_120439
+GAPDH|Diabrotica_balteata,GAPDH,Diabrotica_balteata,443,False,Glyceraldehyde-3-phosphate dehydrogenase,MAP2K4
+GAPDH|Ogataea_parapolymorpha,GAPDH,Ogataea_parapolymorpha,335,False,hypothetical protein,KL916_002641
+GAPDH|Kazachstania_naganishii_CBS_8797,GAPDH,Kazachstania_naganishii_CBS_8797,201,False,Glyceraldehyde 3-phosphate dehydrogenase catalytic domain-containing protein,KNAG_0F03780
+GAPDH|Phlyctochytrium_arcticum,GAPDH,Phlyctochytrium_arcticum,349,False,"glyceraldehyde-3-phosphate dehydrogenase, type I",DFS34DRAFT_230656
+GAPDH|Aureobasidium_namibiae_CBS_147.97,GAPDH,Aureobasidium_namibiae_CBS_147.97,337,False,Glyceraldehyde-3-phosphate dehydrogenase,M436DRAFT_78519
+GAPDH|Dichotomocladium_elegans,GAPDH,Dichotomocladium_elegans,339,False,glyceraldehyde-3-phosphate dehydrogenase,BX666DRAFT_1946152
+GAPDH|Tetrapisispora_phaffii_CBS_4417,GAPDH,Tetrapisispora_phaffii_CBS_4417,332,False,Glyceraldehyde-3-phosphate dehydrogenase,TPHA_0A04720
+GAPDH|Obelidium_mucronatum,GAPDH,Obelidium_mucronatum,337,False,hypothetical protein,BDR26DRAFT_915015
+GAPDH|Akanthomyces_lecanii_RCEF_1005,GAPDH,Akanthomyces_lecanii_RCEF_1005,338,False,Glyceraldehyde-3-phosphate dehydrogenase,LEL_03001
+GAPDH|Ciccaba_nigrolineata,GAPDH,Ciccaba_nigrolineata,325,False,Glyceraldehyde-3-phosphate dehydrogenase,CICNIG_R03264
+GAPDH|Schaereria_dolodes,GAPDH,Schaereria_dolodes,283,False,glycerol-3-phosphate dehydrogenase,MMC06_005368
+GAPDH|Mycena_metata,GAPDH,Mycena_metata,295,False,hypothetical protein,B0H16DRAFT_1538972
+GAPDH|Daldinia_loculata,GAPDH,Daldinia_loculata,337,False,glyceraldehyde-3-phosphate dehydrogenase,F4817DRAFT_313717
+GAPDH|Monosporascus_sp._mg162,GAPDH,Monosporascus_sp._mg162,337,False,Glyceraldehyde-3-phosphate dehydrogenase,DL768_003758
+GAPDH|Indicator_indicator,GAPDH,Indicator_indicator,333,False,glyceraldehyde-3-phosphate dehydrogenase,128971482
+GAPDH|Aspergillus_sergii,GAPDH,Aspergillus_sergii,338,False,Glyceraldehyde-3-phosphate dehydrogenase,BDV39DRAFT_205862
+GAPDH|Cynocephalus_volans,GAPDH,Cynocephalus_volans,120,True,,GCA_027409185.1:g2367.t1
+GAPDH|Enterospora_canceri,GAPDH,Enterospora_canceri,328,False,glyceraldehyde-3-phosphate dehydrogenase (phosphorylating),ECANGB1_38
+GAPDH|Zeuzera_pyrina,GAPDH,Zeuzera_pyrina,773,True,,BRAKERZPYG00000005657.1
+GAPDH|Operophtera_brumata,GAPDH,Operophtera_brumata,267,False,,BRAKEROBRG00005001224.1
+GAPDH|Mycena_floridula,GAPDH,Mycena_floridula,336,False,glyceraldehyde 3-phosphate dehydrogenase,C8J56DRAFT_927712
+GAPDH|Rattus_rattus,GAPDH,Rattus_rattus,433,False,"glyceraldehyde-3-phosphate dehydrogenase, testis-specific isoform X1",116892300
+GAPDH|Ilyonectria_robusta,GAPDH,Ilyonectria_robusta,338,False,glyceraldehyde-3-phosphate dehydrogenase,BGZ61DRAFT_350642
+GAPDH|Meriones_unguiculatus,GAPDH,Meriones_unguiculatus,411,False,"glyceraldehyde-3-phosphate dehydrogenase, testis-specific",110551561
+GAPDH|Myotis_brandtii,GAPDH,Myotis_brandtii,414,False,"glyceraldehyde-3-phosphate dehydrogenase, testis-specific",102259967
+GAPDH|Corythaeola_cristata,GAPDH,Corythaeola_cristata,164,False,G3P dehydrogenase,CORCRI_R08539
+GAPDH|Plasmodium_falciparum_FCH_4,GAPDH,Plasmodium_falciparum_FCH_4,300,False,Glyceraldehyde-3-phosphate dehydrogenase,PFFCH_05012
+GAPDH|Elysia_marginata,GAPDH,Elysia_marginata,319,False,glyceraldehyde-3-phosphate dehydrogenase-like,ElyMa_000284600
+GAPDH|Naumovozyma_dairenensis_CBS_421,GAPDH,Naumovozyma_dairenensis_CBS_421,332,False,Glyceraldehyde-3-phosphate dehydrogenase,NDAI_0C03120
+GAPDH|Terfezia_boudieri_ATCC_MYA-4762,GAPDH,Terfezia_boudieri_ATCC_MYA-4762,412,False,Glyceraldehyde-3-phosphate dehydrogenase,L211DRAFT_826822
+GAPDH|Wickerhamomyces_ciferrii,GAPDH,Wickerhamomyces_ciferrii,334,False,glyceraldehyde 3-phosphate dehydrogenase,BN7_5327
+GAPDH|Corythaixoides_concolor,GAPDH,Corythaixoides_concolor,325,False,Glyceraldehyde-3-phosphate dehydrogenase,CORCON_R08135
+GAPDH|Archips_xylosteana,GAPDH,Archips_xylosteana,332,False,,BRAKERIALG00005003640.1
+GAPDH|Sousa_chinensis,GAPDH,Sousa_chinensis,333,False,,GCA_007760645.1:g10067.t1
+GAPDH|Metarhizium_album_ARSEF_1941,GAPDH,Metarhizium_album_ARSEF_1941,338,False,Glyceraldehyde-3-phosphate dehydrogenase,MAM_01039
+GAPDH|Apiotrichum_porosum,GAPDH,Apiotrichum_porosum,338,False,Glyceraldehyde-3-phosphate dehydrogenase,EHS24_001770
+GAPDH|Euphydryas_editha,GAPDH,Euphydryas_editha,865,True,,EEDITHA_LOCUS8479
+GAPDH|Mus_pahari,GAPDH,Mus_pahari,452,False,"glyceraldehyde-3-phosphate dehydrogenase, testis-specific",110332267
+GAPDH|Gymnopilus_junonius,GAPDH,Gymnopilus_junonius,341,False,Glyceraldehyde-3-phosphate dehydrogenase,CPB84DRAFT_995361
+GAPDH|Lobulomyces_angularis,GAPDH,Lobulomyces_angularis,1014,True,hypothetical protein,HDU92_001044
+GAPDH|Candida_albicans_P76067,GAPDH,Candida_albicans_P76067,335,False,glyceraldehyde-3-phosphate dehydrogenase,MGQ_03132
+GAPDH|Pholiota_conissans,GAPDH,Pholiota_conissans,334,False,Glyceraldehyde-3-phosphate dehydrogenase,BDN70DRAFT_905826
+GAPDH|Pseudohyphozyma_bogoriensis,GAPDH,Pseudohyphozyma_bogoriensis,384,False,"glyceraldehyde-3-phosphate dehydrogenase, type I",MNV49_005161
+GAPDH|Edhazardia_aedis_USNM_41457,GAPDH,Edhazardia_aedis_USNM_41457,324,False,Glyceraldehyde-3-phosphate dehydrogenase,EDEG_03190
+GAPDH|Drosophila_jambulina,GAPDH,Drosophila_jambulina,343,False,hypothetical protein,KR054_010373
+GAPDH|Camponotus_floridanus,GAPDH,Camponotus_floridanus,354,False,Glyceraldehyde/Erythrose phosphate dehydrogenase family,LOC105250604
+GAPDH|Apotomis_turbidana,GAPDH,Apotomis_turbidana,332,False,,GAPDH
+GAPDH|Erebia_ligea,GAPDH,Erebia_ligea,868,True,,BRAKERELEG00015006287.1
+GAPDH|Bicyclus_anynana,GAPDH,Bicyclus_anynana,332,False,Glyceraldehyde-3-phosphate dehydrogenase,LOC112045331
+GAPDH|Physocladia_obscura,GAPDH,Physocladia_obscura,337,False,hypothetical protein,HK100_010975
+GAPDH|Fusarium_odoratissimum_NRRL_54006,GAPDH,Fusarium_odoratissimum_NRRL_54006,338,False,Glyceraldehyde-3-phosphate dehydrogenase,FOIG_03322
+GAPDH|Plasmodium_vivax_Brazil_I,GAPDH,Plasmodium_vivax_Brazil_I,337,False,Glyceraldehyde-3-phosphate dehydrogenase,PVBG_01515
+GAPDH|Hypsopygia_costalis,GAPDH,Hypsopygia_costalis,907,True,,BRAKERHCSG00000004761.2
+GAPDH|Fusarium_oxysporum_f._sp._pisi_HDV247,GAPDH,Fusarium_oxysporum_f._sp._pisi_HDV247,338,False,Glyceraldehyde-3-phosphate dehydrogenase,FOVG_07696
+GAPDH|Brettanomyces_bruxellensis_AWRI1499,GAPDH,Brettanomyces_bruxellensis_AWRI1499,295,False,Glyceraldehyde-3-phosphate dehydrogenase,AWRI1499_2537
+GAPDH|Bombus_bifarius,GAPDH,Bombus_bifarius,333,False,Glyceraldehyde-3-phosphate dehydrogenase,117205306
+GAPDH|Verticillium_nonalfalfae,GAPDH,Verticillium_nonalfalfae,338,False,Glyceraldehyde-3-phosphate dehydrogenase,D7B24_004044
+GAPDH|Hirsutella_minnesotensis_3608,GAPDH,Hirsutella_minnesotensis_3608,338,False,Glyceraldehyde-3-phosphate dehydrogenase,HIM_00238
+GAPDH|Microtus_fortis,GAPDH,Microtus_fortis,401,False,"glyceraldehyde-3-phosphate dehydrogenase, testis-specific",126486657
+GAPDH|Physella_acuta,GAPDH,Physella_acuta,395,False,glyceraldehyde-3-phosphate dehydrogenase-like,131944476
+GAPDH|Hippocampus_comes,GAPDH,Hippocampus_comes,333,False,Glyceraldehyde-3-phosphate dehydrogenase,109515387
+GAPDH|Zymoseptoria_brevis,GAPDH,Zymoseptoria_brevis,338,False,Glyceraldehyde-3-phosphate dehydrogenase,TI39_contig298g00029
+GAPDH|Spinellus_fusiger,GAPDH,Spinellus_fusiger,337,False,glyceraldehyde-3-phosphate dehydrogenase 3,BDF14DRAFT_1737629
+GAPDH|Fusarium_sp._NRRL_52700,GAPDH,Fusarium_sp._NRRL_52700,338,False,Glyceraldehyde-3-phosphate dehydrogenase,F52700_10515
+GAPDH|Paragonimus_kellicotti,GAPDH,Paragonimus_kellicotti,337,False,hypothetical protein,AHF37_12506
+GAPDH|Pandemis_corylana,GAPDH,Pandemis_corylana,332,False,,BRAKERELYG00000004930.1
+GAPDH|Hirsutella_rhossiliensis,GAPDH,Hirsutella_rhossiliensis,338,False,Glyceraldehyde-3-phosphate dehydrogenase,HRG_02463
+GAPDH|Massariosphaeria_phaeospora,GAPDH,Massariosphaeria_phaeospora,337,False,Glyceraldehyde-3-phosphate dehydrogenase,BDV95DRAFT_624801
+GAPDH|Laccaria_amethystina_LaAM-08-1,GAPDH,Laccaria_amethystina_LaAM-08-1,342,False,Glyceraldehyde-3-phosphate dehydrogenase,K443DRAFT_390888
+GAPDH|Motacilla_alba_alba,GAPDH,Motacilla_alba_alba,527,True,glyceraldehyde-3-phosphate dehydrogenase isoform X1,119709399
+GAPDH|Metarhizium_rileyi_RCEF_4871,GAPDH,Metarhizium_rileyi_RCEF_4871,420,False,Glyceraldehyde-3-phosphate dehydrogenase,NOR_04366
+GAPDH|Ecliptopera_silaceata,GAPDH,Ecliptopera_silaceata,332,False,"Glyceraldehyde 3-phosphate dehydrogenase, NAD(P) binding domain",GAPDH
+GAPDH|Funneliformis_geosporum,GAPDH,Funneliformis_geosporum,335,False,Glyceraldehyde/Erythrose phosphate dehydrogenase family,FWILDA_LOCUS7301
+GAPDH|Erythrocercus_mccallii,GAPDH,Erythrocercus_mccallii,325,False,Glyceraldehyde-3-phosphate dehydrogenase,ERYMCC_R02620
+GAPDH|Letharia_columbiana,GAPDH,Letharia_columbiana,338,False,Glyceraldehyde-3-phosphate dehydrogenase,HO173_010453
+GAPDH|Aspergillus_wentii_DTO_134E9,GAPDH,Aspergillus_wentii_DTO_134E9,337,False,Glyceraldehyde-3-phosphate dehydrogenase,ASPWEDRAFT_174205
+GAPDH|Hibiscus_syriacus,GAPDH,Hibiscus_syriacus,215,False,"glyceraldehyde-3-phosphate dehydrogenase 3, cytosolic-like",120215316
+GAPDH|Pilobolus_umbonatus,GAPDH,Pilobolus_umbonatus,339,False,glyceraldehyde-3-phosphate dehydrogenase 1,BDB01DRAFT_835479
+GAPDH|Eremothecium_gossypii_FDAG1,GAPDH,Eremothecium_gossypii_FDAG1,331,False,FAER031Cp,FAGOS_FAER031C
+GAPDH|Thelazia_callipaeda,GAPDH,Thelazia_callipaeda,335,False,Glyceraldehyde-3-phosphate dehydrogenase,TCLT_LOCUS5346
+GAPDH|Peromyscus_leucopus,GAPDH,Peromyscus_leucopus,417,False,"glyceraldehyde-3-phosphate dehydrogenase, testis-specific isoform X1",114681650
+GAPDH|Apotomis_betuletana,GAPDH,Apotomis_betuletana,332,False,Glyceraldehyde/Erythrose phosphate dehydrogenase family,GAPDH
+GAPDH|Mycena_rosella,GAPDH,Mycena_rosella,335,False,glyceraldehyde-3-phosphate dehydrogenase,B0H17DRAFT_1136643
+GAPDH|Dipodomys_spectabilis,GAPDH,Dipodomys_spectabilis,334,False,glyceraldehyde-3-phosphate dehydrogenase-like,122106813
+GAPDH|Candida_albicans_P57072,GAPDH,Candida_albicans_P57072,335,False,glyceraldehyde-3-phosphate dehydrogenase,MG5_03163
+GAPDH|Bondarzewia_mesenterica,GAPDH,Bondarzewia_mesenterica,402,False,Glyceraldehyde-3-phosphate dehydrogenase,EW146_g4374
+GAPDH|Sanghuangporus_baumii,GAPDH,Sanghuangporus_baumii,339,False,Glyceraldehyde-3-phosphate dehydrogenase,A7U60_g1287
+GAPDH|Fusarium_oxysporum_f._sp._conglutinans,GAPDH,Fusarium_oxysporum_f._sp._conglutinans,367,False,Glyceraldehyde-3-phosphate dehydrogenase 2,FocnCong_v003122
+GAPDH|Hypoxylon_fuscum,GAPDH,Hypoxylon_fuscum,337,False,glyceraldehyde-3-phosphate dehydrogenase,F4819DRAFT_495171
+GAPDH|Hypoxylon_rubiginosum,GAPDH,Hypoxylon_rubiginosum,336,False,glyceraldehyde-3-phosphate dehydrogenase,F4820DRAFT_407861
+GAPDH|Postia_placenta,GAPDH,Postia_placenta,357,False,Glyceraldehyde-3-phosphate dehydrogenase,IEO21_04425
+GAPDH|Eudemis_profundana,GAPDH,Eudemis_profundana,332,False,,BRAKEREPOG00005000643.1
+GAPDH|Eupeodes_luniger,GAPDH,Eupeodes_luniger,332,False,,BRAKERRHKG00000027263.1
+GAPDH|Melanargia_galathea,GAPDH,Melanargia_galathea,229,True,,ENSMGTG00000005600.1
+GAPDH|Cydia_splendana,GAPDH,Cydia_splendana,433,False,,ENSCDEG00005008975.1
+GAPDH|Plasmodium_falciparum_Tanzania_2000708,GAPDH,Plasmodium_falciparum_Tanzania_2000708,337,False,Glyceraldehyde-3-phosphate dehydrogenase,PFTANZ_05614
+GAPDH|Aspergillus_affinis,GAPDH,Aspergillus_affinis,336,False,glyceraldehyde 3-phosphate dehydrogenase,KD926_006184
+GAPDH|Gregarina_niphandrodes,GAPDH,Gregarina_niphandrodes,339,False,Glyceraldehyde-3-phosphate dehydrogenase,GNI_004760
+GAPDH|Ranitomeya_imitator,GAPDH,Ranitomeya_imitator,407,False,,RIMI_LOCUS20464794
+GAPDH|Dissostichus_eleginoides,GAPDH,Dissostichus_eleginoides,335,False,Glyceraldehyde-3-phosphate dehydrogenase 2,NQZ68_039922
+GAPDH|Sporodiniella_umbellata,GAPDH,Sporodiniella_umbellata,338,False,glyceraldehyde-3-phosphate dehydrogenase 2,BY458DRAFT_532775
+GAPDH|Athrips_mouffetella,GAPDH,Athrips_mouffetella,332,False,,BRAKERRMFG00000010219.1
+GAPDH|Geoglossum_simile,GAPDH,Geoglossum_simile,208,True,hypothetical protein,M1840_000044
+GAPDH|Plasmodium_vivax_Mauritania_I,GAPDH,Plasmodium_vivax_Mauritania_I,337,False,Glyceraldehyde-3-phosphate dehydrogenase,PVMG_00448
+GAPDH|Maylandia_zebra,GAPDH,Maylandia_zebra,333,False,Glyceraldehyde-3-phosphate dehydrogenase,101474674
+GAPDH|Armillaria_solidipes,GAPDH,Armillaria_solidipes,353,False,glyceraldehyde-3-phosphate dehydrogenase (phosphorylating),ARMSODRAFT_954748
+GAPDH|Gamsiella_multidivaricata,GAPDH,Gamsiella_multidivaricata,336,False,glyceraldehyde-3-phosphate dehydrogenase,BC939DRAFT_470075
+GAPDH|Teleiodes_luculella,GAPDH,Teleiodes_luculella,892,True,,BRAKERITEG00005018495.1
+GAPDH|Ramularia_collo-cygni,GAPDH,Ramularia_collo-cygni,338,False,Glyceraldehyde-3-phosphate dehydrogenase,RCC_05908
+GAPDH|Fusarium_pseudograminearum_CS3096,GAPDH,Fusarium_pseudograminearum_CS3096,338,False,Glyceraldehyde-3-phosphate dehydrogenase,FPSE_00970
+GAPDH|Anania_crocealis,GAPDH,Anania_crocealis,796,True,,BRAKERNASG00000006771.1
+GAPDH|Agriopis_aurantiaria,GAPDH,Agriopis_aurantiaria,332,False,,GAPDH
+GAPDH|Varroa_destructor,GAPDH,Varroa_destructor,334,False,Glyceraldehyde-3-phosphate dehydrogenase,111247883
+GAPDH|Dactylonectria_estremocensis,GAPDH,Dactylonectria_estremocensis,338,False,Glyceraldehyde-3-phosphate dehydrogenase,B0J13DRAFT_436401
+GAPDH|Rodentolepis_nana,GAPDH,Rodentolepis_nana,338,False,Glyceraldehyde-3-phosphate dehydrogenase,HNAJ_LOCUS784
+GAPDH|Penelope_pileata,GAPDH,Penelope_pileata,325,False,Glyceraldehyde-3-phosphate dehydrogenase,PENPIL_R13570
+GAPDH|Synanthedon_andrenaeformis,GAPDH,Synanthedon_andrenaeformis,778,True,,ENSSADG00000003397.1
+GAPDH|Porites_lobata,GAPDH,Porites_lobata,194,True,,PLOB_00039805
+GAPDH|Candida_albicans_GC75,GAPDH,Candida_albicans_GC75,335,False,glyceraldehyde-3-phosphate dehydrogenase,MG1_03154
+GAPDH|Cryptotermes_secundus,GAPDH,Cryptotermes_secundus,332,False,Glyceraldehyde-3-phosphate dehydrogenase,LOC111869676
+GAPDH|Lactarius_quietus,GAPDH,Lactarius_quietus,336,False,glyceraldehyde 3-phosphate dehydrogenase,EI94DRAFT_1811913
+GAPDH|Fusarium_musae,GAPDH,Fusarium_musae,338,False,Glyceraldehyde-3-phosphate dehydrogenase,J7337_006959
+GAPDH|Gaertneriomyces_semiglobifer,GAPDH,Gaertneriomyces_semiglobifer,336,False,glyceraldehyde-3-phosphate dehydrogenase 2,BC832DRAFT_547931
+GAPDH|Endotricha_flammealis,GAPDH,Endotricha_flammealis,612,True,,BRAKEREFAG00010005155.1
+GAPDH|Naumovozyma_castellii_CBS_4309,GAPDH,Naumovozyma_castellii_CBS_4309,332,False,Glyceraldehyde-3-phosphate dehydrogenase,NCAS_0A07140
+GAPDH|Mesembrinibis_cayennensis,GAPDH,Mesembrinibis_cayennensis,325,False,Glyceraldehyde-3-phosphate dehydrogenase,MESCAY_R06446
+GAPDH|Candida_albicans_19F,GAPDH,Candida_albicans_19F,335,False,glyceraldehyde-3-phosphate dehydrogenase,MEY_03121
+GAPDH|Cydia_strobilella,GAPDH,Cydia_strobilella,370,False,,GAPDH
+GAPDH|Entomortierella_chlamydospora,GAPDH,Entomortierella_chlamydospora,335,False,Glyceraldehyde-3-phosphate dehydrogenase,BGZ79_006249
+GAPDH|Aphanomyces_astaci,GAPDH,Aphanomyces_astaci,340,False,Glyceraldehyde-3-phosphate dehydrogenase,H257_01467
+GAPDH|Elegia_similella,GAPDH,Elegia_similella,332,False,,BRAKERIEAG00000004886.1
+GAPDH|Trichoplax_adhaerens,GAPDH,Trichoplax_adhaerens,334,False,Glyceraldehyde-3-phosphate dehydrogenase,TRIADDRAFT_64020
+GAPDH|Drechslerella_stenobrocha_248,GAPDH,Drechslerella_stenobrocha_248,336,False,Glyceraldehyde-3-phosphate dehydrogenase,DRE_07482
+GAPDH|Reinhardtius_hippoglossoides,GAPDH,Reinhardtius_hippoglossoides,338,False,,GAPDH
+GAPDH|Coemansia_asiatica,GAPDH,Coemansia_asiatica,318,False,hypothetical protein,LPJ64_001434
+GAPDH|Aphelenchoides_fujianensis,GAPDH,Aphelenchoides_fujianensis,341,False,Glyceraldehyde-3-phosphate dehydrogenase,M3Y99_01890400
+CYTC|Silurus_asotus,CYTC,Silurus_asotus,204,True,cytochrome c,C0J50_4106
+CYTC|Saccharomyces_cerevisiae_YJM1573,CYTC,Saccharomyces_cerevisiae_YJM1573,113,False,Cyc7p,H833_YJM1573E00037
+CYTC|Sapayoa_aenigma,CYTC,Sapayoa_aenigma,105,False,Cytochrome c,SAPAEN_R09692
+CYTC|Aureobasidium_sp._EXF-8845,CYTC,Aureobasidium_sp._EXF-8845,111,False,hypothetical protein,E4T44_03471
+CYTC|Pyrgilauda_ruficollis,CYTC,Pyrgilauda_ruficollis,105,False,cytochrome c,121352975
+CYTC|Phthorimaea_operculella,CYTC,Phthorimaea_operculella,108,False,cytochrome c domain-containing protein,NE865_05839
+CYTC|Hypomontagnella_submonticulosa,CYTC,Hypomontagnella_submonticulosa,108,False,cytochrome c-like domain-containing protein,GGS26DRAFT_45287
+CYTC|Fusarium_oxysporum_f._sp._pisi_HDV247,CYTC,Fusarium_oxysporum_f._sp._pisi_HDV247,106,False,Electron carrier protein,FOVG_10997
+CYTC|Colletotrichum_viniferum,CYTC,Colletotrichum_viniferum,106,False,Cytochrome c,CGCVW01_v008081
+CYTC|Spizaetus_tyrannus,CYTC,Spizaetus_tyrannus,105,False,Cytochrome c,SPITYR_R12801
+CYTC|Idaea_dimidiata,CYTC,Idaea_dimidiata,108,False,,BRAKERIDDG00000008657.1
+CYTC|Diplocarpon_rosae,CYTC,Diplocarpon_rosae,126,True,cytochrome c,BUE80_DR007906
+CYTC|Malassezia_sympodialis_ATCC_42132,CYTC,Malassezia_sympodialis_ATCC_42132,108,False,Electron carrier protein,MSYG_1614
+CYTC|Rhodotorula_diobovata,CYTC,Rhodotorula_diobovata,108,False,Electron carrier protein,DMC30DRAFT_387130
+CYTC|Myodes_glareolus,CYTC,Myodes_glareolus,102,False,"cytochrome c, somatic-like",125404714
+CYTC|Fissipunctia_ypsillon,CYTC,Fissipunctia_ypsillon,108,False,,BRAKERINSG00005006051.1
+CYTC|Moesziomyces_antarcticus,CYTC,Moesziomyces_antarcticus,108,False,Electron carrier protein,PSANT_02810
+CYTC|Mortierella_sp._GBA39,CYTC,Mortierella_sp._GBA39,105,False,iso-1-cytochrome c,BGX30_004576
+CYTC|Vicia_faba,CYTC,Vicia_faba,112,False,,VFH_I390800
+CYTC|Martensiomyces_pterosporus,CYTC,Martensiomyces_pterosporus,107,False,cytochrome c,GQ54DRAFT_295090
+CYTC|[Candida]_pseudohaemulonii,CYTC,[Candida]_pseudohaemulonii,111,False,Electron carrier protein,C7M61_004477
+CYTC|Coemansia_sp._RSA_532,CYTC,Coemansia_sp._RSA_532,164,True,hypothetical protein,EV181_005317
+CYTC|Truncatella_angustata,CYTC,Truncatella_angustata,108,False,Electron carrier protein,BKA67DRAFT_582392
+CYTC|Sporodiniella_umbellata,CYTC,Sporodiniella_umbellata,107,False,cytochrome c,BY458DRAFT_485412
+CYTC|Molorchus_minor,CYTC,Molorchus_minor,104,False,hypothetical protein,NQ317_015252
+CYTC|Thalictrum_thalictroides,CYTC,Thalictrum_thalictroides,113,False,Electron carrier protein,FRX31_006068
+CYTC|Exophiala_oligosperma,CYTC,Exophiala_oligosperma,112,False,Electron carrier protein,PV06_08051
+CYTC|Penicillium_paradoxum,CYTC,Penicillium_paradoxum,114,False,hypothetical protein,N7457_007899
+CYTC|Amyelois_transitella,CYTC,Amyelois_transitella,108,False,cytochrome c,106142269
+CYTC|Amylostereum_chailletii,CYTC,Amylostereum_chailletii,107,False,cytochrome c-like domain-containing protein,OF83DRAFT_894858
+CYTC|Megalopta_genalis,CYTC,Megalopta_genalis,109,False,cytochrome c-2,117227284
+CYTC|Dendroctonus_ponderosae,CYTC,Dendroctonus_ponderosae,105,False,Cytochrome c domain-containing protein,Cyct
+CYTC|Blastobasis_lacticolella,CYTC,Blastobasis_lacticolella,108,False,,ENSBLAG00000005771.1
+CYTC|Macrophya_alboannulata,CYTC,Macrophya_alboannulata,103,False,,BRAKEROPYG00000004754.1
+CYTC|Pleurotus_ostreatus,CYTC,Pleurotus_ostreatus,108,False,Electron carrier protein,PC9H_009359
+CYTC|Fonsecaea_pedrosoi_CBS_271.37,CYTC,Fonsecaea_pedrosoi_CBS_271.37,154,True,Electron carrier protein,Z517_09800
+CYTC|Diospyros_lotus,CYTC,Diospyros_lotus,112,False,cytochrome c-like,127799239
+CYTC|Adalia_bipunctata,CYTC,Adalia_bipunctata,108,False,,ENSABPG00005009771.1
+CYTC|Squalus_suckleyi,CYTC,Squalus_suckleyi,104,False,,cycsb
+CYTC|Rhynchosporium_commune,CYTC,Rhynchosporium_commune,108,False,Electron carrier protein,RCO7_03350
+CYTC|Trizodia_sp._TS-e1964,CYTC,Trizodia_sp._TS-e1964,108,False,iso-1-cytochrome c,M1829_006674
+CYTC|Verticillium_dahliae_VdLs.17,CYTC,Verticillium_dahliae_VdLs.17,106,False,Electron carrier protein,VDAG_00910
+CYTC|Fusarium_proliferatum,CYTC,Fusarium_proliferatum,106,False,Electron carrier protein,FPRN_10679
+CYTC|Allomyces_javanicus,CYTC,Allomyces_javanicus,102,False,iso-1-cytochrome c,GGF32_007483
+CYTC|Armillaria_gallica,CYTC,Armillaria_gallica,108,False,Electron carrier protein,ARMGADRAFT_1054717
+CYTC|Boeremia_exigua,CYTC,Boeremia_exigua,108,False,cytochrome c-like domain-containing protein,C7974DRAFT_31569
+CYTC|Aspergillus_oryzae,CYTC,Aspergillus_oryzae,139,True,Electron carrier protein,OAory_01035800
+CYTC|Clonostachys_rhizophaga,CYTC,Clonostachys_rhizophaga,106,False,Cytochrome c domain-containing protein,CRHIZ90672A_00011525
+CYTC|Eudyptes_schlegeli,CYTC,Eudyptes_schlegeli,105,False,Cytochrome c,FQV10_0007787
+CYTC|Neurospora_crassa,CYTC,Neurospora_crassa,108,False,Electron carrier protein,GE21DRAFT_3204
+CYTC|Hypoxylon_sp._FL0890,CYTC,Hypoxylon_sp._FL0890,108,False,cytochrome c-like domain-containing protein,F5Y06DRAFT_271346
+CYTC|Lampris_incognitus,CYTC,Lampris_incognitus,105,False,cytochrome c-b,130120737
+CYTC|Russula_brevipes,CYTC,Russula_brevipes,108,False,cytochrome-c from the OXPHOS pathway,BC826DRAFT_1030301
+CYTC|Schizopora_paradoxa,CYTC,Schizopora_paradoxa,117,False,Electron carrier protein,SCHPADRAFT_849824
+CYTC|Striga_hermonthica,CYTC,Striga_hermonthica,112,False,Electron carrier protein,SHERM_14413
+CYTC|Hoolock_leuconedys,CYTC,Hoolock_leuconedys,102,False,,GCA_023748175.1:g18957.t1
+CYTC|Trichoderma_harzianum_CBS_226.95,CYTC,Trichoderma_harzianum_CBS_226.95,106,False,Cytochrome c domain-containing protein,M431DRAFT_2423
+CYTC|Claviceps_cyperi,CYTC,Claviceps_cyperi,119,False,iso-1-cytochrome c,E4U58_002947
+CYTC|Podochytrium_sp._JEL0797,CYTC,Podochytrium_sp._JEL0797,1067,True,iso-1-cytochrome c,HDU98_006710
+CYTC|Scheffersomyces_stipitis,CYTC,Scheffersomyces_stipitis,110,False,hypothetical protein,G9P44_002753
+CYTC|Pollenia_labialis,CYTC,Pollenia_labialis,107,False,,BRAKERTGBG00000014994.1
+CYTC|Dermochelys_coriacea,CYTC,Dermochelys_coriacea,105,False,cytochrome c iso-1/iso-2,119863580
+CYTC|Ustilago_maydis_521,CYTC,Ustilago_maydis_521,108,False,Electron carrier protein,UMAG_02708
+CYTC|Picochlorum_sp._BPE23,CYTC,Picochlorum_sp._BPE23,113,False,hypothetical protein,M9435_005790
+CYTC|Pygathrix_nigripes,CYTC,Pygathrix_nigripes,105,False,,GCA_023764695.1:g12106.t1
+CYTC|Neodiprion_virginianus,CYTC,Neodiprion_virginianus,137,True,,ENSNVRG00000005141.1
+CYTC|Drosophila_teissieri,CYTC,Drosophila_teissieri,105,False,,LOC122612288
+CYTC|Stachybotrys_chlorohalonata_IBT_40285,CYTC,Stachybotrys_chlorohalonata_IBT_40285,106,False,Cytochrome c domain-containing protein,S40285_03007
+CYTC|Coniochaeta_sp._PMI_546,CYTC,Coniochaeta_sp._PMI_546,154,True,cytochrome c,BR93DRAFT_928188
+CYTC|Monosporascus_ibericus,CYTC,Monosporascus_ibericus,108,False,Cytochrome c domain-containing protein,DL764_002269
+CYTC|Mycena_maculata,CYTC,Mycena_maculata,108,False,cytochrome c-like domain-containing protein,DFH07DRAFT_919048
+CYTC|Phaseolus_vulgaris,CYTC,Phaseolus_vulgaris,113,False,Cytochrome c domain-containing protein,PHAVU_002G036100g
+CYTC|Trichoderma_lentiforme,CYTC,Trichoderma_lentiforme,106,False,Cytochrome c domain-containing protein,CFAM422_000834
+CYTC|Phytophthora_lilii,CYTC,Phytophthora_lilii,112,False,unnamed protein product,Plil01_000803800
+CYTC|Colletotrichum_orbiculare_MAFF_240422,CYTC,Colletotrichum_orbiculare_MAFF_240422,106,False,Electron carrier protein,Cob_v004006
+CYTC|Clydaea_vesicula,CYTC,Clydaea_vesicula,108,False,iso-1-cytochrome c,HK099_007590
+CYTC|Cordyceps_javanica,CYTC,Cordyceps_javanica,173,True,Electron carrier protein,IF2G_06070
+CYTC|Dunaliella_salina,CYTC,Dunaliella_salina,103,False,cytochrome c,DUNSADRAFT_11938
+CYTC|Certhia_brachydactyla,CYTC,Certhia_brachydactyla,105,False,Cytochrome c,CERBRA_R11208
+CYTC|Phaeodactylum_tricornutum_CCAP_1055_1,CYTC,Phaeodactylum_tricornutum_CCAP_1055_1,104,False,Cytochrome c domain-containing protein,PHATR_20948
+CYTC|Hordeum_vulgare,CYTC,Hordeum_vulgare,113,False,hypothetical protein,ZWY2020_043447
+CYTC|Ustilago_hordei,CYTC,Ustilago_hordei,108,False,Electron carrier protein,NDA10_006979
+CYTC|Schistocerca_serialis_cubense,CYTC,Schistocerca_serialis_cubense,108,False,,LOC126457184
+CYTC|Triticum_aestivum,CYTC,Triticum_aestivum,112,False,Electron carrier protein,CFC21_026783
+CYTC|Loxospora_ochrophaea,CYTC,Loxospora_ochrophaea,113,False,iso-1-cytochrome c,MMC20_004108
+CYTC|Phlogophora_meticulosa,CYTC,Phlogophora_meticulosa,108,False,,ENSPASG00000002365.1
+CYTC|Coemansia_pectinata,CYTC,Coemansia_pectinata,109,False,iso-1-cytochrome c,GGI19_005297
+CYTC|Moesziomyces_aphidis,CYTC,Moesziomyces_aphidis,108,False,Electron carrier protein,PaG_00681
+CYTC|Bradysia_coprophila,CYTC,Bradysia_coprophila,108,False,cytochrome c-like,119073776
+CYTC|Mus_musculus_molossinus,CYTC,Mus_musculus_molossinus,105,False,,CYCS
+CYTC|Dichotomocladium_elegans,CYTC,Dichotomocladium_elegans,108,False,cytochrome c,BX666DRAFT_1971753
+CYTC|Cryptomeria_japonica,CYTC,Cryptomeria_japonica,112,False,cytochrome c,131050580
+CYTC|Deilephila_elpenor,CYTC,Deilephila_elpenor,108,False,,ENSXOAG00000002154.1
+CYTC|Acipenser_oxyrinchus_oxyrinchus,CYTC,Acipenser_oxyrinchus_oxyrinchus,105,False,cytochrome c,AOXY_G5671
+CYTC|Diachasma_alloeum,CYTC,Diachasma_alloeum,108,False,cytochrome c,107038137
+CYTC|Drosophila_mauritiana,CYTC,Drosophila_mauritiana,108,False,Electron carrier protein,LOC117135205
+CYTC|Apis_mellifera,CYTC,Apis_mellifera,108,False,Cytochrome c,CytC
+CYTC|Ligdia_adustata,CYTC,Ligdia_adustata,108,False,,BRAKERLADG00005004344.1
+CYTC|Colletotrichum_plurivorum,CYTC,Colletotrichum_plurivorum,106,False,Electron carrier protein,CPLU01_10317
+CYTC|Fibroporia_radiculosa,CYTC,Fibroporia_radiculosa,108,False,Cytochrome c domain-containing protein,FIBRA_09070
+CYTC|Lachnellula_willkommii,CYTC,Lachnellula_willkommii,166,True,Electron carrier protein,LAWI1_G006580
+CYTC|Citrus_sinensis,CYTC,Citrus_sinensis,112,False,Cytochrome c domain-containing protein,102618527
+CYTC|Suillus_subluteus,CYTC,Suillus_subluteus,108,False,cytochrome c-like domain-containing protein,F4604DRAFT_292584
+CYTC|Addax_nasomaculatus,CYTC,Addax_nasomaculatus,105,False,,GCA_044231825.1:g318.t1
+CYTC|Geosmithia_morbida,CYTC,Geosmithia_morbida,106,False,Cytochrome c domain-containing protein,GMORB2_1144
+CYTC|Heliosperma_pusillum,CYTC,Heliosperma_pusillum,112,False,hypothetical protein,KSS87_010382
+CYTC|Neofusicoccum_parvum,CYTC,Neofusicoccum_parvum,108,False,cytochrome c,NpNSSI1_00003410
+CYTC|Aspergillus_niger_CBS_513.88,CYTC,Aspergillus_niger_CBS_513.88,112,False,Electron carrier protein,ANI_1_250024
+CYTC|Lachancea_quebecensis,CYTC,Lachancea_quebecensis,110,False,Electron carrier protein,LAQU0_S03e01794g
+CYTC|Alternaria_alternata,CYTC,Alternaria_alternata,108,False,Electron carrier protein,AA0117_g7486
+CYTC|Salix_dunnii,CYTC,Salix_dunnii,113,False,Cytochrome c domain-containing protein,SADUNF_Sadunf13G0081400
+CYTC|Eschrichtius_robustus,CYTC,Eschrichtius_robustus,105,False,hypothetical protein,J1605_001791
+CYTC|Baudoinia_panamericana_UAMH_10762,CYTC,Baudoinia_panamericana_UAMH_10762,111,False,Cytochrome c domain-containing protein,BAUCODRAFT_24482
+CYTC|Fusarium_oxysporum_f._sp._vasinfectum_25433,CYTC,Fusarium_oxysporum_f._sp._vasinfectum_25433,106,False,Electron carrier protein,FOTG_06963
+CYTC|Solanum_chilense,CYTC,Solanum_chilense,112,False,Cytochrome c domain-containing protein,EJD97_004996
+CYTC|Solea_solea,CYTC,Solea_solea,105,False,cytochrome c-b,131455416
+CYTC|Solenodon_paradoxus,CYTC,Solenodon_paradoxus,105,False,,GCA_004363575.1:g4308.t1
+CYTC|Fusarium_oxysporum_f._sp._melonis_26406,CYTC,Fusarium_oxysporum_f._sp._melonis_26406,106,False,Electron carrier protein,FOMG_08602
+CYTC|Saccharomyces_cerevisiae_YJM248,CYTC,Saccharomyces_cerevisiae_YJM248,113,False,Cyc7p,H751_YJM248E00037
+CYTC|Sporisorium_reilianum_SRZ2,CYTC,Sporisorium_reilianum_SRZ2,108,False,Electron carrier protein,sr13758
+CYTC|Fusarium_phyllophilum,CYTC,Fusarium_phyllophilum,106,False,Electron carrier protein,FPHYL_1841
+CYTC|Aspergillus_neoniger_CBS_115656,CYTC,Aspergillus_neoniger_CBS_115656,146,True,Electron carrier protein,BO87DRAFT_427604
+CYTC|Nakaseomyces_glabratus,CYTC,Nakaseomyces_glabratus,104,False,Electron carrier protein,J6895_03989
+CYTC|Salarias_fasciatus,CYTC,Salarias_fasciatus,104,False,Electron carrier protein,115399805
+CYTC|Pisolithus_sp._B1,CYTC,Pisolithus_sp._B1,108,False,cytochrome-c from the OXPHOS pathway,F5141DRAFT_1119629
+CYTC|Pneumocystis_wakefieldiae,CYTC,Pneumocystis_wakefieldiae,108,False,Cytochrome c domain-containing protein,MERGE_000187
+CYTC|Bembecia_ichneumoniformis,CYTC,Bembecia_ichneumoniformis,108,False,,ENSBICG00000013032.1
+CYTC|Blastomyces_parvus,CYTC,Blastomyces_parvus,150,True,Electron carrier protein,GX51_07182
+CYTC|Austrofundulus_limnaeus,CYTC,Austrofundulus_limnaeus,105,False,Electron carrier protein,106512899
+CYTC|Epinephelus_moara,CYTC,Epinephelus_moara,105,False,cytochrome c-like,126393270
+CYTC|Scytalopus_superciliaris,CYTC,Scytalopus_superciliaris,105,False,Cytochrome c,SCYSUP_R08472
+CYTC|Acaulospora_colombiana,CYTC,Acaulospora_colombiana,211,True,,ACOLOM_LOCUS9365
+CYTC|Dreissena_polymorpha,CYTC,Dreissena_polymorpha,111,False,Cytochrome c domain-containing protein,LOC127839251
+CYTC|Terrapene_carolina_triunguis,CYTC,Terrapene_carolina_triunguis,105,False,Cytochrome c,112124272
+CYTC|Neofusicoccum_parvum_UCRNP2,CYTC,Neofusicoccum_parvum_UCRNP2,108,False,Electron carrier protein,UCRNP2_8171
+CYTC|Trametes_cinnabarina,CYTC,Trametes_cinnabarina,108,False,Cytochrome c domain-containing protein,BN946_scf184939.g36
+CYTC|Dipodomys_spectabilis,CYTC,Dipodomys_spectabilis,105,False,"cytochrome c, somatic",122112201
+CYTC|Drosophila_navojoa,CYTC,Drosophila_navojoa,108,False,Cytochrome c domain-containing protein,LOC115562606
+CYTC|Carcina_quercana,CYTC,Carcina_quercana,106,False,,BRAKERCQUG00005005426.1
+CYTC|Heliconius_sara,CYTC,Heliconius_sara,108,False,,ENSHSRG00005016943.1
+CYTC|Zopfochytrium_polystomum,CYTC,Zopfochytrium_polystomum,108,False,cytochrome c-like domain-containing protein,DFJ73DRAFT_789186
+CYTC|Aspergillus_bertholletiae,CYTC,Aspergillus_bertholletiae,112,False,Electron carrier protein,BDV26DRAFT_258500
+CYTC|Trametes_cubensis,CYTC,Trametes_cubensis,108,False,hypothetical protein,ONZ51_g856
+CYTC|Candida_albicans_P75010,CYTC,Candida_albicans_P75010,110,False,cytochrome c,MGE_02399
+CYTC|Clonostachys_chloroleuca,CYTC,Clonostachys_chloroleuca,106,False,,CCHLO57077_00003605
+CYTC|Cryptotermes_secundus,CYTC,Cryptotermes_secundus,108,False,Electron carrier protein,LOC111869050
+CYTC|Stenella_coeruleoalba,CYTC,Stenella_coeruleoalba,105,False,,GCA_951394435.1:g1265.t1
+CYTC|Ganoderma_leucocontextum,CYTC,Ganoderma_leucocontextum,108,False,cytochrome c,LXA43DRAFT_985809
+CYTC|Rhizopus_delemar_RA_99-880,CYTC,Rhizopus_delemar_RA_99-880,105,False,Electron carrier protein,RO3G_09833
+CYTC|Macrolepiota_fuliginosa_MF-IS2,CYTC,Macrolepiota_fuliginosa_MF-IS2,108,False,Electron carrier protein,P691DRAFT_759036
+CYTC|Trypanosoma_rangeli,CYTC,Trypanosoma_rangeli,113,False,Electron carrier protein,TraAM80_05644
+CYTC|Clonostachys_rosea_f._rosea_IK726,CYTC,Clonostachys_rosea_f._rosea_IK726,106,False,,CRV2_00001323
+CYTC|Copsychus_sechellarum,CYTC,Copsychus_sechellarum,104,False,Cytochrome c,COPSEC_R08502
+CYTC|Phragmatobia_fuliginosa,CYTC,Phragmatobia_fuliginosa,108,False,,ENSPFGG00005002102.1
+CYTC|Trichoderma_harzianum,CYTC,Trichoderma_harzianum,125,False,Cytochrome c domain-containing protein,THARTR1_00836
+CYTC|Tulasnella_sp._425,CYTC,Tulasnella_sp._425,108,False,iso-1-cytochrome c,FRC05_005441
+CYTC|Endocarpon_pusillum,CYTC,Endocarpon_pusillum,113,False,Cytochrome c domain-containing protein,GJ744_002783
+CYTC|Paramormyrops_kingsleyae,CYTC,Paramormyrops_kingsleyae,104,False,Electron carrier protein,111838568
+CYTC|Dasypus_novemcinctus,CYTC,Dasypus_novemcinctus,105,False,cytochrome c-like,101410988
+CYTC|Laspeyria_flexula,CYTC,Laspeyria_flexula,108,False,,ENSLFLG00005005841.1
+CYTC|Brettanomyces_nanus,CYTC,Brettanomyces_nanus,111,False,Electron carrier protein,FOA43_004145
+CYTC|Saitozyma_sp._JCM_24511,CYTC,Saitozyma_sp._JCM_24511,231,True,Electron carrier protein,JCM24511_05826
+CYTC|Aureobasidium_sp._EXF-10728,CYTC,Aureobasidium_sp._EXF-10728,102,False,hypothetical protein,E4T49_05100
+CYTC|Marasmius_fiardii_PR-910,CYTC,Marasmius_fiardii_PR-910,108,False,cytochrome c,L218DRAFT_1078323
+CYTC|Mycena_filopes,CYTC,Mycena_filopes,108,False,cytochrome c,C8R46DRAFT_63382
+CYTC|Geoglossum_simile,CYTC,Geoglossum_simile,140,True,iso-1-cytochrome c,M1840_003061
+CYTC|Fusarium_sp._Ph1,CYTC,Fusarium_sp._Ph1,106,False,hypothetical protein,NCS56_00678600
+CYTC|Athalia_rosae,CYTC,Athalia_rosae,108,False,cytochrome c-2,105686504
+CYTC|Seriola_dumerili,CYTC,Seriola_dumerili,105,False,Electron carrier protein,111218420
+CYTC|Cistogaster_globosa,CYTC,Cistogaster_globosa,108,False,,BRAKERCGLG00000009870.1
+CYTC|Sphaerosporella_brunnea,CYTC,Sphaerosporella_brunnea,108,False,Electron carrier protein,FN846DRAFT_951912
+CYTC|Colinus_virginianus,CYTC,Colinus_virginianus,105,False,hypothetical protein,H355_006427
+CYTC|Drechmeria_coniospora,CYTC,Drechmeria_coniospora,106,False,hypothetical protein,RJ55_07133
+CYTC|Aspergillus_burnettii,CYTC,Aspergillus_burnettii,139,False,Electron carrier protein,ETB97_006883
+CYTC|Sistotremastrum_suecicum_HHB10207_ss-3,CYTC,Sistotremastrum_suecicum_HHB10207_ss-3,108,False,Electron carrier protein,SISSUDRAFT_1064220
+CYTC|Drosophila_ironensis,CYTC,Drosophila_ironensis,108,False,hypothetical protein,KR018_002621
+CYTC|Microchrysa_polita,CYTC,Microchrysa_polita,108,False,,BRAKERZWPG00000000054.1
+CYTC|Aspergillus_coremiiformis,CYTC,Aspergillus_coremiiformis,112,False,cytochrome c-like domain-containing protein,BDV28DRAFT_129302
+CYTC|Phaedon_cochleariae,CYTC,Phaedon_cochleariae,108,False,Electron carrier protein,PHAECO_LOCUS12145
+CYTC|Funneliformis_caledonium,CYTC,Funneliformis_caledonium,110,False,Electron carrier protein,FCALED_LOCUS316
+CYTC|Perkinsus_chesapeaki,CYTC,Perkinsus_chesapeaki,117,True,Electron carrier protein,FOL47_001035
+CYTC|Hirschfeldia_incana,CYTC,Hirschfeldia_incana,112,False,Cytochrome c-1,HA466_0084790
+CYTC|Tetrabaena_socialis,CYTC,Tetrabaena_socialis,112,False,Electron carrier protein,TSOC_007371
+CYTC|Neurospora_crassa_OR74A,CYTC,Neurospora_crassa_OR74A,108,False,Cytochrome c,NCU01808
+CYTC|Fusarium_proliferatum_ET1,CYTC,Fusarium_proliferatum_ET1,106,False,Electron carrier protein,FPRO_11082
+CYTC|Linnemannia_hyalina,CYTC,Linnemannia_hyalina,238,True,Electron carrier protein,KI688_006063
+CYTC|Nothobranchius_kuhntae,CYTC,Nothobranchius_kuhntae,105,False,Cytochrome c domain-containing protein,cycsb
+CYTC|Pogona_vitticeps,CYTC,Pogona_vitticeps,105,False,Electron carrier protein,110072471
+CYTC|Macadamia_integrifolia,CYTC,Macadamia_integrifolia,113,False,cytochrome c,122083491
+CYTC|Phytophthora_nicotianae_CJ01A1,CYTC,Phytophthora_nicotianae_CJ01A1,112,False,Electron carrier protein,F441_02189
+CYTC|Fusarium_anthophilum,CYTC,Fusarium_anthophilum,106,False,Cytochrome c domain-containing protein,FANTH_14446
+CYTC|Daphnia_pulicaria,CYTC,Daphnia_pulicaria,108,False,cytochrome c-2,124342271
+CYTC|Cyaniris_semiargus,CYTC,Cyaniris_semiargus,108,False,,BRAKERSCYG00000006402.1
+CYTC|Cariama_cristata,CYTC,Cariama_cristata,104,True,"cytochrome c, somatic-like",104154915
+CYTC|Drepanopeziza_brunnea_f._sp._'monogermtubi',CYTC,Drepanopeziza_brunnea_f._sp._'monogermtubi',108,False,hypothetical protein,LZ554_006069
+CYTC|Suillus_placidus,CYTC,Suillus_placidus,108,False,Electron carrier protein,EV702DRAFT_408204
+CYTC|Calycina_marina,CYTC,Calycina_marina,211,True,Electron carrier protein,BJ878DRAFT_563929
+CYTC|Amphipyra_tragopoginis,CYTC,Amphipyra_tragopoginis,108,False,,ENSATGG00005000779.1
+CYTC|Dimorphilus_gyrociliatus,CYTC,Dimorphilus_gyrociliatus,104,False,Electron carrier protein,DGYR_LOCUS6227
+CYTC|Homo_sapiens,CYTC,Homo_sapiens,105,False,Cytochrome c,CYCS
